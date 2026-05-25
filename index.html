@@ -1077,6 +1077,131 @@ footer {
   color: var(--text-dim);
 }
 
+/* ===== WAITLIST ===== */
+.waitlist {
+  padding: 80px 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.waitlist-card {
+  background: rgba(10,15,15,0.7);
+  border: 1px solid var(--border-green);
+  border-radius: var(--radius-lg);
+  padding: 52px 48px;
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 80px rgba(0,229,196,0.06);
+}
+
+.waitlist-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.waitlist-card h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.4px;
+  margin-bottom: 10px;
+}
+
+.waitlist-card > p {
+  font-size: 15px;
+  color: var(--text-muted);
+  font-weight: 300;
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+
+.waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+
+.wl-input {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text);
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.wl-input::placeholder { color: var(--text-dim); }
+
+.wl-input:focus {
+  border-color: var(--border-green);
+  box-shadow: 0 0 0 3px rgba(0,229,196,0.08);
+}
+
+.wl-input option { background: #0a0f0f; color: var(--text); }
+
+.waitlist-form .btn-primary {
+  padding: 15px;
+  font-size: 15px;
+  border-radius: var(--radius);
+  width: 100%;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.waitlist-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 0;
+}
+
+.waitlist-success.visible { display: flex; }
+
+.success-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--green-glow);
+  border: 1px solid var(--border-green);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+}
+
+.waitlist-success h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.waitlist-success p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 340px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .waitlist { padding: 60px 24px; }
+  .waitlist-card { padding: 36px 24px; }
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   nav { padding: 16px 24px; }
@@ -1148,6 +1273,35 @@ footer {
         <div class="av">AP</div>
       </div>
       <span>Trusted by <strong>500+</strong> local businesses &nbsp;|&nbsp; ⭐ 4.9 / 5 rating</span>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section class="waitlist" id="waitlist">
+  <div class="waitlist-card">
+    <span class="waitlist-label">Early Access</span>
+    <h2>Get early access to LocalPulse.</h2>
+    <p>Be first in line. Join the waitlist and we'll reach out as soon as your spot is ready.</p>
+
+    <form class="waitlist-form" id="waitlistForm">
+      <input class="wl-input" type="text" name="name" placeholder="Your name" required autocomplete="name">
+      <input class="wl-input" type="email" name="email" placeholder="Your email" required autocomplete="email">
+      <select class="wl-input" name="business_type" required>
+        <option value="" disabled selected>What's your business?</option>
+        <option value="Restaurant">Restaurant</option>
+        <option value="Agency">Agency</option>
+        <option value="Retail">Retail</option>
+        <option value="Medical">Medical</option>
+        <option value="Other">Other</option>
+      </select>
+      <button type="submit" class="btn-primary">Join the Waitlist</button>
+    </form>
+
+    <div class="waitlist-success" id="waitlistSuccess">
+      <div class="success-icon">✓</div>
+      <h3>You're on the list!</h3>
+      <p>Thanks for joining. We'll be in touch soon with your early access details.</p>
     </div>
   </div>
 </section>
@@ -1527,6 +1681,24 @@ function setToggle(mode) {
   document.getElementById('price-growth').textContent = p[1];
   document.getElementById('price-agency').textContent = p[2];
 }
+
+// Waitlist form
+document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type="submit"]');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+  const data = Object.fromEntries(new FormData(this));
+  try {
+    await fetch('MAKE_WEBHOOK_URL', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch (_) {}
+  this.style.display = 'none';
+  document.getElementById('waitlistSuccess').classList.add('visible');
+});
 
 // Step interaction
 document.querySelectorAll('.step-item').forEach(item => {
