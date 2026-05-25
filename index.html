@@ -1690,7 +1690,7 @@ document.getElementById('waitlistForm').addEventListener('submit', async functio
   btn.disabled = true;
   const data = Object.fromEntries(new FormData(this));
   try {
-    await fetch('MAKE_WEBHOOK_URL', {
+    await fetch('https://hook.eu1.make.com/qnt1x9xkzka8m6gbpqq99ngxt9vrbj9k', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
