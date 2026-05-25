@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LocalPulse — Dominate Local Search</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #00ff88;
+    --green-dim: #00cc6a;
+    --green-glow: rgba(0,255,136,0.15);
+    --green-glow-strong: rgba(0,255,136,0.25);
+    --bg: #080c0a;
+    --bg2: #0d1410;
+    --bg3: #111a14;
+    --surface: rgba(255,255,255,0.04);
+    --surface-hover: rgba(255,255,255,0.07);
+    --border: rgba(255,255,255,0.08);
+    --border-green: rgba(0,255,136,0.2);
+    --text: #f0f4f1;
+    --text-muted: rgba(240,244,241,0.5);
+    --text-dim: rgba(240,244,241,0.3);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 60px;
+    background: rgba(8,12,10,0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .nav-logo svg { width: 28px; height: 28px; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .btn-ghost {
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--text); }
+
+  .btn-primary {
+    background: var(--green);
+    color: #000;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover {
+    background: #00e87a;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(0,255,136,0.3);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--green);
+    border: 1px solid var(--border-green);
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover {
+    background: var(--green-glow);
+    border-color: var(--green);
+  }
+
+  .btn-lg {
+    padding: 16px 36px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+
+  /* ===== SECTIONS ===== */
+  section { position: relative; }
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 700px;
+    background: radial-gradient(ellipse at center top, rgba(0,255,136,0.18) 0%, rgba(0,255,136,0.05) 40%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-glow-2 {
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0,255,136,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,255,136,0.08);
+    border: 1px solid var(--border-green);
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-badge span {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 7vw, 86px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero h1 .accent {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc6a 50%, #00ffaa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+    line-height: 1.7;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .hero-social-proof {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: var(--text-dim);
+    font-size: 13px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .avatar-stack {
+    display: flex;
+  }
+  .avatar-stack .av {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+    margin-left: -8px;
+    background: var(--bg3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green);
+  }
+  .avatar-stack .av:first-child { margin-left: 0; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== FEATURES STRIP ===== */
+  .features-strip {
+    padding: 20px 0 80px;
+    border-top: 1px solid var(--border);
+  }
+
+  .features-strip .label {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 48px;
+  }
+
+  .features-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .feat-item {
+    background: var(--bg2);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: background 0.2s;
+  }
+  .feat-item:hover { background: var(--bg3); }
+
+  .feat-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--green-glow);
+    border: 1px solid var(--border-green);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green);
+    font-size: 18px;
+  }
+
+  .feat-item h3 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .feat-item p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ===== SECTION HEADER ===== */
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 20px; height: 1px;
+    background: var(--green);
+  }
+
+  h2.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* ===== HOW IT WORKS ===== */
+  .how-it-works {
+    padding: 100px 0;
+    overflow: hidden;
+  }
+
+  .how-header {
+    margin-bottom: 80px;
+  }
+
+  .steps-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 20px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .step-item:first-child { padding-top: 0; }
+  .step-item:last-child { border-bottom: none; }
+
+  .step-item.active .step-num {
+    background: var(--green);
+    color: #000;
+    border-color: var(--green);
+  }
+
+  .step-item.active .step-title {
+    color: var(--green);
+  }
+
+  .step-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-dim);
+    flex-shrink: 0;
+    transition: all 0.3s;
+  }
+
+  .step-content { flex: 1; }
+
+  .step-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    transition: color 0.2s;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .step-visual {
+    position: sticky;
+    top: 120px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-visual-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  /* GBP CARD VISUAL */
+  .gbp-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .gbp-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .gbp-logo {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00ff88, #00cc6a);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+
+  .gbp-name { font-weight: 600; font-size: 15px; }
+  .gbp-cat { font-size: 12px; color: var(--text-muted); }
+
+  .gbp-stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+
+  .star { color: #fbbf24; font-size: 14px; }
+
+  .gbp-rating { font-size: 13px; color: var(--text-muted); margin-left: 4px; }
+
+  .gbp-bar {
+    height: 4px;
+    border-radius: 2px;
+    background: var(--border);
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+
+  .gbp-bar-fill {
+    height: 100%;
+    background: var(--green);
+    border-radius: 2px;
+    animation: grow 1s ease both;
+  }
+
+  @keyframes grow {
+    from { width: 0; }
+  }
+
+  .metric-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .metric-box {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .metric-val {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--green);
+  }
+
+  .metric-lbl {
+    font-size: 10px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== FEATURES BENTO ===== */
+  .features-bento {
+    padding: 100px 0;
+    background: linear-gradient(to bottom, transparent, var(--bg2), transparent);
+  }
+
+  .bento-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    gap: 16px;
+  }
+
+  .bento-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .bento-card:hover { border-color: var(--border-green); }
+
+  .bento-card.col-7 { grid-column: span 7; }
+  .bento-card.col-5 { grid-column: span 5; }
+  .bento-card.col-4 { grid-column: span 4; }
+  .bento-card.col-8 { grid-column: span 8; }
+  .bento-card.col-6 { grid-column: span 6; }
+
+  .bento-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: var(--green-glow);
+    border: 1px solid var(--border-green);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green);
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .bento-card h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .bento-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .bento-visual {
+    margin-top: 24px;
+    position: relative;
+  }
+
+  /* Review stream visual */
+  .review-stream {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .review-bubble {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    animation: slideIn 0.4s ease both;
+  }
+
+  .review-bubble:nth-child(2) { animation-delay: 0.1s; }
+  .review-bubble:nth-child(3) { animation-delay: 0.2s; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .rv-av {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--green-glow);
+    border: 1px solid var(--border-green);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .rv-content {}
+  .rv-name { font-size: 12px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+
+  /* Rank visual */
+  .rank-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 0;
+  }
+
+  .rank-num {
+    font-family: var(--font-display);
+    font-size: 72px;
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1;
+    text-shadow: 0 0 60px rgba(0,255,136,0.4);
+  }
+
+  .rank-label { font-size: 14px; color: var(--text-muted); }
+
+  /* Chart mini */
+  .mini-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 80px;
+    margin-top: 20px;
+  }
+
+  .bar {
+    flex: 1;
+    background: var(--border);
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .bar:hover { background: rgba(0,255,136,0.2); }
+
+  .bar-fill {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, var(--green), rgba(0,255,136,0.3));
+    border-radius: 4px 4px 0 0;
+    animation: barGrow 0.8s ease both;
+  }
+
+  @keyframes barGrow {
+    from { height: 0; }
+  }
+
+  /* ===== POWER SECTION ===== */
+  .power-section {
+    padding: 100px 0;
+  }
+
+  .power-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-top: 60px;
+  }
+
+  .power-item {
+    background: var(--bg);
+    padding: 36px 28px;
+    transition: background 0.2s;
+  }
+  .power-item:hover { background: var(--bg2); }
+
+  .power-number {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .power-label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .power-desc { font-size: 14px; color: var(--text-muted); }
+
+  /* ===== PRICING ===== */
+  .pricing {
+    padding: 100px 0;
+    background: linear-gradient(to bottom, transparent, var(--bg2), transparent);
+  }
+
+  .pricing-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .pricing-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px;
+    margin-bottom: 48px;
+    font-size: 14px;
+  }
+
+  .toggle-opt {
+    padding: 8px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-muted);
+  }
+  .toggle-opt.active {
+    background: var(--green);
+    color: #000;
+    font-weight: 500;
+  }
+
+  .save-badge {
+    background: rgba(0,255,136,0.15);
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 100px;
+    border: 1px solid var(--border-green);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .pricing-card:hover {
+    border-color: var(--border-green);
+    transform: translateY(-4px);
+  }
+
+  .pricing-card.featured {
+    border-color: var(--green);
+    background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, var(--bg2) 100%);
+  }
+
+  .featured-tag {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green);
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .plan-name {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .plan-price {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .price-currency {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .price-amount {
+    font-family: var(--font-display);
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .price-period {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .plan-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.6;
+  }
+
+  .plan-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .check {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--green-glow);
+    border: 1px solid var(--border-green);
+    color: var(--green);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  .plan-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    transition: all 0.2s;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+  }
+
+  .plan-btn:hover {
+    background: var(--surface);
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  .plan-btn.featured {
+    background: var(--green);
+    color: #000;
+    border-color: var(--green);
+    font-weight: 600;
+  }
+
+  .plan-btn.featured:hover {
+    background: #00e87a;
+    box-shadow: 0 8px 30px rgba(0,255,136,0.3);
+  }
+
+  /* ===== FAQ ===== */
+  .faq {
+    padding: 100px 0;
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .faq-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+    cursor: pointer;
+  }
+
+  .faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .faq-arrow {
+    color: var(--green);
+    font-size: 18px;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-arrow { transform: rotate(45deg); }
+
+  .faq-a {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease, padding 0.3s;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 200px;
+    padding-top: 14px;
+  }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta {
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta .glow {
+    position: absolute;
+    bottom: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(0,255,136,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .final-cta h2 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+  }
+
+  .final-cta p {
+    font-size: 18px;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 40px;
+  }
+
+  .cta-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--text-muted); }
+
+  .footer-copy {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  /* Scroll animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Green accent line */
+  .accent-line {
+    display: inline-block;
+    width: 40px;
+    height: 3px;
+    background: var(--green);
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="14" cy="12" r="5" fill="#00ff88"/>
+      <path d="M14 17 Q14 22 14 22" stroke="#00ff88" stroke-width="2" stroke-linecap="round"/>
+      <path d="M9 10 Q6 10 4 12" stroke="#00ff88" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      <path d="M19 10 Q22 10 24 12" stroke="#00ff88" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      <path d="M6 15 Q4 17 3 20" stroke="#00ff88" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+      <path d="M22 15 Q24 17 25 20" stroke="#00ff88" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+    </svg>
+    LocalPulse
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+
+  <div class="nav-cta">
+    <a href="https://app.localpulse.ink/sign-in" class="btn-ghost">Sign in</a>
+    <a href="https://app.localpulse.ink/sign-up" class="btn-primary">Get started free</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+
+  <div>
+    <div class="hero-badge">
+      <span></span>
+      AI-Powered Local SEO Platform
+    </div>
+
+    <h1>
+      Dominate<br>
+      <span class="accent">Local Search.</span>
+    </h1>
+
+    <p>
+      The all-in-one platform for marketing agencies and local businesses to rank #1, get more reviews, and crush the competition.
+    </p>
+
+    <div class="hero-actions">
+      <a href="https://app.localpulse.ink/sign-up" class="btn-primary btn-lg">Start free trial</a>
+      <a href="#how" class="btn-outline btn-lg">See how it works</a>
+    </div>
+
+    <div class="hero-social-proof">
+      <div class="avatar-stack">
+        <div class="av">JK</div>
+        <div class="av">SM</div>
+        <div class="av">RL</div>
+        <div class="av">AP</div>
+      </div>
+      <span>Trusted by <strong style="color: var(--text)">500+</strong> local businesses</span>
+      <span style="color: var(--border)">|</span>
+      <span>⭐ 4.9 / 5 rating</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES STRIP -->
+<section class="features-strip">
+  <div class="container">
+    <div class="label">Everything you need to dominate local search</div>
+    <div class="features-grid-3">
+      <div class="feat-item">
+        <div class="feat-icon">📍</div>
+        <h3>GBP Management</h3>
+        <p>Optimize your Google Business Profile with AI-powered insights and automated updates.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">⭐</div>
+        <h3>Review Automation</h3>
+        <p>Automatically request, respond, and manage reviews across all platforms at scale.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">📊</div>
+        <h3>Rank Tracking</h3>
+        <p>Monitor your local search rankings in real-time with competitor benchmarking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works reveal" id="how">
+  <div class="container">
+    <div class="how-header">
+      <div class="section-tag">How it works</div>
+      <h2 class="section-title">Simple setup.<br>Powerful results.</h2>
+      <p class="section-sub">Go from signup to ranking in under 10 minutes. No technical knowledge required.</p>
+    </div>
+
+    <div class="steps-layout">
+      <div class="steps-list">
+        <div class="step-item active" onclick="setStep(0, this)">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Connect your Google Business Profile</div>
+            <div class="step-desc">Link your GBP in one click. We automatically audit your listing and identify every optimization opportunity.</div>
+          </div>
+        </div>
+        <div class="step-item" onclick="setStep(1, this)">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">AI analyzes and optimizes</div>
+            <div class="step-desc">Our AI scans competitors, identifies keyword gaps, and implements proven local SEO strategies automatically.</div>
+          </div>
+        </div>
+        <div class="step-item" onclick="setStep(2, this)">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">Watch your rankings climb</div>
+            <div class="step-desc">Track your progress with real-time rank monitoring, review growth metrics, and traffic analytics in one dashboard.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-visual">
+        <div class="step-visual-inner" id="stepVisual">
+          <!-- Step 0 visual -->
+          <div class="gbp-card">
+            <div class="gbp-header">
+              <div class="gbp-logo">📍</div>
+              <div>
+                <div class="gbp-name">Mario's Pizzeria</div>
+                <div class="gbp-cat">Restaurant · Italian</div>
+              </div>
+            </div>
+            <div class="gbp-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="gbp-rating">4.9 (284 reviews)</span>
+            </div>
+            <div style="font-size: 12px; color: var(--text-dim); margin-bottom: 6px;">Profile completeness</div>
+            <div class="gbp-bar"><div class="gbp-bar-fill" style="width: 94%"></div></div>
+            <div style="font-size: 11px; color: var(--green); text-align: right;">94% complete ↗</div>
+            <div class="metric-row">
+              <div class="metric-box">
+                <div class="metric-val">2.4k</div>
+                <div class="metric-lbl">Views</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-val">189</div>
+                <div class="metric-lbl">Calls</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-val">#1</div>
+                <div class="metric-lbl">Rank</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES BENTO -->
+<section class="features-bento reveal" id="features">
+  <div class="container">
+    <div class="bento-header">
+      <div class="section-tag">Features</div>
+      <h2 class="section-title">Everything set for<br>your business.</h2>
+      <p class="section-sub" style="margin: 0 auto;">A full suite of tools to dominate your local market — built for agencies and growing businesses.</p>
+    </div>
+
+    <div class="bento-grid">
+      <!-- Large left card -->
+      <div class="bento-card col-7">
+        <div class="bento-icon">💬</div>
+        <h3>AI Review Management</h3>
+        <p>Automatically respond to every review with personalized, brand-consistent replies. Generate review request campaigns that convert.</p>
+        <div class="bento-visual">
+          <div class="review-stream">
+            <div class="review-bubble">
+              <div class="rv-av">JK</div>
+              <div class="rv-content">
+                <div class="rv-name">James K. — ⭐⭐⭐⭐⭐</div>
+                <div style="font-size: 12px;">Best pizza in town! Always fresh and fast delivery.</div>
+              </div>
+            </div>
+            <div class="review-bubble" style="margin-left: 20px; border-left: 2px solid var(--border-green);">
+              <div class="rv-av" style="background: rgba(0,255,136,0.2); color: var(--green);">AI</div>
+              <div class="rv-content">
+                <div class="rv-name">Owner Response</div>
+                <div style="font-size: 12px;">Thank you James! We're thrilled you loved it. See you next time! 🍕</div>
+              </div>
+            </div>
+            <div class="review-bubble">
+              <div class="rv-av">SM</div>
+              <div class="rv-content">
+                <div class="rv-name">Sarah M. — ⭐⭐⭐⭐⭐</div>
+                <div style="font-size: 12px;">Incredible atmosphere and the staff are so friendly.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rank card -->
+      <div class="bento-card col-5">
+        <div class="bento-icon">🏆</div>
+        <h3>Real-Time Rank Tracking</h3>
+        <p>Monitor your exact position in Google's local 3-pack across all your target keywords and locations.</p>
+        <div class="bento-visual">
+          <div class="rank-display">
+            <div class="rank-num">#1</div>
+            <div class="rank-label">"pizza near me" · New York, NY</div>
+            <div style="display: flex; gap: 6px; margin-top: 8px;">
+              <span style="font-size: 11px; background: rgba(0,255,136,0.1); color: var(--green); padding: 3px 10px; border-radius: 100px; border: 1px solid var(--border-green);">↑ 4 positions this week</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analytics card -->
+      <div class="bento-card col-8">
+        <div class="bento-icon">📈</div>
+        <h3>Performance Analytics</h3>
+        <p>Deep-dive into traffic, calls, and conversion data from your local search presence. Know exactly what's working.</p>
+        <div class="bento-visual">
+          <div class="mini-chart">
+            <div class="bar"><div class="bar-fill" style="height: 40%; animation-delay: 0s;"></div></div>
+            <div class="bar"><div class="bar-fill" style="height: 55%; animation-delay: 0.05s;"></div></div>
+            <div class="bar"><div class="bar-fill" style="height: 45%; animation-delay: 0.1s;"></div></div>
+            <div class="bar"><div class="bar-fill" style="height: 70%; animation-delay: 0.15s;"></div></div>
+            <div class="bar"><div class="bar-fill" style="height: 60%; animation-delay: 0.2s;"></div></div>
+            <div class="bar"><div class="bar-fill" style="height: 80%; animation-delay: 0.25s;"></div></div>
+            <div class="bar"><div class="bar-fill" style="height: 65%; animation-delay: 0.3s;"></div></div>
+            <div class="bar"><div class="bar-fill" style="height: 90%; animation-delay: 0.35s;"></div></div>
+            <div class="bar"><div class="bar-fill" style="height: 75%; animation-delay: 0.4s;"></div></div>
+            <div class="bar"><div class="bar-fill" style="height: 100%; animation-delay: 0.45s;"></div></div>
+            <div class="bar"><div class="bar-fill" style="height: 85%; animation-delay: 0.5s;"></div></div>
+            <div class="bar"><div class="bar-fill" style="height: 95%; animation-delay: 0.55s;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agency card -->
+      <div class="bento-card col-4">
+        <div class="bento-icon">🏢</div>
+        <h3>Agency Multi-Location</h3>
+        <p>Manage unlimited client locations from one dashboard with white-label reporting.</p>
+      </div>
+
+      <div class="bento-card col-6">
+        <div class="bento-icon">🤖</div>
+        <h3>AI Citation Builder</h3>
+        <p>Automatically build and fix business citations across 50+ directories. Consistent NAP data means better rankings.</p>
+      </div>
+
+      <div class="bento-card col-6">
+        <div class="bento-icon">⚡</div>
+        <h3>GBP Post Scheduler</h3>
+        <p>Schedule weeks of Google Business Profile posts with AI-generated content. Keep your profile fresh and active.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POWER NUMBERS -->
+<section class="power-section reveal">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 20px;">
+      <div class="section-tag" style="justify-content: center;">— Results that don't go back</div>
+      <h2 class="section-title">Businesses that rank don't<br>look back.</h2>
+    </div>
+
+    <div class="power-grid">
+      <div class="power-item">
+        <div class="power-number">3.2×</div>
+        <div class="power-label">More profile views</div>
+        <div class="power-desc">Average increase in Google Business Profile impressions within 90 days.</div>
+      </div>
+      <div class="power-item">
+        <div class="power-number">+47%</div>
+        <div class="power-label">More inbound calls</div>
+        <div class="power-desc">Businesses report significantly more calls direct from Google search.</div>
+      </div>
+      <div class="power-item">
+        <div class="power-number">8 days</div>
+        <div class="power-label">To first ranking improvement</div>
+        <div class="power-desc">Most customers see measurable ranking gains within the first week.</div>
+      </div>
+      <div class="power-item">
+        <div class="power-number">500+</div>
+        <div class="power-label">Businesses powered</div>
+        <div class="power-desc">From solo operators to 50-location agency clients.</div>
+      </div>
+      <div class="power-item">
+        <div class="power-number">92%</div>
+        <div class="power-label">Retention rate</div>
+        <div class="power-desc">Our customers stay because LocalPulse keeps delivering results month after month.</div>
+      </div>
+      <div class="power-item">
+        <div class="power-number">4.9 ★</div>
+        <div class="power-label">Average customer rating</div>
+        <div class="power-desc">Consistently top-rated by agency owners and local business operators.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing reveal" id="pricing">
+  <div class="container">
+    <div class="pricing-header">
+      <div class="section-tag" style="justify-content: center;">Transparent &amp; simple pricing</div>
+      <h2 class="section-title">Pick your plan.</h2>
+      <p class="section-sub" style="margin: 0 auto 24px;">No hidden fees. No contracts. Cancel anytime.</p>
+
+      <div class="pricing-toggle">
+        <div class="toggle-opt active" onclick="setPlan('monthly', this)">Monthly</div>
+        <div class="toggle-opt" onclick="setPlan('annual', this)">Annual <span class="save-badge">Save 20%</span></div>
+      </div>
+    </div>
+
+    <div class="pricing-grid" id="pricingGrid">
+      <div class="pricing-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-amount" data-monthly="49" data-annual="39">49</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <div class="plan-desc">Perfect for single-location businesses getting started with local SEO.</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span>1 business location</li>
+          <li><span class="check">✓</span>GBP optimization</li>
+          <li><span class="check">✓</span>Review monitoring</li>
+          <li><span class="check">✓</span>Basic rank tracking</li>
+          <li><span class="check">✓</span>Monthly reports</li>
+        </ul>
+        <a href="https://app.localpulse.ink/sign-up?plan=starter" class="plan-btn">Get started</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="featured-tag">Most Popular</div>
+        <div class="plan-name">Growth</div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-amount" data-monthly="99" data-annual="79">99</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <div class="plan-desc">Everything you need to dominate local search in your market.</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span>Up to 5 locations</li>
+          <li><span class="check">✓</span>AI review responses</li>
+          <li><span class="check">✓</span>Citation builder</li>
+          <li><span class="check">✓</span>Advanced rank tracking</li>
+          <li><span class="check">✓</span>GBP post scheduler</li>
+          <li><span class="check">✓</span>Competitor analysis</li>
+          <li><span class="check">✓</span>Weekly reports</li>
+        </ul>
+        <a href="https://app.localpulse.ink/sign-up?plan=growth" class="plan-btn featured">Get started</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="plan-name">Agency</div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-amount" data-monthly="249" data-annual="199">249</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <div class="plan-desc">Built for agencies managing multiple clients and locations at scale.</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span>Unlimited locations</li>
+          <li><span class="check">✓</span>White-label reporting</li>
+          <li><span class="check">✓</span>Client dashboard</li>
+          <li><span class="check">✓</span>API access</li>
+          <li><span class="check">✓</span>Priority support</li>
+          <li><span class="check">✓</span>Custom branding</li>
+          <li><span class="check">✓</span>Dedicated account manager</li>
+        </ul>
+        <a href="https://app.localpulse.ink/sign-up?plan=agency" class="plan-btn">Get started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq reveal" id="faq">
+  <div class="container">
+    <div class="faq-header">
+      <div class="section-tag" style="justify-content: center;">FAQ</div>
+      <h2 class="section-title">Questions? Answered.</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          How quickly will I see results?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Most customers see their first ranking improvements within 7–14 days. Significant gains typically happen within the first 30–60 days as our AI implements optimizations and builds citation authority.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          Do I need technical knowledge?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Not at all. LocalPulse is built for business owners and marketers, not developers. Setup takes under 10 minutes and our AI handles the technical SEO automatically.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          Can I manage multiple locations?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Yes! Our Growth plan supports up to 5 locations and our Agency plan supports unlimited locations with client management features, white-label reports, and team access.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          Is there a free trial?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Yes, all plans include a 14-day free trial. No credit card required. You get full access to all features for your chosen plan during the trial period.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          What if I want to cancel?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">Cancel anytime with no penalties or fees. Your account stays active until the end of your billing period. We believe in earning your business every month.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          Does this work for any type of local business?
+          <span class="faq-arrow">+</span>
+        </div>
+        <div class="faq-a">LocalPulse works for any business with a physical location or service area. Restaurants, medical practices, law firms, home services, retail stores — if local customers search for you, we can help you rank higher.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta reveal">
+  <div class="glow"></div>
+  <div class="container">
+    <h2>Your business's unfair<br>advantage starts here.</h2>
+    <p>Join 500+ local businesses already dominating their market with LocalPulse.</p>
+    <div class="cta-actions">
+      <a href="https://app.localpulse.ink/sign-up" class="btn-primary btn-lg">Start free — no card needed</a>
+      <a href="mailto:hello@localpulse.ink" class="btn-outline btn-lg">Talk to us first</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+    <a class="nav-logo" href="#" style="font-size: 15px; gap: 8px;">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:22px;">
+        <circle cx="14" cy="12" r="5" fill="#00ff88"/>
+        <path d="M14 17 Q14 22 14 22" stroke="#00ff88" stroke-width="2" stroke-linecap="round"/>
+        <path d="M9 10 Q6 10 4 12" stroke="#00ff88" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+        <path d="M19 10 Q22 10 24 12" stroke="#00ff88" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+      LocalPulse
+    </a>
+
+    <ul class="footer-links">
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="mailto:hello@localpulse.ink">Contact</a></li>
+    </ul>
+
+    <div class="footer-copy">© 2026 LocalPulse. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Step visuals
+  const stepVisuals = [
+    `<div class="gbp-card">
+      <div class="gbp-header">
+        <div class="gbp-logo">📍</div>
+        <div><div class="gbp-name">Mario's Pizzeria</div><div class="gbp-cat">Restaurant · Italian</div></div>
+      </div>
+      <div class="gbp-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        <span class="gbp-rating">4.9 (284 reviews)</span>
+      </div>
+      <div style="font-size:12px;color:var(--text-dim);margin-bottom:6px;">Profile completeness</div>
+      <div class="gbp-bar"><div class="gbp-bar-fill" style="width:94%"></div></div>
+      <div style="font-size:11px;color:var(--green);text-align:right;">94% complete ↗</div>
+      <div class="metric-row">
+        <div class="metric-box"><div class="metric-val">2.4k</div><div class="metric-lbl">Views</div></div>
+        <div class="metric-box"><div class="metric-val">189</div><div class="metric-lbl">Calls</div></div>
+        <div class="metric-box"><div class="metric-val">#1</div><div class="metric-lbl">Rank</div></div>
+      </div>
+    </div>`,
+
+    `<div style="width:100%;max-width:320px;">
+      <div style="background:var(--bg3);border:1px solid var(--border-green);border-radius:12px;padding:20px;margin-bottom:12px;">
+        <div style="font-size:12px;color:var(--green);margin-bottom:8px;font-weight:500;">🤖 AI Optimization Suggestions</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);"><span style="color:var(--green);">✓</span>Add 3 missing keywords to description</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);"><span style="color:var(--green);">✓</span>Fix inconsistent NAP on 4 directories</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);"><span style="color:var(--green);">✓</span>Add service area: Brooklyn, NY</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);opacity:0.5;">→ Schedule 8 GBP posts this month</div>
+        </div>
+      </div>
+      <div style="background:rgba(0,255,136,0.05);border:1px solid var(--border-green);border-radius:8px;padding:12px;font-size:13px;color:var(--green);text-align:center;">
+        Applying optimizations automatically...
+      </div>
+    </div>`,
+
+    `<div style="width:100%;max-width:320px;">
+      <div style="text-align:center;padding:20px 0;">
+        <div style="font-family:var(--font-display);font-size:64px;font-weight:800;color:var(--green);line-height:1;text-shadow:0 0 60px rgba(0,255,136,0.4);">#1</div>
+        <div style="font-size:13px;color:var(--text-muted);margin:8px 0;">"pizza near me" · 10013</div>
+        <div style="display:flex;gap:6px;justify-content:center;margin-top:12px;">
+          <span style="font-size:11px;background:rgba(0,255,136,0.1);color:var(--green);padding:4px 12px;border-radius:100px;border:1px solid var(--border-green);">↑ 6 positions in 30 days</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px;">
+        <div class="metric-box"><div class="metric-val">+67%</div><div class="metric-lbl">More calls</div></div>
+        <div class="metric-box"><div class="metric-val">+124%</div><div class="metric-lbl">More views</div></div>
+      </div>
+    </div>`
+  ];
+
+  function setStep(idx, el) {
+    document.querySelectorAll('.step-item').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+    const visual = document.getElementById('stepVisual');
+    visual.style.opacity = '0';
+    setTimeout(() => {
+      visual.innerHTML = stepVisuals[idx];
+      visual.style.opacity = '1';
+    }, 200);
+    visual.style.transition = 'opacity 0.2s';
+  }
+
+  // FAQ toggle
+  function toggleFaq(el) {
+    el.classList.toggle('open');
+  }
+
+  // Pricing toggle
+  function setPlan(type, el) {
+    document.querySelectorAll('.toggle-opt').forEach(o => o.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelectorAll('.price-amount').forEach(p => {
+      p.textContent = p.dataset[type];
+    });
+  }
+</script>
+</body>
+</html>
