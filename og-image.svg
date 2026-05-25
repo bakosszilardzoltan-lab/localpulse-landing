@@ -1,0 +1,10 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#060808"/>
+  <ellipse cx="340" cy="210" rx="540" ry="400" fill="rgba(0,200,170,0.35)"/>
+  <ellipse cx="960" cy="150" rx="460" ry="320" fill="rgba(0,168,142,0.28)"/>
+  <ellipse cx="680" cy="560" rx="400" ry="250" fill="rgba(0,229,196,0.18)"/>
+  <text x="76" y="108" font-family="Georgia, serif" font-size="26" font-weight="700" fill="rgba(240,244,243,0.85)">LocalPulse</text>
+  <text x="76" y="270" font-family="Georgia, serif" font-size="108" font-weight="800" fill="#ffffff">Dominate</text>
+  <text x="76" y="390" font-family="Georgia, serif" font-size="108" font-weight="800" fill="#00e5c4">Local Search.</text>
+  <text x="76" y="468" font-family="Arial, sans-serif" font-size="28" font-weight="300" fill="rgba(240,244,243,0.5)">The all-in-one platform for marketing agencies and local businesses.</text>
+</svg>
