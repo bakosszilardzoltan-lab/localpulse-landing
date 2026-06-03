@@ -347,23 +347,23 @@ nav,main,footer { position: relative; z-index: 1; }
 }
 .marquee-track {
   display: flex;
-  gap: 11px;
-  animation: marquee 36s linear infinite;
+  align-items: center;
+  animation: marquee 60s linear infinite;
   width: max-content;
   will-change: transform;
 }
 .marquee-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  border: 1px solid var(--border-green);
-  border-radius: 6px;
-  padding: 7px 16px;
   font-size: 12px;
+  font-weight: 500;
   color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   white-space: nowrap;
-  background: var(--green-glow);
   flex-shrink: 0;
+}
+.marquee-pill::after {
+  content: ' · ';
+  opacity: 0.5;
 }
 @keyframes marquee {
   0%   { transform: translateX(0); }
@@ -772,24 +772,24 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
 <!-- ═══ MARQUEE ═══ -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span class="marquee-pill">📍 GBP Post Generator</span>
-    <span class="marquee-pill">⭐ Review Responder</span>
-    <span class="marquee-pill">🔍 SEO Keyword Hunter</span>
-    <span class="marquee-pill">📊 Business Audit</span>
-    <span class="marquee-pill">🕵️ Competitor Spy</span>
-    <span class="marquee-pill">📸 Instagram Analyzer</span>
-    <span class="marquee-pill">🎵 TikTok Analyzer</span>
-    <span class="marquee-pill">▶️ YouTube Analyzer</span>
-    <span class="marquee-pill">📅 Content Calendar</span>
-    <span class="marquee-pill">📍 GBP Post Generator</span>
-    <span class="marquee-pill">⭐ Review Responder</span>
-    <span class="marquee-pill">🔍 SEO Keyword Hunter</span>
-    <span class="marquee-pill">📊 Business Audit</span>
-    <span class="marquee-pill">🕵️ Competitor Spy</span>
-    <span class="marquee-pill">📸 Instagram Analyzer</span>
-    <span class="marquee-pill">🎵 TikTok Analyzer</span>
-    <span class="marquee-pill">▶️ YouTube Analyzer</span>
-    <span class="marquee-pill">📅 Content Calendar</span>
+    <span class="marquee-pill">Instagram Analyzer</span>
+    <span class="marquee-pill">TikTok Analyzer</span>
+    <span class="marquee-pill">YouTube Analyzer</span>
+    <span class="marquee-pill">Content Calendar</span>
+    <span class="marquee-pill">GBP Post Generator</span>
+    <span class="marquee-pill">Review Responder</span>
+    <span class="marquee-pill">SEO Keyword Hunter</span>
+    <span class="marquee-pill">Business Audit</span>
+    <span class="marquee-pill">Competitor Spy</span>
+    <span class="marquee-pill">Instagram Analyzer</span>
+    <span class="marquee-pill">TikTok Analyzer</span>
+    <span class="marquee-pill">YouTube Analyzer</span>
+    <span class="marquee-pill">Content Calendar</span>
+    <span class="marquee-pill">GBP Post Generator</span>
+    <span class="marquee-pill">Review Responder</span>
+    <span class="marquee-pill">SEO Keyword Hunter</span>
+    <span class="marquee-pill">Business Audit</span>
+    <span class="marquee-pill">Competitor Spy</span>
   </div>
 </div>
 
