@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LocalPulse — Dominate Local Search</title>
+<title>LocalPulse — AI Tools to Grow Your Business &amp; Social Media</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta name="description" content="The all-in-one AI platform for marketing agencies and local businesses to rank #1, get more reviews, and crush the competition.">
-<meta property="og:title" content="LocalPulse — Dominate Local Search">
-<meta property="og:description" content="The all-in-one AI platform for marketing agencies and local businesses to rank #1, get more reviews, and crush the competition.">
+<meta name="description" content="LocalPulse gives businesses and creators AI tools to grow. Rank #1 on Google, manage reviews, analyze Instagram, TikTok and YouTube.">
+<meta property="og:title" content="LocalPulse — AI Tools to Grow Your Business &amp; Social Media">
+<meta property="og:description" content="LocalPulse gives businesses and creators AI tools to grow. Rank #1 on Google, manage reviews, analyze Instagram, TikTok and YouTube.">
 <meta property="og:image" content="https://www.localpulse.ink/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -24,42 +24,28 @@
 :root {
   --green: #00c875;
   --green-dim: #009e5c;
-  --green-glow: rgba(0,200,117,0.10);
-  --green-glow-md: rgba(0,200,117,0.18);
-  --green-glow-strong: rgba(0,200,117,0.30);
+  --green-glow: rgba(0,200,117,0.09);
+  --green-glow-md: rgba(0,200,117,0.16);
   --bg: #080c0a;
-  --bg2: #0d1210;
-  --bg3: #111a14;
+  --card: #0d1410;
   --surface: rgba(255,255,255,0.04);
-  --surface-hover: rgba(255,255,255,0.07);
   --border: rgba(255,255,255,0.08);
-  --border-green: rgba(0,200,117,0.22);
+  --border-green: rgba(0,200,117,0.20);
   --text: #f2f5f3;
   --text-muted: rgba(242,245,243,0.55);
-  --text-dim: rgba(242,245,243,0.30);
-  --font-display: 'Instrument Serif', serif;
-  --font-body: 'DM Sans', sans-serif;
-  --radius: 14px;
-  --radius-lg: 22px;
-  --radius-xl: 32px;
-  --nav-h: 72px;
+  --text-dim: rgba(242,245,243,0.28);
+  --font-serif: 'Instrument Serif', serif;
+  --font-sans: 'DM Sans', sans-serif;
+  --r: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --nav-h: 68px;
 }
 
 html { scroll-behavior: smooth; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.65;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
+body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 16px; line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 .container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
-
-nav, main, footer { position: relative; z-index: 1; }
+nav,main,footer { position: relative; z-index: 1; }
 
 /* ── TYPOGRAPHY ── */
 .section-tag {
@@ -67,28 +53,25 @@ nav, main, footer { position: relative; z-index: 1; }
   border-left: 2px solid var(--green);
   padding-left: 12px;
   color: var(--green);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 24px;
-  background: none;
+  margin-bottom: 20px;
   line-height: 1.4;
 }
-
 .section-title {
-  font-family: var(--font-display);
-  font-size: clamp(34px, 4vw, 54px);
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 3.8vw, 50px);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.5px;
   color: var(--text);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
-
 .section-sub {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--text-muted);
   font-weight: 300;
   line-height: 1.75;
@@ -99,37 +82,35 @@ nav, main, footer { position: relative; z-index: 1; }
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   background: var(--green);
   color: #000;
   border: none;
-  padding: 13px 26px;
+  padding: 12px 22px;
   border-radius: 10px;
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.25s;
-  letter-spacing: -0.1px;
   white-space: nowrap;
 }
 .btn-primary:hover {
   background: #14d980;
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0,200,117,0.35);
+  box-shadow: 0 10px 30px rgba(0,200,117,0.28);
 }
-
 .btn-outline {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   background: transparent;
   color: var(--text);
-  border: 1px solid rgba(255,255,255,0.18);
-  padding: 13px 26px;
+  border: 1px solid rgba(255,255,255,0.16);
+  padding: 12px 22px;
   border-radius: 10px;
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -137,22 +118,9 @@ nav, main, footer { position: relative; z-index: 1; }
   transition: all 0.25s;
   white-space: nowrap;
 }
-.btn-outline:hover {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.30);
-}
-.btn-lg { padding: 16px 34px; font-size: 15px; }
-
-.btn-ghost {
-  color: var(--text-muted);
-  background: none;
-  border: none;
-  font-family: var(--font-body);
-  font-size: 14px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: color 0.2s;
-}
+.btn-outline:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.28); }
+.btn-lg { padding: 14px 28px; font-size: 15px; }
+.btn-ghost { color: var(--text-muted); background: none; border: none; font-family: var(--font-sans); font-size: 14px; cursor: pointer; text-decoration: none; transition: color 0.2s; }
 .btn-ghost:hover { color: var(--text); }
 
 /* ── NAV ── */
@@ -164,59 +132,42 @@ nav, main, footer { position: relative; z-index: 1; }
   display: flex;
   align-items: center;
   padding: 0 48px;
-  transition: background 0.35s, height 0.35s, border-color 0.35s, backdrop-filter 0.35s;
+  transition: background 0.35s, height 0.35s, border-color 0.35s;
 }
 #navbar.scrolled {
-  background: rgba(8,12,10,0.85);
+  background: rgba(8,12,10,0.90);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--border);
-  height: 60px;
+  height: 58px;
 }
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-weight: 700;
+  gap: 9px;
+  font-family: var(--font-serif);
   font-size: 18px;
   text-decoration: none;
   color: var(--text);
-  letter-spacing: -0.3px;
+  flex-shrink: 0;
 }
-.nav-logo svg { width: 28px; height: 28px; }
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-  list-style: none;
-}
-.nav-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.2s;
-}
+.nav-logo svg { width: 26px; height: 26px; }
+.nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
+.nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
 .nav-links a:hover { color: var(--text); }
-.nav-cta { display: flex; align-items: center; gap: 12px; }
+.nav-cta { display: flex; align-items: center; gap: 10px; }
 
-/* ── REVEAL ANIMATIONS ── */
+/* ── REVEALS ── */
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
+  transform: translateY(28px);
   transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
 }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
-
 .reveal-child {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(20px);
   transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
 }
 .reveal-child.in-view { opacity: 1; transform: translateY(0); }
@@ -227,40 +178,29 @@ nav, main, footer { position: relative; z-index: 1; }
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
-  padding-top: var(--nav-h);
+  padding: calc(var(--nav-h) + 60px) 48px 80px;
+  text-align: center;
 }
-
 .hero-blob {
   position: absolute;
-  top: -200px;
+  top: -180px;
   left: 50%;
   transform: translateX(-50%);
-  width: 960px;
-  height: 960px;
-  background: radial-gradient(circle at center, rgba(0,200,117,0.16) 0%, rgba(0,200,117,0.05) 40%, transparent 68%);
+  width: 860px; height: 860px;
+  background: radial-gradient(circle, rgba(0,200,117,0.13) 0%, rgba(0,200,117,0.04) 40%, transparent 68%);
   border-radius: 50%;
   pointer-events: none;
-  animation: blobPulse 7s ease-in-out infinite;
+  animation: blobPulse 8s ease-in-out infinite;
   z-index: 0;
 }
 @keyframes blobPulse {
   0%,100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-  50%      { transform: translateX(-50%) scale(1.14); opacity: 1; }
+  50%      { transform: translateX(-50%) scale(1.1); opacity: 1; }
 }
-
-.hero-inner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 80px 48px 0;
-  max-width: 900px;
-  width: 100%;
-}
+.hero-content { position: relative; z-index: 1; width: 100%; max-width: 920px; }
 
 .hero-badge {
   display: inline-flex;
@@ -270,213 +210,150 @@ nav, main, footer { position: relative; z-index: 1; }
   border: 1px solid var(--border-green);
   color: var(--green);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.8px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 7px 16px;
-  border-radius: 100px;
-  margin-bottom: 32px;
-  animation: fadeUp 0.6s ease both;
+  padding: 6px 14px;
+  border-radius: 6px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.55s ease both;
 }
 .badge-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--green);
-  flex-shrink: 0;
   animation: dotPulse 2s ease-in-out infinite;
 }
 @keyframes dotPulse {
   0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,200,117,0.5); }
-  50%      { opacity: 0.7; box-shadow: 0 0 0 5px rgba(0,200,117,0); }
+  50%      { opacity: 0.7; box-shadow: 0 0 0 4px rgba(0,200,117,0); }
 }
-
-.hero-inner h1 {
-  font-family: var(--font-display);
-  font-size: clamp(48px, 7.5vw, 88px);
+.hero-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(52px, 8.5vw, 100px);
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.03;
   letter-spacing: -1.5px;
   color: #fff;
-  margin-bottom: 18px;
-  animation: fadeUp 0.6s 0.10s ease both;
+  margin-bottom: 12px;
+  animation: fadeUp 0.55s 0.10s ease both;
 }
-.hero-subtitle {
-  font-family: var(--font-display);
+.hero-subline {
+  font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 400;
-  font-size: 21px;
+  font-size: clamp(20px, 3vw, 30px);
   color: var(--text-muted);
-  max-width: 460px;
-  line-height: 1.55;
-  margin-bottom: 20px;
-  animation: fadeUp 0.6s 0.18s ease both;
+  margin-bottom: 56px;
+  animation: fadeUp 0.55s 0.18s ease both;
 }
-.hero-inner p {
-  font-size: 18px;
-  color: var(--text-muted);
-  max-width: 490px;
-  font-weight: 300;
-  line-height: 1.75;
-  margin-bottom: 44px;
-  animation: fadeUp 0.6s 0.20s ease both;
-}
-.hero-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  animation: fadeUp 0.6s 0.30s ease both;
-}
-
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Hero mockup */
-.hero-mockup-wrap {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 580px;
-  padding: 0 24px;
-  margin-top: 60px;
-  animation: mockupFloat 1s 0.5s cubic-bezier(0.16,1,0.3,1) both;
-}
-@keyframes mockupFloat {
-  from { opacity: 0; transform: translateY(60px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.hero-mockup {
-  background: rgba(13,18,16,0.96);
-  border: 1px solid rgba(0,200,117,0.18);
-  border-bottom: none;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  padding: 24px 28px 32px;
-  box-shadow: 0 -24px 80px rgba(0,200,117,0.07), inset 0 1px 0 rgba(255,255,255,0.05);
-}
-.mockup-topbar {
-  display: flex;
-  align-items: center;
-  margin-bottom: 22px;
-  gap: 12px;
-}
-.mockup-dots { display: flex; gap: 6px; }
-.mdot { width: 8px; height: 8px; border-radius: 50%; }
-.mdot-r { background: #ff5f57; }
-.mdot-y { background: #febc2e; }
-.mdot-g { background: #28c840; }
-.mockup-url-bar {
-  flex: 1;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 4px 12px;
-  font-size: 11px;
-  color: var(--text-dim);
-  text-align: center;
-}
-.rank-badge-hero {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: var(--green-glow);
-  border: 1px solid var(--border-green);
-  color: var(--green);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 9px;
-  border-radius: 6px;
-  letter-spacing: 0.3px;
-}
-.mockup-business {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-}
-.mockup-biz-logo {
-  width: 44px; height: 44px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--green), rgba(0,200,117,0.35));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-}
-.mockup-biz-name { font-weight: 600; font-size: 14px; margin-bottom: 3px; }
-.mockup-biz-cat { font-size: 11px; color: var(--text-dim); }
-.mockup-stars-row {
-  display: flex; align-items: center; gap: 4px; margin-bottom: 3px; font-size: 12px;
-}
-.mockup-rating-txt { font-size: 12px; color: var(--text-muted); margin-left: 2px; }
-.bar-label-row {
-  display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;
-}
-.bar-label-txt { font-size: 11px; color: var(--text-dim); }
-.bar-val-txt { font-size: 11px; color: var(--green); font-weight: 600; }
-.progress-bar {
-  height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-bottom: 20px;
-}
-.progress-fill {
-  height: 100%; width: 0;
-  background: linear-gradient(90deg, var(--green), rgba(0,200,117,0.45));
-  border-radius: 2px;
-  animation: progressGrow 1.2s 1.4s cubic-bezier(0.16,1,0.3,1) forwards;
-}
-@keyframes progressGrow { to { width: 94%; } }
-
-.mockup-metrics {
+/* Hero boxes */
+.hero-boxes {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  text-align: left;
+  animation: fadeUp 0.65s 0.28s ease both;
 }
-.mockup-metric {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 12px;
-  text-align: center;
+.hero-box {
+  background: var(--card);
+  border: 1px solid var(--border-green);
+  border-radius: var(--r-lg);
+  padding: 36px 32px 30px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.32s cubic-bezier(0.16,1,0.3,1), border-color 0.3s, box-shadow 0.3s;
 }
-.mm-val {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 19px;
-  font-weight: 700;
-  margin-bottom: 3px;
+.hero-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,200,117,0.4), transparent);
 }
-.mm-val.green { color: var(--green); }
-.mm-lbl {
-  display: block;
-  font-size: 9px;
+.hero-box:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,200,117,0.38);
+  box-shadow: 0 28px 60px rgba(0,200,117,0.07);
+}
+.box-glow {
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, rgba(0,200,117,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.box-icon { font-size: 26px; margin-bottom: 14px; display: block; }
+.box-headline {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+.box-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+.box-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+.box-tool {
+  font-size: 11px;
   color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
 }
+.box-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+.box-price { font-size: 13px; color: var(--text-muted); }
+.box-price strong { color: var(--green); font-size: 15px; font-weight: 600; }
 
 /* ── MARQUEE ── */
 .marquee-section {
   overflow: hidden;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 18px 0;
-  background: rgba(13,18,16,0.45);
+  padding: 16px 0;
+  background: rgba(13,20,16,0.35);
 }
 .marquee-track {
   display: flex;
-  gap: 14px;
-  animation: marquee 30s linear infinite;
+  gap: 11px;
+  animation: marquee 36s linear infinite;
   width: max-content;
   will-change: transform;
 }
 .marquee-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   border: 1px solid var(--border-green);
-  border-radius: 100px;
-  padding: 8px 22px;
-  font-size: 13px;
+  border-radius: 6px;
+  padding: 7px 16px;
+  font-size: 12px;
   color: var(--text-muted);
   white-space: nowrap;
   background: var(--green-glow);
@@ -488,29 +365,23 @@ nav, main, footer { position: relative; z-index: 1; }
 }
 
 /* ── FEATURES ── */
-.features { padding: 160px 0 120px; }
-.features-header { margin-bottom: 64px; }
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
+.features-section { padding: 140px 0 80px; }
+.features-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+.features-section-b { padding: 100px 0 80px; }
+.features-header { margin-bottom: 52px; }
+.features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
 .feat-card {
-  background: rgba(13,18,16,0.8);
+  background: var(--card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--r-lg);
   overflow: hidden;
-  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+  transition: border-color 0.3s, transform 0.3s;
 }
-.feat-card:hover {
-  border-color: var(--border-green);
-  background: rgba(13,18,16,0.97);
-  transform: translateY(-5px);
-}
+.feat-card:hover { border-color: var(--border-green); transform: translateY(-4px); }
 .feat-visual {
-  padding: 36px 28px 28px;
+  padding: 32px 28px 24px;
   border-bottom: 1px solid var(--border);
-  min-height: 180px;
+  min-height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -518,697 +389,300 @@ nav, main, footer { position: relative; z-index: 1; }
   background: rgba(8,12,10,0.5);
   overflow: hidden;
 }
-.feat-body { padding: 26px 28px 32px; }
-.feat-body h3 {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  letter-spacing: -0.3px;
-}
+.feat-body { padding: 24px 26px 28px; }
+.feat-body h3 { font-family: var(--font-serif); font-size: 18px; font-weight: 400; margin-bottom: 9px; }
 .feat-body p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
-/* Card 1: Analytics bars */
-.feat-chart-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 7px;
-  height: 100px;
-  width: 100%;
-}
-.fbar {
-  flex: 1;
-  border-radius: 4px 4px 0 0;
-  background: linear-gradient(to top, var(--green), rgba(0,200,117,0.2));
-  min-height: 6px;
-  animation: fbarGrow 0.9s ease both;
-}
-.fbar:nth-child(1) { height: 42%; animation-delay: 0.05s; }
-.fbar:nth-child(2) { height: 58%; animation-delay: 0.10s; }
-.fbar:nth-child(3) { height: 48%; animation-delay: 0.15s; }
-.fbar:nth-child(4) { height: 75%; animation-delay: 0.20s; }
-.fbar:nth-child(5) { height: 62%; animation-delay: 0.25s; }
-.fbar:nth-child(6) { height: 88%; animation-delay: 0.30s; }
-.fbar:nth-child(7) { height: 78%; animation-delay: 0.35s; }
+/* Visual: bar chart */
+.feat-chart-bars { display: flex; align-items: flex-end; gap: 7px; height: 88px; width: 100%; }
+.fbar { flex: 1; border-radius: 3px 3px 0 0; background: linear-gradient(to top, var(--green), rgba(0,200,117,0.18)); min-height: 5px; animation: fbarGrow 0.9s ease both; }
+.fbar:nth-child(1){height:38%;animation-delay:0.04s}
+.fbar:nth-child(2){height:55%;animation-delay:0.08s}
+.fbar:nth-child(3){height:44%;animation-delay:0.12s}
+.fbar:nth-child(4){height:70%;animation-delay:0.16s}
+.fbar:nth-child(5){height:58%;animation-delay:0.20s}
+.fbar:nth-child(6){height:84%;animation-delay:0.24s}
+.fbar:nth-child(7){height:74%;animation-delay:0.28s}
 @keyframes fbarGrow { from { height: 0; } }
-.feat-chart-badge {
-  position: absolute;
-  bottom: 24px; right: 24px;
-  font-size: 11px;
-  color: var(--green);
-  font-weight: 700;
-  background: var(--green-glow);
-  border: 1px solid var(--border-green);
-  padding: 4px 10px;
-  border-radius: 6px;
-}
+.feat-chart-badge { position: absolute; bottom: 18px; right: 18px; font-size: 11px; color: var(--green); font-weight: 600; background: var(--green-glow); border: 1px solid var(--border-green); padding: 3px 8px; border-radius: 5px; }
 
-/* Card 2: Review bubbles */
-.feat-reviews {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-}
-.frb {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 12px;
-  color: var(--text-muted);
-}
+/* Visual: review bubbles */
+.feat-reviews { display: flex; flex-direction: column; gap: 7px; width: 100%; }
+.frb { display: flex; align-items: flex-start; gap: 7px; font-size: 12px; color: var(--text-muted); }
 .frb.ai-row { flex-direction: row-reverse; }
-.frav {
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 9px;
-  font-weight: 700;
-  background: rgba(255,255,255,0.06);
-  color: var(--text-muted);
-  margin-top: 2px;
-}
-.frav.ai-av {
-  background: var(--green-glow);
-  color: var(--green);
-  border: 1px solid var(--border-green);
-}
-.frtext {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 7px 10px;
-  max-width: 175px;
-  line-height: 1.5;
-}
-.frb.ai-row .frtext {
-  background: var(--green-glow);
-  border-color: var(--border-green);
-  color: var(--text);
-}
+.frav { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; background: rgba(255,255,255,0.06); color: var(--text-muted); margin-top: 1px; }
+.frav.ai-av { background: var(--green-glow); color: var(--green); border: 1px solid var(--border-green); }
+.frtext { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 7px; padding: 6px 9px; max-width: 168px; line-height: 1.5; }
+.frb.ai-row .frtext { background: var(--green-glow); border-color: var(--border-green); color: var(--text); }
 
-/* Card 3: Rank number */
-.feat-rank-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  text-align: center;
-}
-.feat-rank-num {
-  font-family: var(--font-body);
-  font-size: 68px;
-  font-weight: 300;
-  color: var(--text);
-  line-height: 1;
-  text-shadow: 0 0 40px rgba(0,200,117,0.35);
-  letter-spacing: -2px;
-}
-.feat-rank-kw { font-size: 11px; color: var(--text-dim); letter-spacing: 0.3px; }
-.feat-rank-badge {
-  font-size: 11px;
-  color: var(--green);
-  font-weight: 700;
-  background: var(--green-glow);
-  border: 1px solid var(--border-green);
-  padding: 4px 10px;
-  border-radius: 6px;
-  margin-top: 4px;
-}
+/* Visual: rank number */
+.feat-rank-display { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.feat-rank-num { font-family: var(--font-sans); font-size: 64px; font-weight: 200; color: var(--text); line-height: 1; text-shadow: 0 0 40px rgba(0,200,117,0.28); letter-spacing: -2px; }
+.feat-rank-kw { font-size: 11px; color: var(--text-dim); }
+.feat-rank-badge { font-size: 11px; color: var(--green); font-weight: 600; background: var(--green-glow); border: 1px solid var(--border-green); padding: 3px 9px; border-radius: 5px; margin-top: 4px; }
+
+/* Visual: social profile */
+.feat-profile-wrap { width: 100%; max-width: 200px; }
+.feat-profile { background: rgba(8,12,10,0.85); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+.fpc-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.fpc-ava { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--green), rgba(0,200,117,0.3)); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.fpc-name { font-size: 12px; font-weight: 600; margin-bottom: 1px; }
+.fpc-handle { font-size: 10px; color: var(--text-dim); }
+.fpc-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 5px; }
+.fpc-stat { text-align: center; background: var(--surface); border-radius: 5px; padding: 6px 4px; }
+.fpc-val { font-size: 13px; font-weight: 600; color: var(--green); display: block; }
+.fpc-lbl { font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.3px; }
+
+/* Visual: engagement bars */
+.feat-engage { width: 100%; display: flex; flex-direction: column; gap: 9px; }
+.engage-row { display: flex; align-items: center; gap: 9px; }
+.engage-label { font-size: 11px; color: var(--text-dim); width: 64px; flex-shrink: 0; }
+.engage-bar { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.engage-fill { height: 100%; background: linear-gradient(90deg, var(--green), rgba(0,200,117,0.4)); border-radius: 2px; animation: efillGrow 0.9s ease both; }
+@keyframes efillGrow { from { width: 0; } }
+.engage-val { font-size: 11px; color: var(--green); font-weight: 600; width: 30px; text-align: right; flex-shrink: 0; }
+
+/* Visual: growth line */
+.feat-growth { width: 100%; }
+.growth-svg { width: 100%; height: 64px; }
+.growth-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--green); font-weight: 600; background: var(--green-glow); border: 1px solid var(--border-green); padding: 4px 10px; border-radius: 5px; margin-top: 8px; }
 
 /* ── HOW IT WORKS ── */
-.how-it-works {
-  padding: 120px 0 140px;
-  background: linear-gradient(to bottom, transparent, rgba(13,18,16,0.45), transparent);
-}
-.how-header { margin-bottom: 80px; }
-.how-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-}
-.hiw-steps-list { position: relative; }
-.hiw-step {
-  display: flex;
-  gap: 20px;
-  padding: 36px 0;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.hiw-step:first-child { padding-top: 0; }
-.hiw-step:last-child { padding-bottom: 0; }
-.step-indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-  width: 24px;
-}
-.step-circle {
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  border: 2px solid var(--border);
-  background: var(--bg);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--text-dim);
-  transition: all 0.3s;
-  z-index: 1;
-  flex-shrink: 0;
-}
-.hiw-step.active .step-circle {
-  border-color: var(--green);
-  background: var(--green);
-  color: #000;
-  box-shadow: 0 0 18px rgba(0,200,117,0.45);
-}
-.step-vline {
-  width: 1px;
-  flex: 1;
-  min-height: 40px;
-  background: var(--border);
-  transition: background 0.3s;
-  margin: 4px 0;
-}
-.hiw-step.active .step-vline { background: var(--border-green); }
-.hiw-step:last-child .step-vline { display: none; }
-
-.step-body { flex: 1; }
-.step-num-tag {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-dim);
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  transition: color 0.2s;
-}
-.hiw-step.active .step-num-tag { color: var(--green); }
-.step-body h3 {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  letter-spacing: -0.3px;
-  line-height: 1.25;
-  transition: color 0.2s;
-}
-.hiw-step.active .step-body h3 { color: var(--green); }
-.step-body p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
-
-.how-visual-wrap {
-  position: sticky;
-  top: 100px;
-}
-.how-visual {
-  background: rgba(13,18,16,0.88);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  aspect-ratio: 4/3;
-  position: relative;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 40px 80px rgba(0,0,0,0.3);
-}
-.hiw-panel {
-  position: absolute;
-  inset: 0;
-  padding: 36px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
-  pointer-events: none;
-}
-.hiw-panel.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
-
-/* Panel 1: Profile */
-.hiw-profile-card {
-  background: rgba(8,12,10,0.85);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 22px;
-}
-.hiw-profile-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
-.hiw-profile-logo {
-  width: 46px; height: 46px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--green), rgba(0,200,117,0.35));
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; flex-shrink: 0;
-}
-.hiw-pname { font-weight: 600; font-size: 14px; margin-bottom: 3px; }
-.hiw-pcat { font-size: 11px; color: var(--text-muted); }
-.hiw-stars { font-size: 13px; color: #fbbf24; margin-bottom: 14px; }
-.hiw-stars span { color: var(--text-muted); font-size: 11px; margin-left: 5px; }
-.hiw-blabel { font-size: 11px; color: var(--text-dim); margin-bottom: 6px; }
-.hiw-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-bottom: 5px; }
-.hiw-bar-fill { height: 100%; width: 94%; background: linear-gradient(90deg, var(--green), rgba(0,200,117,0.4)); border-radius: 2px; }
-.hiw-bpct { font-size: 11px; color: var(--green); font-weight: 600; margin-bottom: 16px; }
-.hiw-metrics-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
-.hiw-metric { background: var(--surface); border-radius: 8px; padding: 10px; text-align: center; }
-.hiw-metric-val { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--green); }
-.hiw-metric-lbl { font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
-
-/* Panel 2: AI Suggestions */
-.hiw-ai-title {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--green);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-.hiw-suggest-list { display: flex; flex-direction: column; gap: 10px; }
-.hiw-sug {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  background: rgba(8,12,10,0.7);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 12px 14px;
-}
-.sug-ico {
-  width: 26px; height: 26px;
-  border-radius: 6px;
-  background: var(--green-glow);
-  border: 1px solid var(--border-green);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; flex-shrink: 0;
-}
-.sug-txt { flex: 1; }
-.sug-label { font-size: 11px; color: var(--green); font-weight: 700; margin-bottom: 2px; }
-.sug-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
-.sug-badge {
-  display: inline-block;
-  font-size: 9px;
-  padding: 2px 7px;
-  border-radius: 4px;
-  background: var(--green-glow);
-  color: var(--green);
-  border: 1px solid var(--border-green);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-top: 5px;
-}
-
-/* Panel 3: Rank Climb */
-.hiw-rank-panel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 10px;
-}
-.hiw-rank-big {
-  font-family: var(--font-display);
-  font-size: 84px;
-  font-weight: 800;
-  color: var(--green);
-  line-height: 1;
-  text-shadow: 0 0 80px rgba(0,200,117,0.55);
-  letter-spacing: -3px;
-}
-.hiw-rank-label { font-size: 13px; color: var(--text-muted); }
-.hiw-rank-change {
-  font-size: 12px;
-  color: var(--green);
-  font-weight: 700;
-  background: var(--green-glow);
-  border: 1px solid var(--border-green);
-  padding: 5px 14px;
-  border-radius: 8px;
-}
-.hiw-mini-stats {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 10px;
-  width: 100%;
-  margin-top: 8px;
-}
-.hiw-mini-stat {
-  background: rgba(8,12,10,0.8);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 12px;
-  text-align: center;
-}
-.hiw-mini-val { display: block; font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--green); margin-bottom: 2px; }
-.hiw-mini-lbl { display: block; font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
-
-/* ── STATS ── */
-.stats { padding: 120px 0 140px; }
-.stats-intro { margin-bottom: 60px; }
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-.stat-card {
-  background: rgba(8,12,10,0.96);
-  padding: 44px 36px;
-  transition: background 0.2s;
-}
-.stat-card:hover { background: rgba(13,18,16,0.99); }
-.stat-num {
-  font-family: var(--font-display);
-  font-size: 48px;
-  font-weight: 400;
-  color: var(--text);
-  line-height: 1;
-  letter-spacing: -1px;
-  margin-bottom: 10px;
-}
-.stat-label { font-size: 14px; font-weight: 600; color: var(--green); margin-bottom: 8px; }
-.stat-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
-
-/* ── TESTIMONIALS ── */
-.testimonials { padding: 120px 0 140px; }
-.testimonials-header { margin-bottom: 60px; }
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 20px;
-}
-.testi-card {
-  background: rgba(13,18,16,0.8);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 36px 32px;
-  backdrop-filter: blur(10px);
-  transition: border-color 0.3s, transform 0.3s;
-}
-.testi-card:hover { border-color: var(--border-green); transform: translateY(-4px); }
-.testi-stars { font-size: 14px; color: #fbbf24; margin-bottom: 18px; letter-spacing: 2px; }
-.testi-quote {
-  font-size: 15px;
-  color: var(--text-muted);
-  line-height: 1.75;
-  margin-bottom: 28px;
-  font-weight: 300;
-  font-style: italic;
-}
-.testi-author { display: flex; align-items: center; gap: 14px; }
-.testi-avatar {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: var(--green-glow);
-  border: 1px solid var(--border-green);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--green);
-  flex-shrink: 0;
-}
-.testi-name { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
-.testi-role { font-size: 12px; color: var(--text-dim); }
-
-/* ── PRICING ── */
-.pricing {
-  padding: 120px 0 140px;
-  background: linear-gradient(to bottom, transparent, rgba(13,18,16,0.4), transparent);
-}
-.pricing-header { text-align: center; margin-bottom: 56px; }
-.pricing-toggle-wrap { display: flex; justify-content: center; margin-bottom: 52px; }
-.pricing-toggle {
+.how-it-works { padding: 100px 0 140px; background: linear-gradient(to bottom, transparent, rgba(13,20,16,0.35), transparent); }
+.how-header { margin-bottom: 40px; }
+.hiw-tabs {
   display: inline-flex;
-  align-items: center;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 100px;
+  border-radius: 10px;
   padding: 4px;
-  font-size: 14px;
+  gap: 4px;
+  margin-bottom: 52px;
 }
-.toggle-opt {
-  padding: 9px 24px;
-  border-radius: 100px;
-  cursor: pointer;
-  transition: all 0.25s;
+.hiw-tab {
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
   color: var(--text-muted);
-  user-select: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.toggle-opt.active { background: var(--green); color: #000; font-weight: 700; }
-.save-badge {
-  background: rgba(0,200,117,0.15);
-  color: var(--green);
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 100px;
-  border: 1px solid var(--border-green);
-}
-.toggle-opt.active .save-badge { background: rgba(0,0,0,0.12); color: #000; border-color: rgba(0,0,0,0.15); }
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 20px;
-  align-items: start;
-}
-.pricing-card {
-  background: rgba(13,18,16,0.8);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 40px 32px;
-  position: relative;
-  transition: all 0.3s;
-  backdrop-filter: blur(10px);
-}
-.pricing-card:hover:not(.featured) { border-color: var(--border-green); transform: translateY(-4px); }
-.pricing-card.featured {
-  border-color: var(--green);
-  background: rgba(0,200,117,0.04);
-  box-shadow: 0 0 60px rgba(0,200,117,0.07);
-}
-.featured-tag {
-  position: absolute;
-  top: -13px; left: 50%;
-  transform: translateX(-50%);
-  background: var(--green);
-  color: #000;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 20px;
-  border-radius: 100px;
-  white-space: nowrap;
-  letter-spacing: 0.3px;
-}
-.plan-name { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; }
-.plan-price { display: flex; align-items: flex-end; gap: 2px; margin-bottom: 12px; }
-.price-currency { font-size: 22px; font-weight: 500; color: var(--text-muted); margin-bottom: 10px; }
-.price-amount { font-family: var(--font-display); font-size: 56px; font-weight: 800; line-height: 1; letter-spacing: -2px; }
-.price-period { font-size: 14px; color: var(--text-muted); margin-bottom: 10px; }
-.plan-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--border); line-height: 1.65; }
-.plan-features { list-style: none; display: flex; flex-direction: column; gap: 13px; margin-bottom: 36px; }
-.plan-features li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-muted); }
-.check {
-  width: 18px; height: 18px;
-  border-radius: 50%;
-  background: var(--green-glow);
-  border: 1px solid var(--border-green);
-  color: var(--green);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px; flex-shrink: 0;
-}
-.plan-btn {
-  width: 100%; padding: 14px; border-radius: 10px;
-  font-family: var(--font-body); font-size: 14px; font-weight: 500;
-  cursor: pointer; border: 1px solid var(--border); background: transparent; color: var(--text);
-  transition: all 0.25s; text-align: center; text-decoration: none; display: block;
-}
-.plan-btn:hover:not(.featured-btn) { background: var(--surface); border-color: rgba(255,255,255,0.25); }
-.plan-btn.featured-btn { background: var(--green); color: #000; border-color: var(--green); font-weight: 700; }
-.plan-btn.featured-btn:hover { background: #14d980; box-shadow: 0 8px 32px rgba(0,200,117,0.35); }
-
-/* ── FAQ ── */
-.faq { padding: 120px 0 140px; }
-.faq-header { text-align: center; margin-bottom: 60px; }
-.faq-list { max-width: 740px; margin: 0 auto; }
-.faq-item { border-bottom: 1px solid var(--border); padding: 26px 0; cursor: pointer; }
-.faq-item:first-child { border-top: 1px solid var(--border); }
-.faq-q {
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--text);
-  transition: color 0.2s; letter-spacing: -0.2px;
-}
-.faq-item.open .faq-q { color: var(--green); }
-.faq-icon {
-  width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; color: var(--text-muted); flex-shrink: 0; transition: all 0.3s; line-height: 1;
-}
-.faq-item.open .faq-icon { background: var(--green); color: #000; border-color: var(--green); transform: rotate(45deg); }
-.faq-a {
-  font-size: 14px; color: var(--text-muted); line-height: 1.8;
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.38s ease, padding-top 0.2s;
-}
-.faq-item.open .faq-a { max-height: 320px; padding-top: 16px; }
-
-/* ── FINAL CTA ── */
-.cta-section { padding: 120px 0 140px; }
-.cta-card {
-  position: relative;
-  overflow: hidden;
-  background: rgba(13,18,16,0.92);
-  border: 1px solid var(--border-green);
-  border-radius: var(--radius-xl);
-  padding: 72px 64px;
-  box-shadow: 0 0 80px rgba(0,200,117,0.06);
-}
-.cta-blob {
-  position: absolute;
-  right: -120px; top: -180px;
-  width: 640px; height: 640px;
-  background: radial-gradient(circle, rgba(0,200,117,0.17) 0%, rgba(0,200,117,0.05) 40%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: ctaBlobPulse 7s ease-in-out infinite;
-}
-@keyframes ctaBlobPulse {
-  0%,100% { transform: scale(1); opacity: 0.7; }
-  50%      { transform: scale(1.1); opacity: 1; }
-}
-.cta-top {
-  position: relative; z-index: 1;
-  display: flex; align-items: flex-start; justify-content: space-between;
-  gap: 48px; margin-bottom: 48px; flex-wrap: wrap;
-}
-.cta-top h2 {
-  font-family: var(--font-display);
-  font-size: clamp(30px, 4vw, 50px);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  max-width: 540px;
-}
-.cta-top .btn-primary { margin-top: 8px; flex-shrink: 0; }
-.cta-form-wrap { position: relative; z-index: 1; }
-.cta-form-row {
-  display: flex;
-  gap: 12px;
-  max-width: 500px;
-}
-.cta-input {
-  flex: 1;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 14px 24px;
-  font-family: var(--font-body);
-  font-size: 15px;
-  color: var(--text);
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  -webkit-appearance: none;
-}
-.cta-input::placeholder { color: var(--text-dim); }
-.cta-input:focus { border-color: var(--border-green); box-shadow: 0 0 0 3px rgba(0,200,117,0.08); }
-.cta-note { font-size: 12px; color: var(--text-dim); margin-top: 14px; display: flex; align-items: center; gap: 8px; }
-.cta-note::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
-.cta-success {
-  display: none;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 20px;
-  background: var(--green-glow);
-  border: 1px solid var(--border-green);
-  border-radius: 12px;
-  max-width: 500px;
+  font-family: var(--font-sans);
   font-size: 14px;
-  color: var(--green);
   font-weight: 500;
+  cursor: pointer;
+  transition: all 0.22s;
 }
-.cta-success.visible { display: flex; }
+.hiw-tab.active { background: var(--green); color: #000; font-weight: 600; }
+.hiw-pane { display: none; }
+.hiw-pane.active { display: block; }
+.how-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.hiw-steps-list { position: relative; }
+.hiw-step { display: flex; gap: 18px; padding: 30px 0; cursor: pointer; }
+.hiw-step:first-child { padding-top: 0; }
+.hiw-step:last-child { padding-bottom: 0; }
+.step-indicator { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 22px; }
+.step-circle { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: var(--text-dim); transition: all 0.3s; flex-shrink: 0; }
+.hiw-step.active .step-circle { border-color: var(--green); background: var(--green); color: #000; box-shadow: 0 0 14px rgba(0,200,117,0.4); }
+.step-vline { width: 1px; flex: 1; min-height: 32px; background: var(--border); transition: background 0.3s; margin: 4px 0; }
+.hiw-step.active .step-vline { background: var(--border-green); }
+.hiw-step:last-child .step-vline { display: none; }
+.step-body { flex: 1; }
+.step-num-tag { font-size: 10px; font-weight: 600; color: var(--text-dim); letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 7px; transition: color 0.2s; }
+.hiw-step.active .step-num-tag { color: var(--green); }
+.step-body h3 { font-family: var(--font-serif); font-size: 19px; font-weight: 400; margin-bottom: 8px; transition: color 0.2s; }
+.hiw-step.active .step-body h3 { color: var(--green); }
+.step-body p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+.how-visual-wrap { position: sticky; top: 96px; }
+.how-visual { background: rgba(13,20,16,0.92); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; aspect-ratio: 4/3; position: relative; }
+.hiw-panel { position: absolute; inset: 0; padding: 30px; display: flex; flex-direction: column; justify-content: center; opacity: 0; transform: translateY(10px); transition: opacity 0.4s, transform 0.4s; pointer-events: none; }
+.hiw-panel.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+/* Panel cards */
+.hiw-card { background: rgba(8,12,10,0.88); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+.hiw-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.hiw-card-logo { width: 40px; height: 40px; border-radius: 9px; background: linear-gradient(135deg, var(--green), rgba(0,200,117,0.3)); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.hiw-card-name { font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+.hiw-card-sub { font-size: 11px; color: var(--text-muted); }
+.hiw-card-stars { font-size: 11px; color: #fbbf24; margin-bottom: 12px; }
+.hiw-card-stars span { color: var(--text-muted); font-size: 10px; margin-left: 4px; }
+.hiw-bar-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+.hiw-bar-lbl { font-size: 10px; color: var(--text-dim); }
+.hiw-bar-pct { font-size: 10px; color: var(--green); font-weight: 600; }
+.hiw-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; margin-bottom: 14px; }
+.hiw-bar-fill { height: 100%; width: 94%; background: linear-gradient(90deg, var(--green), rgba(0,200,117,0.4)); border-radius: 2px; }
+.hiw-mrow { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
+.hiw-m { background: var(--surface); border-radius: 7px; padding: 8px; text-align: center; }
+.hiw-mv { font-family: var(--font-serif); font-size: 15px; color: var(--green); }
+.hiw-ml { font-size: 8px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.4px; }
+
+.hiw-ai-label { font-size: 10px; font-weight: 700; color: var(--green); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+.hiw-sug-list { display: flex; flex-direction: column; gap: 8px; }
+.hiw-sug { display: flex; align-items: flex-start; gap: 10px; background: rgba(8,12,10,0.7); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+.hiw-sug-ico { width: 22px; height: 22px; border-radius: 5px; background: var(--green-glow); border: 1px solid var(--border-green); display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+.hiw-sug-lbl { font-size: 10px; color: var(--green); font-weight: 700; margin-bottom: 2px; }
+.hiw-sug-desc { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+.hiw-sug-badge { display: inline-block; font-size: 8px; padding: 1px 5px; border-radius: 3px; background: var(--green-glow); color: var(--green); border: 1px solid var(--border-green); font-weight: 700; text-transform: uppercase; margin-top: 3px; }
+
+.hiw-rank-panel { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 9px; }
+.hiw-rank-big { font-family: var(--font-sans); font-size: 76px; font-weight: 200; color: var(--text); line-height: 1; text-shadow: 0 0 50px rgba(0,200,117,0.38); letter-spacing: -3px; }
+.hiw-rank-kw { font-size: 12px; color: var(--text-muted); }
+.hiw-rank-badge { font-size: 12px; color: var(--green); font-weight: 600; background: var(--green-glow); border: 1px solid var(--border-green); padding: 4px 12px; border-radius: 6px; }
+.hiw-ms { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; width: 100%; margin-top: 6px; }
+.hiw-ms-item { background: rgba(8,12,10,0.8); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center; }
+.hiw-ms-val { display: block; font-family: var(--font-serif); font-size: 15px; color: var(--green); margin-bottom: 2px; }
+.hiw-ms-lbl { display: block; font-size: 8px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.4px; }
+
+/* Creator visual panels */
+.hiw-creator-card { background: rgba(8,12,10,0.88); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+.hiw-cr-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.hiw-cr-ava { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--green), rgba(0,200,117,0.25)); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.hiw-cr-name { font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+.hiw-cr-handle { font-size: 11px; color: var(--text-dim); }
+.hiw-cr-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
+.hiw-cr-stat { background: var(--surface); border-radius: 7px; padding: 9px; text-align: center; }
+.hiw-cr-val { font-size: 14px; font-weight: 600; color: var(--green); margin-bottom: 2px; display: block; }
+.hiw-cr-lbl { font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.4px; }
+
+.hiw-insight-label { font-size: 10px; font-weight: 700; color: var(--green); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+.hiw-insight-list { display: flex; flex-direction: column; gap: 8px; }
+.hiw-insight-row { display: flex; align-items: center; gap: 9px; background: rgba(8,12,10,0.7); border: 1px solid var(--border); border-radius: 7px; padding: 10px 12px; }
+.hiw-insight-ico { font-size: 14px; flex-shrink: 0; }
+.hiw-insight-txt { flex: 1; }
+.hiw-insight-name { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
+.hiw-insight-val { font-size: 12px; color: var(--green); font-weight: 600; }
+.hiw-insight-bar { flex: 1; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.hiw-insight-fill { height: 100%; background: var(--green); border-radius: 2px; animation: efillGrow 0.8s ease both; }
+
+.hiw-growth-panel { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+.hiw-growth-chart { width: 100%; }
+.hiw-growth-svg { width: 100%; height: 72px; }
+.hiw-growth-badge { font-size: 13px; color: var(--green); font-weight: 600; background: var(--green-glow); border: 1px solid var(--border-green); padding: 5px 14px; border-radius: 7px; }
+.hiw-growth-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; width: 100%; margin-top: 6px; }
+.hiw-growth-stat { background: rgba(8,12,10,0.8); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center; }
+.hiw-growth-val { display: block; font-family: var(--font-serif); font-size: 15px; color: var(--green); margin-bottom: 2px; }
+.hiw-growth-lbl { display: block; font-size: 8px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.4px; }
+
+/* ── PRICING ── */
+.pricing { padding: 100px 0 140px; background: linear-gradient(to bottom, transparent, rgba(13,20,16,0.3), transparent); }
+.pricing-header { text-align: center; margin-bottom: 48px; }
+.pricing-toggle-wrap { display: flex; justify-content: center; margin-bottom: 44px; }
+.pricing-toggle { display: inline-flex; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 4px; }
+.toggle-opt { padding: 9px 20px; border-radius: 8px; cursor: pointer; transition: all 0.22s; color: var(--text-muted); user-select: none; display: flex; align-items: center; gap: 7px; font-size: 14px; }
+.toggle-opt.active { background: var(--green); color: #000; font-weight: 600; }
+.save-badge { background: rgba(0,200,117,0.14); color: var(--green); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; border: 1px solid var(--border-green); }
+.toggle-opt.active .save-badge { background: rgba(0,0,0,0.12); color: #000; border-color: rgba(0,0,0,0.15); }
+.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; align-items: start; }
+.pricing-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 36px 28px; position: relative; transition: all 0.28s; }
+.pricing-card:hover:not(.featured) { border-color: var(--border-green); transform: translateY(-3px); }
+.pricing-card.featured { border-color: var(--green); background: rgba(0,200,117,0.04); box-shadow: 0 0 48px rgba(0,200,117,0.07); }
+.featured-tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--green); color: #000; font-size: 11px; font-weight: 700; padding: 3px 16px; border-radius: 5px; white-space: nowrap; letter-spacing: 0.3px; }
+.plan-name { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+.plan-price { display: flex; align-items: flex-end; gap: 2px; margin-bottom: 10px; }
+.price-currency { font-size: 18px; color: var(--text-muted); margin-bottom: 7px; }
+.price-amount { font-family: var(--font-serif); font-size: 50px; font-weight: 400; line-height: 1; letter-spacing: -1px; }
+.price-period { font-size: 13px; color: var(--text-muted); margin-bottom: 7px; }
+.plan-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--border); line-height: 1.6; }
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.plan-features li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted); }
+.check { width: 16px; height: 16px; border-radius: 50%; background: var(--green-glow); border: 1px solid var(--border-green); color: var(--green); display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; }
+.plan-btn { width: 100%; padding: 13px; border-radius: 10px; font-family: var(--font-sans); font-size: 14px; font-weight: 500; cursor: pointer; border: 1px solid var(--border); background: transparent; color: var(--text); transition: all 0.22s; text-align: center; text-decoration: none; display: block; }
+.plan-btn:hover:not(.featured-btn) { background: var(--surface); border-color: rgba(255,255,255,0.22); }
+.plan-btn.featured-btn { background: var(--green); color: #000; border-color: var(--green); font-weight: 700; }
+.plan-btn.featured-btn:hover { background: #14d980; box-shadow: 0 6px 22px rgba(0,200,117,0.28); }
+
+/* ── TESTIMONIALS ── */
+.testimonials { padding: 80px 0 140px; }
+.testimonials-header { margin-bottom: 52px; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.testi-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 30px 26px; transition: border-color 0.3s, transform 0.3s; }
+.testi-card:hover { border-color: var(--border-green); transform: translateY(-4px); }
+.testi-stars { font-size: 13px; color: #fbbf24; margin-bottom: 14px; letter-spacing: 2px; }
+.testi-quote { font-family: var(--font-serif); font-style: italic; font-size: 15px; color: var(--text-muted); line-height: 1.75; margin-bottom: 22px; }
+.testi-author { display: flex; align-items: center; gap: 11px; }
+.testi-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--green-glow); border: 1px solid var(--border-green); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 12px; color: var(--green); flex-shrink: 0; }
+.testi-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.testi-role { font-size: 11px; color: var(--text-dim); }
+
+/* ── STATS ── */
+.stats { padding: 80px 0 140px; }
+.stats-intro { margin-bottom: 52px; }
+.stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; }
+.stat-card { background: rgba(8,12,10,0.96); padding: 40px 30px; transition: background 0.2s; }
+.stat-card:hover { background: var(--card); }
+.stat-num { font-family: var(--font-serif); font-size: 46px; font-weight: 400; color: var(--text); line-height: 1; letter-spacing: -0.5px; margin-bottom: 8px; }
+.stat-label { font-size: 13px; font-weight: 600; color: var(--green); margin-bottom: 5px; }
+.stat-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── CTA ── */
+.cta-section { padding: 80px 0 140px; }
+.cta-card { position: relative; overflow: hidden; background: var(--card); border: 1px solid var(--border-green); border-radius: var(--r-xl); padding: 72px 64px; }
+.cta-blob { position: absolute; right: -120px; top: -160px; width: 560px; height: 560px; background: radial-gradient(circle, rgba(0,200,117,0.14) 0%, rgba(0,200,117,0.04) 40%, transparent 70%); border-radius: 50%; pointer-events: none; animation: ctaBlobPulse 9s ease-in-out infinite; }
+@keyframes ctaBlobPulse { 0%,100%{transform:scale(1);opacity:0.7} 50%{transform:scale(1.08);opacity:1} }
+.cta-inner { position: relative; z-index: 1; }
+.cta-inner h2 { font-family: var(--font-serif); font-size: clamp(36px, 5vw, 62px); font-weight: 400; line-height: 1.08; letter-spacing: -0.8px; margin-bottom: 14px; }
+.cta-inner p { font-size: 17px; color: var(--text-muted); font-weight: 300; line-height: 1.7; margin-bottom: 36px; max-width: 480px; }
+.cta-buttons { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 
 /* ── FOOTER ── */
-footer { border-top: 1px solid var(--border); padding: 64px 0 40px; }
-.footer-top {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 80px;
-  margin-bottom: 56px;
-}
-.footer-brand-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 18px; text-decoration: none; color: var(--text); margin-bottom: 16px; }
-.footer-brand-logo svg { width: 26px; height: 26px; }
-.footer-brand p { font-size: 14px; color: var(--text-dim); line-height: 1.65; max-width: 210px; }
-.footer-links-wrap { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; }
-.footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; }
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.footer-col ul a { color: var(--text-dim); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
+.footer-top { display: grid; grid-template-columns: 240px 1fr; gap: 80px; margin-bottom: 48px; }
+.footer-brand-logo { display: flex; align-items: center; gap: 9px; font-family: var(--font-serif); font-size: 17px; text-decoration: none; color: var(--text); margin-bottom: 13px; }
+.footer-brand-logo svg { width: 24px; height: 24px; }
+.footer-brand > p { font-size: 13px; color: var(--text-dim); line-height: 1.65; max-width: 200px; }
+.footer-links-wrap { display: grid; grid-template-columns: repeat(3,1fr); gap: 36px; }
+.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul a { color: var(--text-dim); text-decoration: none; font-size: 13px; transition: color 0.2s; }
 .footer-col ul a:hover { color: var(--text-muted); }
-.footer-bottom {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-top: 28px; border-top: 1px solid var(--border);
-}
-.footer-copy { font-size: 13px; color: var(--text-dim); }
-.footer-socials { display: flex; align-items: center; gap: 12px; }
-.social-link {
-  width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center; color: var(--text-dim);
-  text-decoration: none; transition: all 0.2s;
-}
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; border-top: 1px solid var(--border); }
+.footer-copy { font-size: 12px; color: var(--text-dim); }
+.footer-socials { display: flex; align-items: center; gap: 10px; }
+.social-link { width: 33px; height: 33px; border-radius: 7px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-dim); text-decoration: none; transition: all 0.2s; }
 .social-link:hover { border-color: var(--border-green); color: var(--green); background: var(--green-glow); }
-.social-link svg { width: 15px; height: 15px; }
+.social-link svg { width: 14px; height: 14px; }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
-  .features-grid { grid-template-columns: 1fr 1fr; }
-  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width:1024px){
+  .features-grid{grid-template-columns:1fr 1fr}
+  .testimonials-grid{grid-template-columns:1fr 1fr}
 }
-@media (max-width: 768px) {
-  :root { --nav-h: 60px; }
-  #navbar { padding: 0 24px; }
-  .nav-links { display: none; }
-  .container { padding: 0 24px; }
-  .hero-inner { padding: 40px 0 0; }
-  .hero-inner h1 { font-size: clamp(44px, 13vw, 64px); letter-spacing: -1.5px; }
-  .hero-inner p { font-size: 16px; }
-  .hero-actions { flex-direction: column; align-items: center; }
-  .features { padding: 100px 0 60px; }
-  .features-grid { grid-template-columns: 1fr; gap: 16px; }
-  .how-it-works { padding: 100px 0; }
-  .how-layout { grid-template-columns: 1fr; gap: 0; }
-  .how-visual-wrap { display: none; }
-  .stats { padding: 60px 0 100px; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
-  .testimonials { padding: 60px 0 100px; }
-  .testimonials-grid { grid-template-columns: 1fr; }
-  .pricing { padding: 60px 0 100px; }
-  .pricing-grid { grid-template-columns: 1fr; }
-  .faq { padding: 60px 0 100px; }
-  .cta-section { padding: 60px 0 100px; }
-  .cta-card { padding: 48px 28px; }
-  .cta-top { flex-direction: column; }
-  .cta-form-row { flex-direction: column; }
-  footer { padding: 48px 0 32px; }
-  .footer-top { grid-template-columns: 1fr; gap: 40px; }
-  .footer-links-wrap { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+@media (max-width:768px){
+  :root{--nav-h:58px}
+  #navbar{padding:0 24px}
+  .nav-links{display:none}
+  .container{padding:0 24px}
+  .hero{padding:calc(var(--nav-h)+32px) 24px 56px}
+  .hero-headline{font-size:clamp(40px,12vw,60px);letter-spacing:-1px}
+  .hero-subline{font-size:clamp(18px,5vw,24px)}
+  .hero-boxes{grid-template-columns:1fr}
+  .features-section{padding:100px 0 60px}
+  .features-section-b{padding:80px 0 60px}
+  .features-grid{grid-template-columns:1fr}
+  .how-it-works{padding:80px 0 100px}
+  .how-layout{grid-template-columns:1fr}
+  .how-visual-wrap{display:none}
+  .pricing{padding:80px 0 100px}
+  .pricing-grid{grid-template-columns:1fr}
+  .testimonials{padding:80px 0 100px}
+  .testimonials-grid{grid-template-columns:1fr}
+  .stats{padding:60px 0 100px}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .cta-section{padding:60px 0 100px}
+  .cta-card{padding:48px 28px}
+  .cta-buttons{flex-direction:column;align-items:flex-start}
+  footer{padding:48px 0 28px}
+  .footer-top{grid-template-columns:1fr;gap:36px}
+  .footer-links-wrap{grid-template-columns:1fr 1fr;gap:28px}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
 }
-@media (max-width: 480px) {
-  .stats-grid { grid-template-columns: 1fr; }
-  .footer-links-wrap { grid-template-columns: 1fr; }
+@media (max-width:480px){
+  .stats-grid{grid-template-columns:1fr}
+  .footer-links-wrap{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ═══ NAV ═══ -->
 <nav id="navbar">
   <div class="nav-inner container">
     <a href="#" class="nav-logo">
@@ -1219,10 +693,10 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 40px; }
       LocalPulse
     </a>
     <ul class="nav-links">
-      <li><a href="#features">Features</a></li>
+      <li><a href="#business">For Businesses</a></li>
+      <li><a href="#creator">For Creators</a></li>
       <li><a href="#how">How it works</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-cta">
       <a href="https://app.localpulse.ink/sign-in" class="btn-ghost">Sign in</a>
@@ -1233,153 +707,142 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 40px; }
 
 <main>
 
-<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<!-- ═══ HERO ═══ -->
 <section class="hero" id="hero">
   <div class="hero-blob"></div>
-  <div class="hero-inner">
+  <div class="hero-content">
     <div class="hero-badge">
       <span class="badge-dot"></span>
-      BETA — Now live
+      AI-Powered Growth Platform
     </div>
-    <h1>Dominate Local<br>Search.</h1>
-    <p class="hero-subtitle"><em>The platform local businesses trust to rank first.</em></p>
-    <p>The all-in-one AI platform for marketing agencies and local businesses to rank #1, get more reviews, and crush the competition.</p>
-    <div class="hero-actions">
-      <a href="https://app.localpulse.ink/sign-up" class="btn-primary btn-lg">Start free trial</a>
-      <a href="#how" class="btn-outline btn-lg">See how it works</a>
-    </div>
-  </div>
-  <!-- Product mockup peeking up from bottom -->
-  <div class="hero-mockup-wrap">
-    <div class="hero-mockup">
-      <div class="mockup-topbar">
-        <div class="mockup-dots">
-          <div class="mdot mdot-r"></div>
-          <div class="mdot mdot-y"></div>
-          <div class="mdot mdot-g"></div>
+    <h1 class="hero-headline">One platform.</h1>
+    <p class="hero-subline">Two ways to grow.</p>
+
+    <div class="hero-boxes">
+
+      <!-- Business box -->
+      <div class="hero-box">
+        <div class="box-glow"></div>
+        <span class="box-icon">🏢</span>
+        <div class="box-headline">Dominate Local Search</div>
+        <p class="box-desc">Rank #1 on Google, manage reviews, track competitors. Built for local businesses and agencies that want to be found first.</p>
+        <div class="box-tools">
+          <span class="box-tool">GBP Post Generator</span>
+          <span class="box-tool">Review Responder</span>
+          <span class="box-tool">SEO Keywords</span>
+          <span class="box-tool">Business Audit</span>
+          <span class="box-tool">Competitor Spy</span>
         </div>
-        <div class="mockup-url-bar">app.localpulse.ink — Dashboard</div>
-        <div class="rank-badge-hero">🏆 #1 Rank</div>
-      </div>
-      <div class="mockup-business">
-        <div class="mockup-biz-logo">📍</div>
-        <div>
-          <div class="mockup-biz-name">Mario's Pizzeria</div>
-          <div class="mockup-biz-cat">Restaurant · Italian · New York</div>
-          <div class="mockup-stars-row">
-            <span>⭐⭐⭐⭐⭐</span>
-            <span class="mockup-rating-txt">4.9 (284 reviews)</span>
-          </div>
+        <div class="box-footer">
+          <div class="box-price">From <strong>$49/mo</strong></div>
+          <a href="https://app.localpulse.ink/sign-up?type=business" class="btn-primary">Start for Business →</a>
         </div>
       </div>
-      <div class="bar-label-row">
-        <span class="bar-label-txt">GBP Completeness</span>
-        <span class="bar-val-txt">94% ↗</span>
+
+      <!-- Creator box -->
+      <div class="hero-box">
+        <div class="box-glow"></div>
+        <span class="box-icon">✦</span>
+        <div class="box-headline">Grow on Social Media</div>
+        <p class="box-desc">Analyze Instagram, TikTok and YouTube. Understand what works and grow faster with AI that reads your audience for you.</p>
+        <div class="box-tools">
+          <span class="box-tool">Instagram Analyzer</span>
+          <span class="box-tool">TikTok Analyzer</span>
+          <span class="box-tool">YouTube Analyzer</span>
+          <span class="box-tool">Content Calendar</span>
+        </div>
+        <div class="box-footer">
+          <div class="box-price">From <strong>$19/mo</strong></div>
+          <a href="https://app.localpulse.ink/sign-up?type=creator" class="btn-primary">Start as Creator →</a>
+        </div>
       </div>
-      <div class="progress-bar"><div class="progress-fill"></div></div>
-      <div class="mockup-metrics">
-        <div class="mockup-metric">
-          <span class="mm-val">2,418</span>
-          <span class="mm-lbl">Weekly views</span>
-        </div>
-        <div class="mockup-metric">
-          <span class="mm-val green">+47%</span>
-          <span class="mm-lbl">More calls</span>
-        </div>
-        <div class="mockup-metric">
-          <span class="mm-val">8 days</span>
-          <span class="mm-lbl">To rank #1</span>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ MARQUEE ═══════════════════════════════ -->
+<!-- ═══ MARQUEE ═══ -->
 <div class="marquee-section">
   <div class="marquee-track">
     <span class="marquee-pill">📍 GBP Post Generator</span>
     <span class="marquee-pill">⭐ Review Responder</span>
     <span class="marquee-pill">🔍 SEO Keyword Hunter</span>
     <span class="marquee-pill">📊 Business Audit</span>
-    <span class="marquee-pill">📅 Content Calendar</span>
     <span class="marquee-pill">🕵️ Competitor Spy</span>
     <span class="marquee-pill">📸 Instagram Analyzer</span>
+    <span class="marquee-pill">🎵 TikTok Analyzer</span>
+    <span class="marquee-pill">▶️ YouTube Analyzer</span>
+    <span class="marquee-pill">📅 Content Calendar</span>
     <span class="marquee-pill">📍 GBP Post Generator</span>
     <span class="marquee-pill">⭐ Review Responder</span>
     <span class="marquee-pill">🔍 SEO Keyword Hunter</span>
     <span class="marquee-pill">📊 Business Audit</span>
-    <span class="marquee-pill">📅 Content Calendar</span>
     <span class="marquee-pill">🕵️ Competitor Spy</span>
     <span class="marquee-pill">📸 Instagram Analyzer</span>
+    <span class="marquee-pill">🎵 TikTok Analyzer</span>
+    <span class="marquee-pill">▶️ YouTube Analyzer</span>
+    <span class="marquee-pill">📅 Content Calendar</span>
   </div>
 </div>
 
-<!-- ═══════════════════════════════ FEATURES ═══════════════════════════════ -->
-<section class="features reveal" id="features">
+<!-- ═══ FEATURES — BUSINESS ═══ -->
+<section class="features-section reveal" id="business">
   <div class="container">
     <div class="features-header">
-      <div class="section-tag">Features</div>
-      <h2 class="section-title">Everything you need to<br>dominate local search.</h2>
+      <div class="section-tag">For Businesses</div>
+      <h2 class="section-title">Everything you need to rank #1 locally.</h2>
+      <p class="section-sub">From Google Business Profile to competitor intelligence — every tool your business needs in one place.</p>
     </div>
     <div class="features-grid stagger-parent">
 
-      <!-- Card 1: Analytics -->
       <div class="feat-card reveal-child">
         <div class="feat-visual">
           <div class="feat-chart-bars">
-            <div class="fbar"></div>
-            <div class="fbar"></div>
-            <div class="fbar"></div>
-            <div class="fbar"></div>
-            <div class="fbar"></div>
-            <div class="fbar"></div>
-            <div class="fbar"></div>
+            <div class="fbar"></div><div class="fbar"></div><div class="fbar"></div>
+            <div class="fbar"></div><div class="fbar"></div><div class="fbar"></div><div class="fbar"></div>
           </div>
-          <div class="feat-chart-badge">↑ 47% this month</div>
+          <div class="feat-chart-badge">↑ 47% more calls</div>
         </div>
         <div class="feat-body">
-          <h3>Performance Analytics</h3>
-          <p>Deep-dive into traffic, calls, and conversion data from your local search presence with real-time dashboards.</p>
+          <h3>GBP Optimization</h3>
+          <p>AI audits your Google Business Profile and implements every ranking signal — photos, keywords, posts, and completeness — automatically.</p>
         </div>
       </div>
 
-      <!-- Card 2: Reviews -->
       <div class="feat-card reveal-child">
         <div class="feat-visual">
           <div class="feat-reviews">
             <div class="frb">
               <div class="frav">JK</div>
-              <div class="frtext">⭐⭐⭐⭐⭐ "Best pizza in town!"</div>
+              <div class="frtext">⭐⭐⭐⭐⭐ "Best service in town!"</div>
             </div>
             <div class="frb ai-row">
               <div class="frav ai-av">AI</div>
-              <div class="frtext">Thank you James! We're thrilled you loved it. See you next time! 🍕</div>
+              <div class="frtext">Thank you James! We love hearing that. See you soon!</div>
             </div>
             <div class="frb">
               <div class="frav">SM</div>
-              <div class="frtext">⭐⭐⭐⭐⭐ "Incredible service!"</div>
+              <div class="frtext">⭐⭐⭐⭐⭐ "Absolutely incredible."</div>
             </div>
           </div>
         </div>
         <div class="feat-body">
           <h3>AI Review Management</h3>
-          <p>Automatically respond to every review with personalized, brand-consistent replies that build trust and loyalty.</p>
+          <p>Respond to every review automatically with personalized replies that sound human. Build trust, improve ratings, and never miss a customer.</p>
         </div>
       </div>
 
-      <!-- Card 3: Rank -->
       <div class="feat-card reveal-child">
         <div class="feat-visual">
           <div class="feat-rank-display">
             <div class="feat-rank-num">#1</div>
-            <div class="feat-rank-kw">"pizza near me" · New York, NY</div>
-            <div class="feat-rank-badge">↑ 4 positions this week</div>
+            <div class="feat-rank-kw">"plumber near me" · Chicago, IL</div>
+            <div class="feat-rank-badge">↑ 5 positions this week</div>
           </div>
         </div>
         <div class="feat-body">
           <h3>Real-Time Rank Tracking</h3>
-          <p>Monitor your exact position in Google's local 3-pack across all target keywords and locations — live.</p>
+          <p>Monitor your exact position in Google's local 3-pack across every keyword and location. See every move your competitors make.</p>
         </div>
       </div>
 
@@ -1387,202 +850,427 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 40px; }
   </div>
 </section>
 
-<!-- ═══════════════════════════════ HOW IT WORKS ═══════════════════════════════ -->
+<hr class="features-divider">
+
+<!-- ═══ FEATURES — CREATOR ═══ -->
+<section class="features-section-b reveal" id="creator">
+  <div class="container">
+    <div class="features-header">
+      <div class="section-tag">For Creators</div>
+      <h2 class="section-title">Understand your audience. Grow faster.</h2>
+      <p class="section-sub">Deep analytics for Instagram, TikTok and YouTube. Know what content works, when to post, and how to grow.</p>
+    </div>
+    <div class="features-grid stagger-parent">
+
+      <div class="feat-card reveal-child">
+        <div class="feat-visual">
+          <div class="feat-profile-wrap">
+            <div class="feat-profile">
+              <div class="fpc-top">
+                <div class="fpc-ava">📸</div>
+                <div>
+                  <div class="fpc-name">@yourhandle</div>
+                  <div class="fpc-handle">instagram.com</div>
+                </div>
+              </div>
+              <div class="fpc-stats">
+                <div class="fpc-stat"><span class="fpc-val">42.3k</span><span class="fpc-lbl">Followers</span></div>
+                <div class="fpc-stat"><span class="fpc-val">6.8%</span><span class="fpc-lbl">Engage</span></div>
+                <div class="fpc-stat"><span class="fpc-val">↑ 12%</span><span class="fpc-lbl">Growth</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="feat-body">
+          <h3>Instagram Analyzer</h3>
+          <p>Deep-dive into your best posts, engagement rates, optimal posting times, and follower growth with AI-powered recommendations.</p>
+        </div>
+      </div>
+
+      <div class="feat-card reveal-child">
+        <div class="feat-visual">
+          <div class="feat-engage">
+            <div class="engage-row">
+              <span class="engage-label">Carousels</span>
+              <div class="engage-bar"><div class="engage-fill" style="width:84%"></div></div>
+              <span class="engage-val">8.4%</span>
+            </div>
+            <div class="engage-row">
+              <span class="engage-label">Reels</span>
+              <div class="engage-bar"><div class="engage-fill" style="width:72%;animation-delay:0.1s"></div></div>
+              <span class="engage-val">7.2%</span>
+            </div>
+            <div class="engage-row">
+              <span class="engage-label">Stories</span>
+              <div class="engage-bar"><div class="engage-fill" style="width:58%;animation-delay:0.2s"></div></div>
+              <span class="engage-val">5.8%</span>
+            </div>
+            <div class="engage-row">
+              <span class="engage-label">Static</span>
+              <div class="engage-bar"><div class="engage-fill" style="width:31%;animation-delay:0.3s"></div></div>
+              <span class="engage-val">3.1%</span>
+            </div>
+          </div>
+        </div>
+        <div class="feat-body">
+          <h3>TikTok Insights</h3>
+          <p>See which video formats, sounds, and hooks drive the most views and follows. Stop guessing, start growing with data.</p>
+        </div>
+      </div>
+
+      <div class="feat-card reveal-child">
+        <div class="feat-visual">
+          <div class="feat-growth">
+            <svg class="growth-svg" viewBox="0 0 220 64" fill="none">
+              <path d="M0,52 C30,50 60,42 90,32 C120,22 150,14 180,8 C195,5 210,4 220,3" stroke="#00c875" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <path d="M0,52 C30,50 60,42 90,32 C120,22 150,14 180,8 C195,5 210,4 220,3 L220,64 L0,64 Z" fill="rgba(0,200,117,0.07)"/>
+              <circle cx="220" cy="3" r="3" fill="#00c875"/>
+            </svg>
+            <div class="growth-badge">↑ +2,840 subscribers this month</div>
+          </div>
+        </div>
+        <div class="feat-body">
+          <h3>Content Performance</h3>
+          <p>Track subscriber growth, view retention, and revenue across YouTube. Understand which content compounds your channel fastest.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
 <section class="how-it-works reveal" id="how">
   <div class="container">
     <div class="how-header">
       <div class="section-tag">How it works</div>
-      <h2 class="section-title">Simple setup.<br>Powerful results.</h2>
-      <p class="section-sub">Go from signup to ranking in under 10 minutes. No technical knowledge required.</p>
+      <h2 class="section-title">Get started in minutes.</h2>
+      <p class="section-sub">Three simple steps, whether you're a business or a creator.</p>
     </div>
-    <div class="how-layout">
 
-      <!-- Left: Steps -->
-      <div class="hiw-steps-list">
-        <div class="hiw-step active" data-step="0">
-          <div class="step-indicator">
-            <div class="step-circle">01</div>
-            <div class="step-vline"></div>
+    <div class="hiw-tabs">
+      <button class="hiw-tab active" data-tab="business">For Businesses</button>
+      <button class="hiw-tab" data-tab="creator">For Creators</button>
+    </div>
+
+    <!-- Business flow -->
+    <div class="hiw-pane active" id="hiw-business">
+      <div class="how-layout">
+        <div class="hiw-steps-list">
+          <div class="hiw-step active" data-step="0">
+            <div class="step-indicator">
+              <div class="step-circle">01</div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-num-tag">Step 01</div>
+              <h3>Connect your Google Business Profile</h3>
+              <p>Link your GBP in one click. LocalPulse instantly audits your listing and maps every opportunity to climb the rankings.</p>
+            </div>
           </div>
-          <div class="step-body">
-            <div class="step-num-tag">Step 01</div>
-            <h3>Connect your Google Business Profile</h3>
-            <p>Link your GBP in one click. We automatically audit your listing and identify every optimization opportunity to get you ranking fast.</p>
+          <div class="hiw-step" data-step="1">
+            <div class="step-indicator">
+              <div class="step-circle">02</div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-num-tag">Step 02</div>
+              <h3>AI analyzes and optimizes</h3>
+              <p>Our AI scans your competitors, fills keyword gaps, responds to reviews, and schedules GBP posts — all without you lifting a finger.</p>
+            </div>
+          </div>
+          <div class="hiw-step" data-step="2">
+            <div class="step-indicator">
+              <div class="step-circle">03</div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-num-tag">Step 03</div>
+              <h3>Watch your rankings climb</h3>
+              <p>Track every keyword, every competitor, and every review in one dashboard. Most businesses see ranking improvements within the first week.</p>
+            </div>
           </div>
         </div>
-        <div class="hiw-step" data-step="1">
-          <div class="step-indicator">
-            <div class="step-circle">02</div>
-            <div class="step-vline"></div>
-          </div>
-          <div class="step-body">
-            <div class="step-num-tag">Step 02</div>
-            <h3>AI analyzes and optimizes</h3>
-            <p>Our AI scans competitors, identifies keyword gaps, and implements proven local SEO strategies automatically — no guesswork needed.</p>
-          </div>
-        </div>
-        <div class="hiw-step" data-step="2">
-          <div class="step-indicator">
-            <div class="step-circle">03</div>
-            <div class="step-vline"></div>
-          </div>
-          <div class="step-body">
-            <div class="step-num-tag">Step 03</div>
-            <h3>Watch your rankings climb</h3>
-            <p>Track your progress with real-time rank monitoring, review growth metrics, and traffic analytics all in one dashboard.</p>
+        <div class="how-visual-wrap">
+          <div class="how-visual">
+            <!-- Panel 0: GBP Profile -->
+            <div class="hiw-panel active" data-panel="0">
+              <div class="hiw-card">
+                <div class="hiw-card-top">
+                  <div class="hiw-card-logo">📍</div>
+                  <div>
+                    <div class="hiw-card-name">Mario's Pizzeria</div>
+                    <div class="hiw-card-sub">Restaurant · Italian · NYC</div>
+                  </div>
+                </div>
+                <div class="hiw-card-stars">★★★★★ <span>4.9 (284 reviews)</span></div>
+                <div class="hiw-bar-row">
+                  <span class="hiw-bar-lbl">Profile completeness</span>
+                  <span class="hiw-bar-pct">94% ↗</span>
+                </div>
+                <div class="hiw-bar"><div class="hiw-bar-fill"></div></div>
+                <div class="hiw-mrow">
+                  <div class="hiw-m"><div class="hiw-mv">2.4k</div><div class="hiw-ml">Views</div></div>
+                  <div class="hiw-m"><div class="hiw-mv">189</div><div class="hiw-ml">Calls</div></div>
+                  <div class="hiw-m"><div class="hiw-mv">#1</div><div class="hiw-ml">Rank</div></div>
+                </div>
+              </div>
+            </div>
+            <!-- Panel 1: AI suggestions -->
+            <div class="hiw-panel" data-panel="1">
+              <div class="hiw-ai-label">🤖 AI Optimization Queue</div>
+              <div class="hiw-sug-list">
+                <div class="hiw-sug">
+                  <div class="hiw-sug-ico">🔍</div>
+                  <div>
+                    <div class="hiw-sug-lbl">Add missing keyword</div>
+                    <div class="hiw-sug-desc">Add "wood-fired pizza" to description</div>
+                    <span class="hiw-sug-badge">High Impact</span>
+                  </div>
+                </div>
+                <div class="hiw-sug">
+                  <div class="hiw-sug-ico">📸</div>
+                  <div>
+                    <div class="hiw-sug-lbl">Upload more photos</div>
+                    <div class="hiw-sug-desc">10+ photos = 3× more profile views</div>
+                    <span class="hiw-sug-badge">Quick Win</span>
+                  </div>
+                </div>
+                <div class="hiw-sug">
+                  <div class="hiw-sug-ico">⭐</div>
+                  <div>
+                    <div class="hiw-sug-lbl">12 reviews unanswered</div>
+                    <div class="hiw-sug-desc">Responding boosts local ranking signal</div>
+                    <span class="hiw-sug-badge">Urgent</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Panel 2: Rankings -->
+            <div class="hiw-panel" data-panel="2">
+              <div class="hiw-rank-panel">
+                <div class="hiw-rank-big">#1</div>
+                <div class="hiw-rank-kw">"pizza near me" · New York, NY</div>
+                <div class="hiw-rank-badge">↑ Climbed 6 positions in 8 days</div>
+                <div class="hiw-ms">
+                  <div class="hiw-ms-item"><span class="hiw-ms-val">3.2×</span><span class="hiw-ms-lbl">More views</span></div>
+                  <div class="hiw-ms-item"><span class="hiw-ms-val">+47%</span><span class="hiw-ms-lbl">More calls</span></div>
+                  <div class="hiw-ms-item"><span class="hiw-ms-val">4.9★</span><span class="hiw-ms-lbl">Rating</span></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Right: Sticky Visual -->
-      <div class="how-visual-wrap">
-        <div class="how-visual">
-
-          <!-- Panel 0: Profile card -->
-          <div class="hiw-panel active" data-panel="0">
-            <div class="hiw-profile-card">
-              <div class="hiw-profile-top">
-                <div class="hiw-profile-logo">📍</div>
-                <div>
-                  <div class="hiw-pname">Mario's Pizzeria</div>
-                  <div class="hiw-pcat">Restaurant · Italian</div>
+    <!-- Creator flow -->
+    <div class="hiw-pane" id="hiw-creator">
+      <div class="how-layout">
+        <div class="hiw-steps-list">
+          <div class="hiw-step active" data-step="0">
+            <div class="step-indicator">
+              <div class="step-circle">01</div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-num-tag">Step 01</div>
+              <h3>Connect your social profiles</h3>
+              <p>Link your Instagram, TikTok, or YouTube account in seconds. LocalPulse pulls in your full content history and audience data instantly.</p>
+            </div>
+          </div>
+          <div class="hiw-step" data-step="1">
+            <div class="step-indicator">
+              <div class="step-circle">02</div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-num-tag">Step 02</div>
+              <h3>AI analyzes your content</h3>
+              <p>Our AI identifies which content formats, topics, and posting times drive the most reach and engagement for your specific audience.</p>
+            </div>
+          </div>
+          <div class="hiw-step" data-step="2">
+            <div class="step-indicator">
+              <div class="step-circle">03</div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-num-tag">Step 03</div>
+              <h3>Grow faster with confidence</h3>
+              <p>Follow AI-backed content recommendations and track your growth in real time. Stop guessing what to post — the data shows exactly what works.</p>
+            </div>
+          </div>
+        </div>
+        <div class="how-visual-wrap">
+          <div class="how-visual">
+            <!-- Panel 0: Social profile -->
+            <div class="hiw-panel active" data-panel="0">
+              <div class="hiw-creator-card">
+                <div class="hiw-cr-top">
+                  <div class="hiw-cr-ava">📸</div>
+                  <div>
+                    <div class="hiw-cr-name">@zoeparkcreates</div>
+                    <div class="hiw-cr-handle">Instagram · Connected ✓</div>
+                  </div>
+                </div>
+                <div class="hiw-cr-stats">
+                  <div class="hiw-cr-stat"><span class="hiw-cr-val">42.3k</span><span class="hiw-cr-lbl">Followers</span></div>
+                  <div class="hiw-cr-stat"><span class="hiw-cr-val">6.8%</span><span class="hiw-cr-lbl">Eng. Rate</span></div>
+                  <div class="hiw-cr-stat"><span class="hiw-cr-val">↑ 12%</span><span class="hiw-cr-lbl">This month</span></div>
                 </div>
               </div>
-              <div class="hiw-stars">★★★★★ <span>4.9 (284 reviews)</span></div>
-              <div class="hiw-blabel">Profile completeness</div>
-              <div class="hiw-bar"><div class="hiw-bar-fill"></div></div>
-              <div class="hiw-bpct">94% complete ↗</div>
-              <div class="hiw-metrics-row">
-                <div class="hiw-metric">
-                  <div class="hiw-metric-val">2.4k</div>
-                  <div class="hiw-metric-lbl">Views</div>
+            </div>
+            <!-- Panel 1: Insights -->
+            <div class="hiw-panel" data-panel="1">
+              <div class="hiw-insight-label">📊 Content Insights</div>
+              <div class="hiw-insight-list">
+                <div class="hiw-insight-row">
+                  <span class="hiw-insight-ico">🎬</span>
+                  <div class="hiw-insight-txt">
+                    <div class="hiw-insight-name">Reels perform best</div>
+                    <div class="hiw-insight-val">8.4% avg engagement</div>
+                  </div>
+                  <div class="hiw-insight-bar"><div class="hiw-insight-fill" style="width:84%"></div></div>
                 </div>
-                <div class="hiw-metric">
-                  <div class="hiw-metric-val">189</div>
-                  <div class="hiw-metric-lbl">Calls</div>
+                <div class="hiw-insight-row">
+                  <span class="hiw-insight-ico">📅</span>
+                  <div class="hiw-insight-txt">
+                    <div class="hiw-insight-name">Best time: Tue 7pm</div>
+                    <div class="hiw-insight-val">+34% more reach</div>
+                  </div>
+                  <div class="hiw-insight-bar"><div class="hiw-insight-fill" style="width:70%;animation-delay:0.1s"></div></div>
                 </div>
-                <div class="hiw-metric">
-                  <div class="hiw-metric-val">#1</div>
-                  <div class="hiw-metric-lbl">Rank</div>
+                <div class="hiw-insight-row">
+                  <span class="hiw-insight-ico">🏷️</span>
+                  <div class="hiw-insight-txt">
+                    <div class="hiw-insight-name">Top hashtag cluster</div>
+                    <div class="hiw-insight-val">2.1× more discovery</div>
+                  </div>
+                  <div class="hiw-insight-bar"><div class="hiw-insight-fill" style="width:55%;animation-delay:0.2s"></div></div>
+                </div>
+              </div>
+            </div>
+            <!-- Panel 2: Growth -->
+            <div class="hiw-panel" data-panel="2">
+              <div class="hiw-growth-panel">
+                <div class="hiw-growth-chart">
+                  <svg class="hiw-growth-svg" viewBox="0 0 240 72" fill="none">
+                    <path d="M0,60 C40,58 80,48 120,34 C160,20 200,10 240,4" stroke="#00c875" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <path d="M0,60 C40,58 80,48 120,34 C160,20 200,10 240,4 L240,72 L0,72 Z" fill="rgba(0,200,117,0.08)"/>
+                    <circle cx="240" cy="4" r="4" fill="#00c875"/>
+                  </svg>
+                </div>
+                <div class="hiw-growth-badge">↑ +8,400 followers in 30 days</div>
+                <div class="hiw-growth-stats">
+                  <div class="hiw-growth-stat"><span class="hiw-growth-val">6.8%</span><span class="hiw-growth-lbl">Eng. rate</span></div>
+                  <div class="hiw-growth-stat"><span class="hiw-growth-val">2.1×</span><span class="hiw-growth-lbl">Reach</span></div>
+                  <div class="hiw-growth-stat"><span class="hiw-growth-val">4.9★</span><span class="hiw-growth-lbl">Rating</span></div>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Panel 1: AI Suggestions -->
-          <div class="hiw-panel" data-panel="1">
-            <div class="hiw-ai-title">🤖 AI Optimization Queue</div>
-            <div class="hiw-suggest-list">
-              <div class="hiw-sug">
-                <div class="sug-ico">🔍</div>
-                <div class="sug-txt">
-                  <div class="sug-label">Add missing keyword</div>
-                  <div class="sug-desc">Add "wood-fired pizza" to your business description</div>
-                  <div class="sug-badge">High Impact</div>
-                </div>
-              </div>
-              <div class="hiw-sug">
-                <div class="sug-ico">📸</div>
-                <div class="sug-txt">
-                  <div class="sug-label">Upload more photos</div>
-                  <div class="sug-desc">Profiles with 10+ photos get 3× more views</div>
-                  <div class="sug-badge">Quick Win</div>
-                </div>
-              </div>
-              <div class="hiw-sug">
-                <div class="sug-ico">⭐</div>
-                <div class="sug-txt">
-                  <div class="sug-label">Response rate low</div>
-                  <div class="sug-desc">Respond to 12 unanswered reviews to boost ranking</div>
-                  <div class="sug-badge">Urgent</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel 2: Rankings -->
-          <div class="hiw-panel" data-panel="2">
-            <div class="hiw-rank-panel">
-              <div class="hiw-rank-big">#1</div>
-              <div class="hiw-rank-label">"pizza near me" · New York, NY</div>
-              <div class="hiw-rank-change">↑ Climbed 6 positions in 8 days</div>
-              <div class="hiw-mini-stats">
-                <div class="hiw-mini-stat">
-                  <span class="hiw-mini-val">3.2×</span>
-                  <span class="hiw-mini-lbl">More views</span>
-                </div>
-                <div class="hiw-mini-stat">
-                  <span class="hiw-mini-val">+47%</span>
-                  <span class="hiw-mini-lbl">More calls</span>
-                </div>
-                <div class="hiw-mini-stat">
-                  <span class="hiw-mini-val">4.9★</span>
-                  <span class="hiw-mini-lbl">Rating</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- ═══════════════════════════════ STATS ═══════════════════════════════ -->
-<section class="stats reveal">
+<!-- ═══ PRICING ═══ -->
+<section class="pricing reveal" id="pricing">
   <div class="container">
-    <div class="stats-intro">
-      <div class="section-tag">Results</div>
-      <h2 class="section-title">Businesses that rank<br>don't look back.</h2>
+    <div class="pricing-header">
+      <div class="section-tag">Pricing</div>
+      <h2 class="section-title">Simple pricing. Full access.</h2>
+      <p class="section-sub" style="margin:0 auto 32px;">No hidden fees. No contracts. Cancel anytime.</p>
     </div>
-    <div class="stats-grid stagger-parent">
-      <div class="stat-card reveal-child">
-        <div class="stat-num" data-target="3.2" data-suffix="×">3.2×</div>
-        <div class="stat-label">More profile views</div>
-        <div class="stat-desc">Average increase in GBP impressions within 90 days of using LocalPulse.</div>
+    <div class="pricing-toggle-wrap">
+      <div class="pricing-toggle">
+        <div class="toggle-opt active" id="toggle-monthly" onclick="setToggle('monthly')">Monthly</div>
+        <div class="toggle-opt" id="toggle-annual" onclick="setToggle('annual')">Annual <span class="save-badge">Save 20%</span></div>
       </div>
-      <div class="stat-card reveal-child">
-        <div class="stat-num" data-target="47" data-prefix="+" data-suffix="%">+47%</div>
-        <div class="stat-label">More inbound calls</div>
-        <div class="stat-desc">Businesses report significantly more calls direct from Google search.</div>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- Creator -->
+      <div class="pricing-card">
+        <div class="plan-name">Creator</div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-amount" id="price-creator">19</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <div class="plan-desc">For content creators who want to understand their audience and grow on social media.</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span>Instagram Analyzer</li>
+          <li><span class="check">✓</span>TikTok Analyzer</li>
+          <li><span class="check">✓</span>YouTube Analyzer</li>
+          <li><span class="check">✓</span>Content Calendar</li>
+          <li><span class="check">✓</span>AI posting recommendations</li>
+          <li><span class="check">✓</span>Monthly growth reports</li>
+        </ul>
+        <a href="https://app.localpulse.ink/sign-up?plan=creator" class="plan-btn">Get started</a>
       </div>
-      <div class="stat-card reveal-child">
-        <div class="stat-num" data-target="8" data-suffix=" days">8 days</div>
-        <div class="stat-label">To first ranking gain</div>
-        <div class="stat-desc">Most customers see measurable ranking improvements within the first week.</div>
+
+      <!-- Pro — Featured -->
+      <div class="pricing-card featured">
+        <div class="featured-tag">Best Value</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-amount" id="price-pro">99</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <div class="plan-desc">Everything in Creator + Business. The full LocalPulse suite for those who want it all.</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span>All Creator tools</li>
+          <li><span class="check">✓</span>All Business tools</li>
+          <li><span class="check">✓</span>Up to 3 locations</li>
+          <li><span class="check">✓</span>Priority support</li>
+          <li><span class="check">✓</span>Advanced analytics</li>
+          <li><span class="check">✓</span>Weekly reports</li>
+          <li><span class="check">✓</span>API access</li>
+        </ul>
+        <a href="https://app.localpulse.ink/sign-up?plan=pro" class="plan-btn featured-btn">Get started</a>
       </div>
-      <div class="stat-card reveal-child">
-        <div class="stat-num" data-target="500" data-suffix="+">500+</div>
-        <div class="stat-label">Businesses powered</div>
-        <div class="stat-desc">From solo operators to 50-location agency clients across the US.</div>
+
+      <!-- Business -->
+      <div class="pricing-card">
+        <div class="plan-name">Business</div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-amount" id="price-business">49</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <div class="plan-desc">For local businesses and agencies who want to rank #1 on Google and beat the competition.</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span>GBP Post Generator</li>
+          <li><span class="check">✓</span>AI Review Responder</li>
+          <li><span class="check">✓</span>SEO Keyword Hunter</li>
+          <li><span class="check">✓</span>Business Audit</li>
+          <li><span class="check">✓</span>Competitor Spy</li>
+          <li><span class="check">✓</span>1 business location</li>
+        </ul>
+        <a href="https://app.localpulse.ink/sign-up?plan=business" class="plan-btn">Get started</a>
       </div>
-      <div class="stat-card reveal-child">
-        <div class="stat-num" data-target="92" data-suffix="%">92%</div>
-        <div class="stat-label">Retention rate</div>
-        <div class="stat-desc">Our customers stay because LocalPulse keeps delivering results month after month.</div>
-      </div>
-      <div class="stat-card reveal-child">
-        <div class="stat-num" data-target="4.9" data-suffix="★">4.9★</div>
-        <div class="stat-label">Average rating</div>
-        <div class="stat-desc">Consistently top-rated by agency owners and local business operators alike.</div>
-      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ TESTIMONIALS ═══════════════════════════════ -->
+<!-- ═══ TESTIMONIALS ═══ -->
 <section class="testimonials reveal">
   <div class="container">
     <div class="testimonials-header">
       <div class="section-tag">Testimonials</div>
-      <h2 class="section-title">Trusted by businesses<br>that rank #1.</h2>
+      <h2 class="section-title">Trusted by businesses<br>and creators alike.</h2>
     </div>
     <div class="testimonials-grid stagger-parent">
 
       <div class="testi-card reveal-child">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"We manage 15 clients and LocalPulse cut our reporting time in half. Three of our clients hit the Google 3-pack within the first month. The AI review responses alone are worth the price."</p>
+        <p class="testi-quote">"We manage 15 clients with LocalPulse. Three hit the Google 3-pack within the first month. The AI review responses alone pay for the subscription ten times over."</p>
         <div class="testi-author">
           <div class="testi-avatar">MR</div>
           <div>
@@ -1594,7 +1282,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 40px; }
 
       <div class="testi-card reveal-child">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"I went from 12 Google reviews to 89 in two months. My restaurant now shows up when people search for 'dim sum near me' — something I'd been trying to fix for years. This tool just works."</p>
+        <p class="testi-quote">"From 12 Google reviews to 89 in two months. My restaurant now shows up when people search for 'dim sum near me' — something I'd been trying to fix for two years."</p>
         <div class="testi-author">
           <div class="testi-avatar">SC</div>
           <div>
@@ -1606,12 +1294,12 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 40px; }
 
       <div class="testi-card reveal-child">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"The competitor spy tool completely changed how we approach local SEO strategy. We can see exactly what's working for the top-ranked businesses and replicate it. Game-changer for our whole team."</p>
+        <p class="testi-quote">"My engagement went from 2.1% to 6.8% in 6 weeks just by following the AI recommendations. I finally understand what content my audience actually wants to see."</p>
         <div class="testi-author">
-          <div class="testi-avatar">TW</div>
+          <div class="testi-avatar">ZP</div>
           <div>
-            <div class="testi-name">Tom Walsh</div>
-            <div class="testi-role">Marketing Manager · Walsh & Associates</div>
+            <div class="testi-name">Zoe Park</div>
+            <div class="testi-role">Content Creator · 45K followers</div>
           </div>
         </div>
       </div>
@@ -1620,140 +1308,60 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 40px; }
   </div>
 </section>
 
-<!-- ═══════════════════════════════ PRICING ═══════════════════════════════ -->
-<section class="pricing reveal" id="pricing">
+<!-- ═══ STATS ═══ -->
+<section class="stats reveal">
   <div class="container">
-    <div class="pricing-header">
-      <div class="section-tag">Pricing</div>
-      <h2 class="section-title">Pick your plan.</h2>
-      <p class="section-sub" style="margin: 0 auto 36px;">No hidden fees. No contracts. Cancel anytime.</p>
+    <div class="stats-intro">
+      <div class="section-tag">By the numbers</div>
+      <h2 class="section-title">Results that speak for themselves.</h2>
     </div>
-    <div class="pricing-toggle-wrap">
-      <div class="pricing-toggle">
-        <div class="toggle-opt active" id="toggle-monthly" onclick="setToggle('monthly')">Monthly</div>
-        <div class="toggle-opt" id="toggle-annual" onclick="setToggle('annual')">Annual <span class="save-badge">Save 20%</span></div>
+    <div class="stats-grid stagger-parent">
+      <div class="stat-card reveal-child">
+        <div class="stat-num" data-target="500" data-suffix="+">500+</div>
+        <div class="stat-label">Active users</div>
+        <div class="stat-desc">Businesses and creators growing with LocalPulse every month.</div>
       </div>
-    </div>
-    <div class="pricing-grid">
-
-      <div class="pricing-card">
-        <div class="plan-name">Starter</div>
-        <div class="plan-price">
-          <span class="price-currency">$</span>
-          <span class="price-amount" id="price-starter">49</span>
-          <span class="price-period">/mo</span>
-        </div>
-        <div class="plan-desc">Perfect for single-location businesses getting started with local SEO.</div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span>1 business location</li>
-          <li><span class="check">✓</span>GBP optimization</li>
-          <li><span class="check">✓</span>Review monitoring</li>
-          <li><span class="check">✓</span>Basic rank tracking</li>
-          <li><span class="check">✓</span>Monthly reports</li>
-        </ul>
-        <a href="https://app.localpulse.ink/sign-up?plan=starter" class="plan-btn">Get started</a>
+      <div class="stat-card reveal-child">
+        <div class="stat-num" data-target="4.9" data-suffix="★">4.9★</div>
+        <div class="stat-label">Average rating</div>
+        <div class="stat-desc">Consistently top-rated by agencies, local businesses, and creators.</div>
       </div>
-
-      <div class="pricing-card featured">
-        <div class="featured-tag">Most Popular</div>
-        <div class="plan-name">Growth</div>
-        <div class="plan-price">
-          <span class="price-currency">$</span>
-          <span class="price-amount" id="price-growth">99</span>
-          <span class="price-period">/mo</span>
-        </div>
-        <div class="plan-desc">Everything you need to dominate local search in your market.</div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span>Up to 5 locations</li>
-          <li><span class="check">✓</span>AI review responses</li>
-          <li><span class="check">✓</span>Citation builder</li>
-          <li><span class="check">✓</span>Advanced rank tracking</li>
-          <li><span class="check">✓</span>GBP post scheduler</li>
-          <li><span class="check">✓</span>Competitor analysis</li>
-          <li><span class="check">✓</span>Weekly reports</li>
-        </ul>
-        <a href="https://app.localpulse.ink/sign-up?plan=growth" class="plan-btn featured-btn">Get started</a>
+      <div class="stat-card reveal-child">
+        <div class="stat-num" data-target="9" data-suffix=" tools">9 tools</div>
+        <div class="stat-label">AI-powered tools</div>
+        <div class="stat-desc">Every tool built specifically for local SEO and social media growth.</div>
       </div>
-
-      <div class="pricing-card">
-        <div class="plan-name">Agency</div>
-        <div class="plan-price">
-          <span class="price-currency">$</span>
-          <span class="price-amount" id="price-agency">249</span>
-          <span class="price-period">/mo</span>
-        </div>
-        <div class="plan-desc">Built for agencies managing multiple clients and locations at scale.</div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span>Unlimited locations</li>
-          <li><span class="check">✓</span>White-label reporting</li>
-          <li><span class="check">✓</span>Client dashboard</li>
-          <li><span class="check">✓</span>API access</li>
-          <li><span class="check">✓</span>Priority support</li>
-          <li><span class="check">✓</span>Custom branding</li>
-          <li><span class="check">✓</span>Dedicated account manager</li>
-        </ul>
-        <a href="https://app.localpulse.ink/sign-up?plan=agency" class="plan-btn">Get started</a>
+      <div class="stat-card reveal-child">
+        <div class="stat-num" data-target="14" data-suffix=" days">14 days</div>
+        <div class="stat-label">Free trial</div>
+        <div class="stat-desc">Full access to every feature. No credit card required to start.</div>
       </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
-<section class="faq reveal" id="faq">
-  <div class="container">
-    <div class="faq-header">
-      <div class="section-tag">FAQ</div>
-      <h2 class="section-title">Questions? Answered.</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q">How quickly will I see results? <span class="faq-icon">+</span></div>
-        <div class="faq-a">Most customers see their first ranking improvements within 7–14 days. Significant gains typically happen within the first 30–60 days as our AI implements optimizations and builds citation authority.</div>
+      <div class="stat-card reveal-child">
+        <div class="stat-num" data-target="92" data-suffix="%">92%</div>
+        <div class="stat-label">Retention rate</div>
+        <div class="stat-desc">Our users stay because LocalPulse keeps delivering results month after month.</div>
       </div>
-      <div class="faq-item">
-        <div class="faq-q">Do I need technical knowledge? <span class="faq-icon">+</span></div>
-        <div class="faq-a">Not at all. LocalPulse is built for business owners and marketers, not developers. Setup takes under 10 minutes and our AI handles the technical SEO automatically.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Can I manage multiple locations? <span class="faq-icon">+</span></div>
-        <div class="faq-a">Yes! Our Growth plan supports up to 5 locations and our Agency plan supports unlimited locations with client management features, white-label reports, and team access.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Is there a free trial? <span class="faq-icon">+</span></div>
-        <div class="faq-a">Yes, all plans include a 14-day free trial. No credit card required. You get full access to all features for your chosen plan during the trial period.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">What if I want to cancel? <span class="faq-icon">+</span></div>
-        <div class="faq-a">Cancel anytime with no penalties or fees. Your account stays active until the end of your billing period. We believe in earning your business every month.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Does this work for any type of local business? <span class="faq-icon">+</span></div>
-        <div class="faq-a">LocalPulse works for any business with a physical location or service area. Restaurants, medical practices, law firms, home services, retail stores — if local customers search for you, we can help you rank higher.</div>
+      <div class="stat-card reveal-child">
+        <div class="stat-num" data-target="8" data-suffix=" days">8 days</div>
+        <div class="stat-label">To first results</div>
+        <div class="stat-desc">Most users see measurable growth within their first week on the platform.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ FINAL CTA ═══════════════════════════════ -->
+<!-- ═══ CTA ═══ -->
 <section class="cta-section reveal">
   <div class="container">
     <div class="cta-card">
       <div class="cta-blob"></div>
-      <div class="cta-top">
-        <h2>Your business's unfair<br>advantage starts here.</h2>
-        <a href="https://app.localpulse.ink/sign-up" class="btn-primary btn-lg">Get started free →</a>
-      </div>
-      <div class="cta-form-wrap">
-        <form id="ctaForm" class="cta-form-row">
-          <input type="email" name="email" placeholder="Enter your work email" class="cta-input" required autocomplete="email">
-          <button type="submit" class="btn-primary">Join the waitlist</button>
-        </form>
-        <div class="cta-success" id="ctaSuccess">
-          <span>✓</span>
-          <span>You're on the list! We'll reach out as soon as your spot is ready.</span>
+      <div class="cta-inner">
+        <h2>Ready to grow?</h2>
+        <p>Join 500+ businesses and creators already using LocalPulse. Start your 14-day free trial — no credit card required.</p>
+        <div class="cta-buttons">
+          <a href="https://app.localpulse.ink/sign-up?type=business" class="btn-primary btn-lg">Start for Business →</a>
+          <a href="https://app.localpulse.ink/sign-up?type=creator" class="btn-outline btn-lg">Start as Creator →</a>
         </div>
-        <p class="cta-note">Join 500+ local businesses · 14-day free trial · No credit card required</p>
       </div>
     </div>
   </div>
@@ -1761,7 +1369,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 40px; }
 
 </main>
 
-<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="container">
     <div class="footer-top">
@@ -1773,16 +1381,16 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 40px; }
           </svg>
           LocalPulse
         </a>
-        <p>The AI platform that gets local businesses to rank #1 on Google.</p>
+        <p>AI tools to grow your business and your social media.</p>
       </div>
       <div class="footer-links-wrap">
         <div class="footer-col">
           <h4>Product</h4>
           <ul>
-            <li><a href="#features">Features</a></li>
+            <li><a href="#business">For Businesses</a></li>
+            <li><a href="#creator">For Creators</a></li>
             <li><a href="#how">How it works</a></li>
             <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#faq">FAQ</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -1805,19 +1413,11 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 40px; }
     <div class="footer-bottom">
       <span class="footer-copy">© 2026 LocalPulse. All rights reserved.</span>
       <div class="footer-socials">
-        <!-- X / Twitter -->
-        <a href="#" class="social-link" aria-label="X (Twitter)">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-          </svg>
+        <a href="#" class="social-link" aria-label="X">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
-        <!-- Instagram -->
         <a href="#" class="social-link" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <circle cx="12" cy="12" r="4"/>
-            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
         </a>
       </div>
     </div>
@@ -1825,77 +1425,42 @@ footer { border-top: 1px solid var(--border); padding: 64px 0 40px; }
 </footer>
 
 <script>
-/* ── NAV SHRINK ON SCROLL ── */
+/* ── NAV ── */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
 
-/* ── FAQ ACCORDION ── */
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.querySelector('.faq-q').addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
-
 /* ── PRICING TOGGLE ── */
-const prices = { monthly: [49, 99, 249], annual: [39, 79, 199] };
+const prices = { monthly: [19, 99, 49], annual: [15, 79, 39] };
 function setToggle(mode) {
   document.getElementById('toggle-monthly').classList.toggle('active', mode === 'monthly');
   document.getElementById('toggle-annual').classList.toggle('active', mode === 'annual');
   const p = prices[mode];
-  document.getElementById('price-starter').textContent = p[0];
-  document.getElementById('price-growth').textContent = p[1];
-  document.getElementById('price-agency').textContent = p[2];
+  document.getElementById('price-creator').textContent = p[0];
+  document.getElementById('price-pro').textContent = p[1];
+  document.getElementById('price-business').textContent = p[2];
 }
 
-/* ── CTA WAITLIST FORM ── */
-document.getElementById('ctaForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = this.querySelector('button[type="submit"]');
-  const originalText = btn.textContent;
-  btn.textContent = 'Submitting…';
-  btn.disabled = true;
-  const data = { email: this.email.value };
-  try {
-    await fetch('https://hook.eu1.make.com/qnt1x9xkzka8m6gbpqq99ngxt9vrbj9k', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-  } catch (_) {}
-  this.style.display = 'none';
-  document.getElementById('ctaSuccess').classList.add('visible');
-});
-
-/* ── REVEAL ON SCROLL ── */
+/* ── REVEALS ── */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('in-view');
-      revealObserver.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.classList.add('in-view'); revealObserver.unobserve(e.target); }
   });
 }, { threshold: 0.1 });
-
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-/* ── STAGGERED CHILDREN ── */
 document.querySelectorAll('.stagger-parent').forEach(parent => {
   const children = parent.querySelectorAll('.reveal-child');
-  const staggerObserver = new IntersectionObserver((entries) => {
+  const o = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        children.forEach((child, i) => {
-          setTimeout(() => child.classList.add('in-view'), i * 130);
-        });
-        staggerObserver.unobserve(e.target);
+        children.forEach((c, i) => setTimeout(() => c.classList.add('in-view'), i * 120));
+        o.unobserve(e.target);
       }
     });
   }, { threshold: 0.1 });
-  staggerObserver.observe(parent);
+  o.observe(parent);
 });
 
 /* ── STATS COUNT-UP ── */
@@ -1903,50 +1468,59 @@ function animateCount(el) {
   const raw = el.dataset.target;
   const isFloat = raw.includes('.');
   const target = parseFloat(raw);
-  const prefix = el.dataset.prefix || '';
   const suffix = el.dataset.suffix || '';
   const duration = 1800;
-  const startTime = performance.now();
+  const t0 = performance.now();
   function tick(now) {
-    const elapsed = now - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const value = target * eased;
-    el.textContent = prefix + (isFloat ? value.toFixed(1) : Math.round(value)) + suffix;
-    if (progress < 1) requestAnimationFrame(tick);
+    const p = Math.min((now - t0) / duration, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    el.textContent = (isFloat ? (target * e).toFixed(1) : Math.round(target * e)) + suffix;
+    if (p < 1) requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
 }
-const countObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      animateCount(e.target);
-      countObserver.unobserve(e.target);
-    }
-  });
+const countObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); countObs.unobserve(e.target); } });
 }, { threshold: 0.5 });
-document.querySelectorAll('.stat-num[data-target]').forEach(el => countObserver.observe(el));
+document.querySelectorAll('.stat-num[data-target]').forEach(el => countObs.observe(el));
 
-/* ── HOW IT WORKS: step tracking + sticky visual ── */
-const hiwSteps = document.querySelectorAll('.hiw-step');
-const hiwPanels = document.querySelectorAll('.hiw-panel');
+/* ── HOW IT WORKS — TABS + SCROLL STEPS ── */
+let hiwObs;
 
-if (hiwSteps.length) {
-  const hiwObserver = new IntersectionObserver((entries) => {
+function setupHiwSteps() {
+  if (hiwObs) hiwObs.disconnect();
+  const pane = document.querySelector('.hiw-pane.active');
+  if (!pane) return;
+  const steps  = pane.querySelectorAll('.hiw-step');
+  const panels = pane.querySelectorAll('.hiw-panel');
+  steps.forEach((s, i)  => s.classList.toggle('active', i === 0));
+  panels.forEach((p, i) => p.classList.toggle('active', i === 0));
+  hiwObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         const idx = parseInt(e.target.dataset.step);
-        hiwSteps.forEach(s => s.classList.remove('active'));
+        steps.forEach(s  => s.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
         e.target.classList.add('active');
-        hiwPanels.forEach(p => p.classList.remove('active'));
-        if (hiwPanels[idx]) hiwPanels[idx].classList.add('active');
+        if (panels[idx]) panels[idx].classList.add('active');
       }
     });
   }, { threshold: 0.55, rootMargin: '0px 0px -15% 0px' });
-  hiwSteps.forEach(s => hiwObserver.observe(s));
+  steps.forEach(s => hiwObs.observe(s));
 }
+
+document.querySelectorAll('.hiw-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.hiw-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('.hiw-pane').forEach(p => p.classList.remove('active'));
+    document.getElementById('hiw-' + tab.dataset.tab).classList.add('active');
+    setupHiwSteps();
+  });
+});
+
+setupHiwSteps();
 </script>
 
 </body>
 </html>
-
