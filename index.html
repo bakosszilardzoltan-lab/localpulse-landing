@@ -187,7 +187,7 @@ nav,main,footer { position: relative; z-index: 1; }
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: calc(var(--nav-h) + 60px) 48px 80px;
+  padding: calc(var(--nav-h) + 36px) 48px 48px;
   text-align: center;
 }
 .hero-blob {
@@ -659,7 +659,7 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
   #navbar{padding:0 24px}
   .nav-links{display:none}
   .container{padding:0 24px}
-  .hero{padding:calc(var(--nav-h)+32px) 24px 56px}
+  .hero{padding:calc(var(--nav-h)+20px) 24px 36px}
   .hero-headline{font-size:clamp(40px,12vw,60px);letter-spacing:-0.02em}
   .hero-subline{font-size:clamp(18px,5vw,24px)}
   .hero-boxes{grid-template-columns:1fr}
@@ -686,6 +686,29 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
 @media (max-width:480px){
   .stats-grid{grid-template-columns:1fr}
   .footer-links-wrap{grid-template-columns:1fr}
+}
+
+/* ── HERO BOX SVG ICONS ── */
+.box-icon { margin-bottom: 14px; display: block; line-height: 0; }
+
+.pin-ring {
+  transform-origin: 18px 16px;
+  animation: pinPulse 2.4s ease-out infinite;
+}
+@keyframes pinPulse {
+  0%   { transform: scale(0.55); opacity: 0.85; }
+  100% { transform: scale(1.9);  opacity: 0;    }
+}
+
+.trend-line {
+  stroke-dasharray: 72;
+  stroke-dashoffset: 72;
+  animation: trendDraw 2.6s ease-in-out infinite;
+}
+@keyframes trendDraw {
+  0%   { stroke-dashoffset: 72; }
+  58%  { stroke-dashoffset: 0;  }
+  100% { stroke-dashoffset: 0;  }
 }
 </style>
 </head>
@@ -734,7 +757,13 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
       <!-- Business box -->
       <div class="hero-box">
         <div class="box-glow"></div>
-        <span class="box-icon">🏢</span>
+        <span class="box-icon">
+          <svg class="icon-pin" width="36" height="42" viewBox="0 0 36 42" fill="none">
+            <circle class="pin-ring" cx="18" cy="16" r="13" stroke="#00e5c4" stroke-width="1" fill="none"/>
+            <path d="M18 2C10.27 2 4 8.27 4 16C4 26 18 40 18 40C18 40 32 26 32 16C32 8.27 25.73 2 18 2Z" fill="rgba(0,229,196,0.12)" stroke="#00e5c4" stroke-width="1.5"/>
+            <circle cx="18" cy="16" r="4.5" fill="#00e5c4"/>
+          </svg>
+        </span>
         <div class="box-headline">Dominate Local Search</div>
         <p class="box-desc">Rank #1 on Google, manage reviews, track competitors. Built for local businesses and agencies that want to be found first.</p>
         <div class="box-tools">
@@ -753,7 +782,13 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
       <!-- Creator box -->
       <div class="hero-box">
         <div class="box-glow"></div>
-        <span class="box-icon">✦</span>
+        <span class="box-icon">
+          <svg class="icon-trend" width="40" height="30" viewBox="0 0 40 30" fill="none">
+            <path d="M2 26C9 24 16 18 20 12C24 6 30 3 38 2L38 30L2 30Z" fill="rgba(0,229,196,0.07)"/>
+            <path class="trend-line" d="M2 26C9 24 16 18 20 12C24 6 30 3 38 2" stroke="#00e5c4" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <circle cx="38" cy="2" r="2.5" fill="#00e5c4"/>
+          </svg>
+        </span>
         <div class="box-headline">Grow on Social Media</div>
         <p class="box-desc">Analyze Instagram, TikTok and YouTube. Understand what works and grow faster with AI that reads your audience for you.</p>
         <div class="box-tools">
