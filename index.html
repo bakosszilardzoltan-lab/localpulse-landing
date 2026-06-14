@@ -579,12 +579,6 @@ nav,main,footer { position: relative; z-index: 1; }
 /* ── PRICING ── */
 .pricing { padding: 100px 0 140px; background: linear-gradient(to bottom, transparent, rgba(10,15,15,0.3), transparent); }
 .pricing-header { text-align: center; margin-bottom: 48px; }
-.pricing-toggle-wrap { display: flex; justify-content: center; margin-bottom: 44px; }
-.pricing-toggle { display: inline-flex; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 4px; }
-.toggle-opt { padding: 9px 20px; border-radius: 8px; cursor: pointer; transition: all 0.22s; color: var(--text-muted); user-select: none; display: flex; align-items: center; gap: 7px; font-size: 14px; }
-.toggle-opt.active { background: var(--green); color: #000; font-weight: 600; }
-.save-badge { background: rgba(0,229,196,0.14); color: var(--green); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; border: 1px solid var(--border-green); }
-.toggle-opt.active .save-badge { background: rgba(0,0,0,0.12); color: #000; border-color: rgba(0,0,0,0.15); }
 .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; align-items: start; }
 .pricing-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 36px 28px; position: relative; transition: all 0.28s; }
 .pricing-card:hover:not(.featured) { border-color: var(--border-green); transform: translateY(-3px); }
@@ -599,10 +593,11 @@ nav,main,footer { position: relative; z-index: 1; }
 .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
 .plan-features li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-muted); }
 .check { width: 16px; height: 16px; border-radius: 50%; background: var(--green-glow); border: 1px solid var(--border-green); color: var(--green); display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; }
-.plan-btn { width: 100%; padding: 13px; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; border: 1px solid var(--border); background: transparent; color: var(--text); transition: all 0.22s; text-align: center; text-decoration: none; display: block; }
-.plan-btn:hover:not(.featured-btn) { background: var(--surface); border-color: rgba(255,255,255,0.22); }
+.plan-btn { width: 100%; padding: 13px; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; border: 1px solid rgba(255,255,255,0.18); background: transparent; color: var(--text); transition: all 0.22s; text-align: center; text-decoration: none; display: block; }
+.plan-btn:hover:not(.featured-btn) { background: var(--surface); border-color: rgba(255,255,255,0.32); }
 .plan-btn.featured-btn { background: var(--green); color: #000; border-color: var(--green); font-weight: 700; }
 .plan-btn.featured-btn:hover { background: var(--green-bright); box-shadow: 0 6px 22px rgba(0,229,196,0.28); }
+.pricing-footnote { text-align: center; margin-top: 24px; font-size: 12px; color: var(--text-dim); line-height: 1.65; }
 
 /* ── TESTIMONIALS ── */
 .testimonials { padding: 80px 0 140px; }
@@ -1309,12 +1304,6 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
       <h2 class="section-title">Simple pricing. Full access.</h2>
       <p class="section-sub" style="margin:0 auto 32px;">No hidden fees. No contracts. Cancel anytime.</p>
     </div>
-    <div class="pricing-toggle-wrap">
-      <div class="pricing-toggle">
-        <div class="toggle-opt active" id="toggle-monthly" onclick="setToggle('monthly')">Monthly</div>
-        <div class="toggle-opt" id="toggle-annual" onclick="setToggle('annual')">Annual <span class="save-badge">Save 20%</span></div>
-      </div>
-    </div>
     <div class="pricing-grid">
 
       <!-- Creator -->
@@ -1322,19 +1311,16 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
         <div class="plan-name">Creator</div>
         <div class="plan-price">
           <span class="price-currency">$</span>
-          <span class="price-amount" id="price-creator">19</span>
+          <span class="price-amount">19</span>
           <span class="price-period">/mo</span>
         </div>
-        <div class="plan-desc">For content creators who want to understand their audience and grow on social media.</div>
+        <div class="plan-desc">For content creators who want to grow on Instagram.</div>
         <ul class="plan-features">
           <li><span class="check">✓</span>Instagram Analyzer</li>
-          <li><span class="check">✓</span>TikTok Analyzer</li>
-          <li><span class="check">✓</span>YouTube Analyzer</li>
+          <li><span class="check">✓</span>Full AI strategy report</li>
           <li><span class="check">✓</span>Content Calendar</li>
-          <li><span class="check">✓</span>AI posting recommendations</li>
-          <li><span class="check">✓</span>Monthly growth reports</li>
         </ul>
-        <a href="https://app.localpulse.ink/sign-up?plan=creator" class="plan-btn">Get started</a>
+        <a href="https://app.localpulse.ink/sign-up?plan=creator" class="plan-btn">Start as Creator</a>
       </div>
 
       <!-- Business -->
@@ -1342,19 +1328,19 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
         <div class="plan-name">Business</div>
         <div class="plan-price">
           <span class="price-currency">$</span>
-          <span class="price-amount" id="price-business">49</span>
+          <span class="price-amount">49</span>
           <span class="price-period">/mo</span>
         </div>
-        <div class="plan-desc">For local businesses and agencies who want to rank #1 on Google and beat the competition.</div>
+        <div class="plan-desc">For local businesses and agencies who want to rank #1 on Google.</div>
         <ul class="plan-features">
+          <li><span class="check">✓</span>Business Audit</li>
           <li><span class="check">✓</span>GBP Post Generator</li>
           <li><span class="check">✓</span>AI Review Responder</li>
           <li><span class="check">✓</span>SEO Keyword Hunter</li>
-          <li><span class="check">✓</span>Business Audit</li>
           <li><span class="check">✓</span>Competitor Spy</li>
-          <li><span class="check">✓</span>1 business location</li>
+          <li><span class="check">✓</span>1 location</li>
         </ul>
-        <a href="https://app.localpulse.ink/sign-up?plan=business" class="plan-btn">Get started</a>
+        <a href="https://app.localpulse.ink/sign-up?plan=business" class="plan-btn">Start for Business</a>
       </div>
 
       <!-- Pro — Featured -->
@@ -1363,23 +1349,21 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
         <div class="plan-name">Pro</div>
         <div class="plan-price">
           <span class="price-currency">$</span>
-          <span class="price-amount" id="price-pro">99</span>
+          <span class="price-amount">99</span>
           <span class="price-period">/mo</span>
         </div>
-        <div class="plan-desc">Everything in Creator + Business. The full LocalPulse suite for those who want it all.</div>
+        <div class="plan-desc">Everything in Creator and Business. For those who want it all.</div>
         <ul class="plan-features">
-          <li><span class="check">✓</span>All Creator tools</li>
-          <li><span class="check">✓</span>All Business tools</li>
+          <li><span class="check">✓</span>Everything in Creator</li>
+          <li><span class="check">✓</span>Everything in Business</li>
           <li><span class="check">✓</span>Up to 3 locations</li>
           <li><span class="check">✓</span>Priority support</li>
-          <li><span class="check">✓</span>Advanced analytics</li>
-          <li><span class="check">✓</span>Weekly reports</li>
-          <li><span class="check">✓</span>API access</li>
         </ul>
-        <a href="https://app.localpulse.ink/sign-up?plan=pro" class="plan-btn featured-btn">Get started</a>
+        <a href="https://app.localpulse.ink/sign-up?plan=pro" class="plan-btn featured-btn">Get Pro</a>
       </div>
 
     </div>
+    <p class="pricing-footnote">Free 3-day trial on all plans. Instagram Analyzer and Business Audit score available free. Full access unlocks on paid plan.</p>
   </div>
 </section>
 
@@ -1566,17 +1550,6 @@ const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
-
-/* ── PRICING TOGGLE ── */
-const prices = { monthly: [19, 99, 49], annual: [15, 79, 39] };
-function setToggle(mode) {
-  document.getElementById('toggle-monthly').classList.toggle('active', mode === 'monthly');
-  document.getElementById('toggle-annual').classList.toggle('active', mode === 'annual');
-  const p = prices[mode];
-  document.getElementById('price-creator').textContent = p[0];
-  document.getElementById('price-pro').textContent = p[1];
-  document.getElementById('price-business').textContent = p[2];
-}
 
 /* ── REVEALS ── */
 const revealObserver = new IntersectionObserver((entries) => {
