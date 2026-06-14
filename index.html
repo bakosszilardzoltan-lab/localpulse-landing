@@ -124,6 +124,8 @@ nav,main,footer { position: relative; z-index: 1; }
   white-space: nowrap;
 }
 .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.28); }
+.btn-outline-teal { color: var(--green); border-color: rgba(0,229,196,0.45); }
+.btn-outline-teal:hover { background: rgba(0,229,196,0.07); border-color: var(--green); color: var(--green-bright); }
 .btn-lg { padding: 14px 28px; font-size: 15px; }
 .btn-ghost { color: var(--text-muted); background: none; border: none; font-family: 'DM Sans', sans-serif; font-size: 14px; cursor: pointer; text-decoration: none; transition: color 0.2s; }
 .btn-ghost:hover { color: var(--text); }
@@ -246,7 +248,8 @@ nav,main,footer { position: relative; z-index: 1; }
 }
 .hero-subline {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(16px, 1.8vw, 20px);
+  font-size: 22px;
+  font-weight: 400;
   color: var(--text-muted);
   margin-bottom: 56px;
   animation: fadeUp 0.55s 0.18s ease both;
@@ -819,7 +822,7 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
         </div>
         <div class="box-footer">
           <div class="box-price">From <strong>$19/mo</strong></div>
-          <a href="https://app.localpulse.ink/sign-up?type=creator" class="btn-primary">Start as Creator →</a>
+          <a href="https://app.localpulse.ink/sign-up?type=creator" class="btn-outline btn-outline-teal">Start as Creator →</a>
         </div>
       </div>
 
@@ -1292,6 +1295,26 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
         <a href="https://app.localpulse.ink/sign-up?plan=creator" class="plan-btn">Get started</a>
       </div>
 
+      <!-- Business -->
+      <div class="pricing-card">
+        <div class="plan-name">Business</div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-amount" id="price-business">49</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <div class="plan-desc">For local businesses and agencies who want to rank #1 on Google and beat the competition.</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span>GBP Post Generator</li>
+          <li><span class="check">✓</span>AI Review Responder</li>
+          <li><span class="check">✓</span>SEO Keyword Hunter</li>
+          <li><span class="check">✓</span>Business Audit</li>
+          <li><span class="check">✓</span>Competitor Spy</li>
+          <li><span class="check">✓</span>1 business location</li>
+        </ul>
+        <a href="https://app.localpulse.ink/sign-up?plan=business" class="plan-btn">Get started</a>
+      </div>
+
       <!-- Pro — Featured -->
       <div class="pricing-card featured">
         <div class="featured-tag">Best Value</div>
@@ -1312,26 +1335,6 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
           <li><span class="check">✓</span>API access</li>
         </ul>
         <a href="https://app.localpulse.ink/sign-up?plan=pro" class="plan-btn featured-btn">Get started</a>
-      </div>
-
-      <!-- Business -->
-      <div class="pricing-card">
-        <div class="plan-name">Business</div>
-        <div class="plan-price">
-          <span class="price-currency">$</span>
-          <span class="price-amount" id="price-business">49</span>
-          <span class="price-period">/mo</span>
-        </div>
-        <div class="plan-desc">For local businesses and agencies who want to rank #1 on Google and beat the competition.</div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span>GBP Post Generator</li>
-          <li><span class="check">✓</span>AI Review Responder</li>
-          <li><span class="check">✓</span>SEO Keyword Hunter</li>
-          <li><span class="check">✓</span>Business Audit</li>
-          <li><span class="check">✓</span>Competitor Spy</li>
-          <li><span class="check">✓</span>1 business location</li>
-        </ul>
-        <a href="https://app.localpulse.ink/sign-up?plan=business" class="plan-btn">Get started</a>
       </div>
 
     </div>
@@ -1416,8 +1419,6 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Blog</a></li>
             <li><a href="mailto:hello@localpulse.ink">Contact</a></li>
           </ul>
         </div>
