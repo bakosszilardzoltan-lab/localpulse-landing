@@ -246,7 +246,7 @@ nav,main,footer { position: relative; z-index: 1; }
 }
 .hero-subline {
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(20px, 3vw, 30px);
+  font-size: clamp(16px, 1.8vw, 20px);
   color: var(--text-muted);
   margin-bottom: 56px;
   animation: fadeUp 0.55s 0.18s ease both;
@@ -271,6 +271,8 @@ nav,main,footer { position: relative; z-index: 1; }
   padding: 36px 32px 30px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.32s cubic-bezier(0.16,1,0.3,1), border-color 0.3s, box-shadow 0.3s;
 }
 .hero-box::before {
@@ -333,6 +335,7 @@ nav,main,footer { position: relative; z-index: 1; }
   gap: 12px;
   border-top: 1px solid var(--border);
   padding-top: 18px;
+  margin-top: auto;
 }
 .box-price { font-size: 13px; color: var(--text-muted); }
 .box-price strong { color: var(--green); font-size: 15px; font-weight: 600; }
