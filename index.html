@@ -413,7 +413,7 @@ nav,main,footer { position: relative; z-index: 1; }
 .fbar:nth-child(6){height:84%;animation-delay:0.24s}
 .fbar:nth-child(7){height:74%;animation-delay:0.28s}
 @keyframes fbarGrow { from { height: 0; } }
-.feat-chart-badge { position: absolute; bottom: 18px; right: 18px; font-size: 11px; color: var(--green); font-weight: 600; background: var(--green-glow); border: 1px solid var(--border-green); padding: 3px 8px; border-radius: 5px; }
+.feat-chart-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 700; color: var(--green); background: rgba(0,229,196,0.1); border: 1px solid rgba(0,229,196,0.32); padding: 7px 14px; border-radius: 7px; margin: 14px 28px 0; }
 
 /* Visual: review bubbles */
 .feat-reviews { display: flex; flex-direction: column; gap: 7px; width: 100%; }
@@ -847,8 +847,8 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
             <div class="fbar"></div><div class="fbar"></div><div class="fbar"></div>
             <div class="fbar"></div><div class="fbar"></div><div class="fbar"></div><div class="fbar"></div>
           </div>
-          <div class="feat-chart-badge">↑ 47% more calls</div>
         </div>
+        <div class="feat-chart-badge">↑ 47% more calls</div>
         <div class="feat-body">
           <h3>GBP Optimization</h3>
           <p>AI audits your Google Business Profile and implements every ranking signal — photos, keywords, posts, and completeness — automatically.</p>
