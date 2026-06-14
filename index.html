@@ -390,7 +390,7 @@ nav,main,footer { position: relative; z-index: 1; }
 .feat-visual {
   padding: 32px 28px 24px;
   border-bottom: 1px solid var(--border);
-  min-height: 160px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -431,14 +431,14 @@ nav,main,footer { position: relative; z-index: 1; }
 .feat-rank-badge { font-size: 11px; color: var(--green); font-weight: 600; background: var(--green-glow); border: 1px solid var(--border-green); padding: 3px 9px; border-radius: 5px; margin-top: 4px; }
 
 /* Visual: social profile */
-.feat-profile-wrap { width: 100%; max-width: 200px; }
-.feat-profile { background: rgba(6,8,8,0.85); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
-.fpc-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.fpc-ava { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--green), rgba(0,229,196,0.3)); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.feat-profile-wrap { width: 100%; max-width: 260px; }
+.feat-profile { background: rgba(6,8,8,0.85); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+.fpc-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.fpc-ava { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--green), rgba(0,229,196,0.4)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 0 10px rgba(0,229,196,0.3); }
 .fpc-name { font-size: 12px; font-weight: 600; margin-bottom: 1px; }
 .fpc-handle { font-size: 10px; color: var(--text-dim); }
-.fpc-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 5px; }
-.fpc-stat { text-align: center; background: var(--surface); border-radius: 5px; padding: 6px 4px; }
+.fpc-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 4px; }
+.fpc-stat { text-align: center; background: var(--surface); border-radius: 5px; padding: 5px 4px; }
 .fpc-val { font-size: 13px; font-weight: 600; color: var(--green); display: block; }
 .fpc-lbl { font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.3px; }
 
@@ -447,7 +447,7 @@ nav,main,footer { position: relative; z-index: 1; }
 .engage-row { display: flex; align-items: center; gap: 9px; }
 .engage-label { font-size: 11px; color: var(--text-dim); width: 64px; flex-shrink: 0; }
 .engage-bar { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
-.engage-fill { height: 100%; background: linear-gradient(90deg, var(--green), rgba(0,229,196,0.4)); border-radius: 2px; animation: efillGrow 0.9s ease both; }
+.engage-fill { height: 100%; background: linear-gradient(90deg, var(--green), rgba(0,229,196,0.4)); border-radius: 2px; width: 0; transition: width 0.85s cubic-bezier(0.16,1,0.3,1); }
 @keyframes efillGrow { from { width: 0; } }
 .engage-val { font-size: 11px; color: var(--green); font-weight: 600; width: 30px; text-align: right; flex-shrink: 0; }
 
@@ -710,6 +710,23 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
   58%  { stroke-dashoffset: 0;  }
   100% { stroke-dashoffset: 0;  }
 }
+
+/* ── CREATOR CARD SCROLL-TRIGGERED ANIMATIONS ── */
+.reveal-child.in-view .engage-fill { width: var(--w, 0%); }
+.reveal-child.in-view .engage-row:nth-child(2) .engage-fill { transition-delay: 0.08s; }
+.reveal-child.in-view .engage-row:nth-child(3) .engage-fill { transition-delay: 0.16s; }
+.reveal-child.in-view .engage-row:nth-child(4) .engage-fill { transition-delay: 0.24s; }
+
+.growth-path {
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.16,1,0.3,1) 0.15s;
+}
+.reveal-child.in-view .growth-path { stroke-dashoffset: 0; }
+
+/* Instagram mini post grid */
+.fpc-postgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; margin-top: 6px; }
+.fpc-post { height: 12px; border-radius: 3px; background: linear-gradient(135deg, rgba(0,229,196,0.18) 0%, rgba(0,229,196,0.05) 100%); border: 1px solid rgba(0,229,196,0.14); }
 </style>
 </head>
 <body>
@@ -913,16 +930,29 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
           <div class="feat-profile-wrap">
             <div class="feat-profile">
               <div class="fpc-top">
-                <div class="fpc-ava">📸</div>
+                <div class="fpc-ava">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" stroke="rgba(0,0,0,0.65)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="13" r="4" stroke="rgba(0,0,0,0.65)" stroke-width="2"/>
+                  </svg>
+                </div>
                 <div>
                   <div class="fpc-name">@yourhandle</div>
                   <div class="fpc-handle">instagram.com</div>
                 </div>
               </div>
               <div class="fpc-stats">
-                <div class="fpc-stat"><span class="fpc-val">42.3k</span><span class="fpc-lbl">Followers</span></div>
-                <div class="fpc-stat"><span class="fpc-val">6.8%</span><span class="fpc-lbl">Engage</span></div>
-                <div class="fpc-stat"><span class="fpc-val">↑ 12%</span><span class="fpc-lbl">Growth</span></div>
+                <div class="fpc-stat"><span class="fpc-val" data-target="42.3" data-suffix="k">42.3k</span><span class="fpc-lbl">Followers</span></div>
+                <div class="fpc-stat"><span class="fpc-val" data-target="6.8" data-suffix="%">6.8%</span><span class="fpc-lbl">Engage</span></div>
+                <div class="fpc-stat"><span class="fpc-val" data-target="12" data-prefix="↑ " data-suffix="%">↑ 12%</span><span class="fpc-lbl">Growth</span></div>
+              </div>
+              <div class="fpc-postgrid">
+                <div class="fpc-post" style="opacity:.95"></div>
+                <div class="fpc-post" style="opacity:.70"></div>
+                <div class="fpc-post" style="opacity:1.0"></div>
+                <div class="fpc-post" style="opacity:.65"></div>
+                <div class="fpc-post" style="opacity:.85"></div>
+                <div class="fpc-post" style="opacity:.55"></div>
               </div>
             </div>
           </div>
@@ -938,22 +968,22 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
           <div class="feat-engage">
             <div class="engage-row">
               <span class="engage-label">Carousels</span>
-              <div class="engage-bar"><div class="engage-fill" style="width:84%"></div></div>
+              <div class="engage-bar"><div class="engage-fill" style="--w:84%"></div></div>
               <span class="engage-val">8.4%</span>
             </div>
             <div class="engage-row">
               <span class="engage-label">Reels</span>
-              <div class="engage-bar"><div class="engage-fill" style="width:72%;animation-delay:0.1s"></div></div>
+              <div class="engage-bar"><div class="engage-fill" style="--w:72%"></div></div>
               <span class="engage-val">7.2%</span>
             </div>
             <div class="engage-row">
               <span class="engage-label">Stories</span>
-              <div class="engage-bar"><div class="engage-fill" style="width:58%;animation-delay:0.2s"></div></div>
+              <div class="engage-bar"><div class="engage-fill" style="--w:58%"></div></div>
               <span class="engage-val">5.8%</span>
             </div>
             <div class="engage-row">
               <span class="engage-label">Static</span>
-              <div class="engage-bar"><div class="engage-fill" style="width:31%;animation-delay:0.3s"></div></div>
+              <div class="engage-bar"><div class="engage-fill" style="--w:31%"></div></div>
               <span class="engage-val">3.1%</span>
             </div>
           </div>
@@ -968,8 +998,8 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
         <div class="feat-visual">
           <div class="feat-growth">
             <svg class="growth-svg" viewBox="0 0 220 64" fill="none">
-              <path d="M0,52 C30,50 60,42 90,32 C120,22 150,14 180,8 C195,5 210,4 220,3" stroke="#00e5c4" stroke-width="1.8" stroke-linecap="round" fill="none"/>
               <path d="M0,52 C30,50 60,42 90,32 C120,22 150,14 180,8 C195,5 210,4 220,3 L220,64 L0,64 Z" fill="rgba(0,229,196,0.07)"/>
+              <path class="growth-path" d="M0,52 C30,50 60,42 90,32 C120,22 150,14 180,8 C195,5 210,4 220,3" stroke="#00e5c4" stroke-width="1.8" stroke-linecap="round" fill="none"/>
               <circle cx="220" cy="3" r="3" fill="#00e5c4"/>
             </svg>
             <div class="growth-badge">↑ +2,840 subscribers this month</div>
@@ -1515,12 +1545,13 @@ function animateCount(el) {
   const isFloat = raw.includes('.');
   const target = parseFloat(raw);
   const suffix = el.dataset.suffix || '';
+  const prefix = el.dataset.prefix || '';
   const duration = 1800;
   const t0 = performance.now();
   function tick(now) {
     const p = Math.min((now - t0) / duration, 1);
     const e = 1 - Math.pow(1 - p, 3);
-    el.textContent = (isFloat ? (target * e).toFixed(1) : Math.round(target * e)) + suffix;
+    el.textContent = prefix + (isFloat ? (target * e).toFixed(1) : Math.round(target * e)) + suffix;
     if (p < 1) requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
@@ -1528,7 +1559,7 @@ function animateCount(el) {
 const countObs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); countObs.unobserve(e.target); } });
 }, { threshold: 0.5 });
-document.querySelectorAll('.stat-num[data-target]').forEach(el => countObs.observe(el));
+document.querySelectorAll('.stat-num[data-target], .fpc-val[data-target]').forEach(el => countObs.observe(el));
 
 /* ── HOW IT WORKS — TABS + SCROLL STEPS ── */
 let hiwObs;
