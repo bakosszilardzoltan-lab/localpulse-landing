@@ -485,7 +485,8 @@ nav,main,footer { position: relative; z-index: 1; }
 .hiw-pane.active { display: block; }
 .how-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
 .hiw-steps-list { position: relative; }
-.hiw-step { display: flex; gap: 18px; padding: 30px 0; cursor: pointer; }
+.hiw-step { display: flex; gap: 18px; padding: 30px 0; cursor: pointer; opacity: 0; transform: translateY(22px); transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+.hiw-step.step-visible { opacity: 1; transform: translateY(0); }
 .hiw-step:first-child { padding-top: 0; }
 .hiw-step:last-child { padding-bottom: 0; }
 .step-indicator { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 22px; }
@@ -535,6 +536,8 @@ nav,main,footer { position: relative; z-index: 1; }
 .hiw-rank-big { font-family: 'DM Sans', sans-serif; font-size: 76px; font-weight: 200; color: var(--text); line-height: 1; text-shadow: 0 0 50px rgba(0,229,196,0.38); letter-spacing: -3px; }
 .hiw-rank-kw { font-size: 12px; color: var(--text-muted); }
 .hiw-rank-badge { font-size: 12px; color: var(--green); font-weight: 600; background: var(--green-glow); border: 1px solid var(--border-green); padding: 4px 12px; border-radius: 6px; }
+.hiw-panel[data-panel="2"] .hiw-rank-badge { transform: translateX(-24px); opacity: 0; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.5s, opacity 0.4s ease 0.5s; }
+.hiw-panel[data-panel="2"].active .hiw-rank-badge { transform: translateX(0); opacity: 1; }
 .hiw-ms { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; width: 100%; margin-top: 6px; }
 .hiw-ms-item { background: rgba(6,8,8,0.8); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center; }
 .hiw-ms-val { display: block; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--green); margin-bottom: 2px; }
@@ -1562,7 +1565,35 @@ const countObs = new IntersectionObserver((entries) => {
 document.querySelectorAll('.stat-num[data-target], .fpc-val[data-target]').forEach(el => countObs.observe(el));
 
 /* ── HOW IT WORKS — TABS + SCROLL STEPS ── */
-let hiwObs;
+let hiwObs, hiwHasEntered = false;
+
+function animateRankDown(el) {
+  const start = 5, end = 1, duration = 1200;
+  const t0 = performance.now();
+  (function tick(now) {
+    const p = Math.min((now - t0) / duration, 1);
+    el.textContent = '#' + Math.round(start + (end - start) * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(tick);
+  })(performance.now());
+}
+
+function activateHiwPanel(steps, panels, idx) {
+  steps.forEach(s => s.classList.remove('active'));
+  panels.forEach(p => p.classList.remove('active'));
+  if (steps[idx]) steps[idx].classList.add('active');
+  if (panels[idx]) {
+    panels[idx].classList.add('active');
+    const rankEl = panels[idx].querySelector('.hiw-rank-big');
+    if (rankEl) animateRankDown(rankEl);
+  }
+}
+
+function staggerSteps(pane) {
+  pane.querySelectorAll('.hiw-step').forEach((step, i) => {
+    step.classList.remove('step-visible');
+    setTimeout(() => step.classList.add('step-visible'), 100 + i * 150);
+  });
+}
 
 function setupHiwSteps() {
   if (hiwObs) hiwObs.disconnect();
@@ -1570,20 +1601,34 @@ function setupHiwSteps() {
   if (!pane) return;
   const steps  = pane.querySelectorAll('.hiw-step');
   const panels = pane.querySelectorAll('.hiw-panel');
-  steps.forEach((s, i)  => s.classList.toggle('active', i === 0));
-  panels.forEach((p, i) => p.classList.toggle('active', i === 0));
+  activateHiwPanel(steps, panels, 0);
+  steps.forEach((step, i) => {
+    step.addEventListener('click', () => activateHiwPanel(steps, panels, i));
+  });
   hiwObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        const idx = parseInt(e.target.dataset.step);
-        steps.forEach(s  => s.classList.remove('active'));
-        panels.forEach(p => p.classList.remove('active'));
-        e.target.classList.add('active');
-        if (panels[idx]) panels[idx].classList.add('active');
+        activateHiwPanel(steps, panels, parseInt(e.target.dataset.step));
       }
     });
   }, { threshold: 0.55, rootMargin: '0px 0px -15% 0px' });
   steps.forEach(s => hiwObs.observe(s));
+  if (hiwHasEntered) staggerSteps(pane);
+}
+
+const hiwSection = document.querySelector('.how-it-works');
+if (hiwSection) {
+  const hiwEnterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        hiwHasEntered = true;
+        const p = document.querySelector('.hiw-pane.active');
+        if (p) staggerSteps(p);
+        hiwEnterObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  hiwEnterObs.observe(hiwSection);
 }
 
 document.querySelectorAll('.hiw-tab').forEach(tab => {
