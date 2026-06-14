@@ -124,7 +124,7 @@ nav,main,footer { position: relative; z-index: 1; }
   white-space: nowrap;
 }
 .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.28); }
-.btn-outline-teal { color: var(--green); border-color: rgba(0,229,196,0.45); }
+.btn-outline-teal { color: var(--green); border-color: rgba(0,229,196,0.65); font-weight: 500; }
 .btn-outline-teal:hover { background: rgba(0,229,196,0.07); border-color: var(--green); color: var(--green-bright); }
 .btn-lg { padding: 14px 28px; font-size: 15px; }
 .btn-ghost { color: var(--text-muted); background: none; border: none; font-family: 'DM Sans', sans-serif; font-size: 14px; cursor: pointer; text-decoration: none; transition: color 0.2s; }
@@ -464,26 +464,27 @@ nav,main,footer { position: relative; z-index: 1; }
 .how-header { margin-bottom: 40px; }
 .hiw-tabs {
   display: inline-flex;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: transparent;
+  border: none;
   border-radius: 10px;
-  padding: 4px;
-  gap: 4px;
+  padding: 0;
+  gap: 10px;
   margin-bottom: 52px;
 }
 .hiw-tab {
-  padding: 10px 24px;
-  border-radius: 8px;
-  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,229,196,0.55);
   background: transparent;
-  color: var(--text-muted);
+  color: var(--green);
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.22s;
 }
-.hiw-tab.active { background: var(--green); color: #000; font-weight: 600; }
+.hiw-tab:hover:not(.active) { border-color: var(--green); background: rgba(0,229,196,0.05); }
+.hiw-tab.active { background: var(--green); color: #000; border-color: var(--green); font-weight: 600; }
 .hiw-pane { display: none; }
 .hiw-pane.active { display: block; }
 .how-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
@@ -572,6 +573,7 @@ nav,main,footer { position: relative; z-index: 1; }
 .hiw-growth-svg { width: 100%; height: 72px; }
 .hiw-growth-badge { font-size: 13px; color: var(--green); font-weight: 600; background: var(--green-glow); border: 1px solid var(--border-green); padding: 5px 14px; border-radius: 7px; }
 .hiw-growth-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; width: 100%; margin-top: 6px; min-height: 48px; }
+.hiw-disclaimer { font-size: 11px; color: var(--text-dim); text-align: center; margin-top: 12px; letter-spacing: 0.1px; }
 .hiw-growth-stat { background: rgba(6,8,8,0.8); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center; }
 .hiw-growth-val { display: block; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--green); margin-bottom: 2px; }
 .hiw-growth-lbl { display: block; font-size: 8px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.4px; }
@@ -775,7 +777,7 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
 <!-- ═══ NAV ═══ -->
 <nav id="navbar">
   <div class="nav-inner container">
-    <a href="#" class="nav-logo">
+    <a href="/" class="nav-logo">
       <svg viewBox="0 0 48 56" fill="none">
         <path d="M24 2C14.06 2 6 10.06 6 20C6 32 24 54 24 54C24 54 42 32 42 20C42 10.06 33.94 2 24 2Z" fill="rgba(0,229,196,0.08)" stroke="#00e5c4" stroke-width="1.5"/>
         <path d="M12 20 L16 20 L18 14 L20 26 L22 18 L24 22 L26 20 L36 20" stroke="#00e5c4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -1119,8 +1121,8 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
                 <div class="hiw-card-top">
                   <div class="hiw-card-logo">📍</div>
                   <div>
-                    <div class="hiw-card-name">Mario's Pizzeria</div>
-                    <div class="hiw-card-sub">Restaurant · Italian · NYC</div>
+                    <div class="hiw-card-name">SmilePro Dental Clinic</div>
+                    <div class="hiw-card-sub">Dental Clinic · Healthcare</div>
                   </div>
                 </div>
                 <div class="hiw-card-stars">★★★★★ <span>4.9 (284 reviews)</span></div>
@@ -1144,7 +1146,7 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
                   <div class="hiw-sug-ico">🔍</div>
                   <div>
                     <div class="hiw-sug-lbl">Add missing keyword</div>
-                    <div class="hiw-sug-desc">Add "wood-fired pizza" to description</div>
+                    <div class="hiw-sug-desc">Add "emergency dental care" to description</div>
                     <span class="hiw-sug-badge">High Impact</span>
                   </div>
                 </div>
@@ -1170,7 +1172,7 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
             <div class="hiw-panel" data-panel="2">
               <div class="hiw-rank-panel">
                 <div class="hiw-rank-big">#1</div>
-                <div class="hiw-rank-kw">"pizza near me" · New York, NY</div>
+                <div class="hiw-rank-kw">"dentist near me" · Cluj-Napoca, RO</div>
                 <div class="hiw-rank-badge">↑ Climbed 6 positions in 8 days</div>
                 <div class="hiw-ms">
                   <div class="hiw-ms-item"><span class="hiw-ms-val">3.2×</span><span class="hiw-ms-lbl">More views</span></div>
@@ -1180,6 +1182,7 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
               </div>
             </div>
           </div>
+          <p class="hiw-disclaimer">Simulated results for illustration purposes.</p>
         </div>
       </div>
     </div>
@@ -1290,6 +1293,7 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
               </div>
             </div>
           </div>
+          <p class="hiw-disclaimer">Simulated results for illustration purposes.</p>
         </div>
       </div>
     </div>
@@ -1315,7 +1319,7 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
           <span class="price-amount">19</span>
           <span class="price-period">/mo</span>
         </div>
-        <div class="plan-desc">For content creators who want to grow on Instagram.</div>
+        <div class="plan-desc">For content creators who want to grow on Instagram, TikTok and YouTube.</div>
         <ul class="plan-features">
           <li><span class="check">✓</span>Instagram Analyzer</li>
           <li><span class="check">✓</span>Full AI strategy report</li>
@@ -1497,7 +1501,7 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#" class="footer-brand-logo">
+        <a href="/" class="footer-brand-logo">
           <svg viewBox="0 0 48 56" fill="none">
             <path d="M24 2C14.06 2 6 10.06 6 20C6 32 24 54 24 54C24 54 42 32 42 20C42 10.06 33.94 2 24 2Z" fill="rgba(0,229,196,0.08)" stroke="#00e5c4" stroke-width="1.5"/>
             <path d="M12 20 L16 20 L18 14 L20 26 L22 18 L24 22 L26 20 L36 20" stroke="#00e5c4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
