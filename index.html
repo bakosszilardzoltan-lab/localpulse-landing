@@ -790,17 +790,9 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
       <li><a href="#how">How it works</a></li>
       <li><a href="#pricing">Pricing</a></li>
     </ul>
-    <!-- Signed-out state (default visible). Toggled by the Clerk satellite script near </body> —
-         see the comment there for what still needs to happen in the Clerk dashboard before this
-         does anything; until then this nav always shows signed-out, same as before. -->
-    <div class="nav-cta" id="nav-cta-signed-out">
+    <div class="nav-cta">
       <a href="https://app.localpulse.ink/sign-in" class="btn-ghost">Sign in</a>
       <a href="https://app.localpulse.ink/sign-up" class="btn-primary">Get started free</a>
-    </div>
-    <!-- Signed-in state (hidden until Clerk confirms a session) -->
-    <div class="nav-cta" id="nav-cta-signed-in" style="display:none">
-      <div id="clerk-user-button"></div>
-      <a href="https://app.localpulse.ink/dashboard" class="btn-primary">Dashboard</a>
     </div>
   </div>
 </nav>
@@ -1700,54 +1692,6 @@ document.querySelectorAll('.faq-trigger').forEach(trigger => {
       trigger.setAttribute('aria-expanded', 'true');
     }
   });
-});
-</script>
-
-<!-- ═══ CLERK SATELLITE AUTH (cross-domain session with app.localpulse.ink) ═══
-     This is plain static HTML/JS, so it uses Clerk's vanilla JS SDK rather than @clerk/clerk-react.
-     This block is INERT until all of the following are done in the Clerk dashboard — until then
-     it will fail to load (caught below) and the nav silently stays in its signed-out default state:
-       1. The Clerk instance is switched to Production (currently a free dev instance).
-       2. A custom domain is added and verified — clerk.localpulse.ink, per the chosen convention.
-       3. app.localpulse.ink is set as the primary domain, localpulse.ink as a satellite domain.
-       4. The pk_live_... key below is swapped in for the real production publishable key, and the
-          script src's domain (clerk.localpulse.ink) matches whatever was actually verified in step 2. -->
-<script
-  async
-  crossorigin="anonymous"
-  data-clerk-publishable-key="pk_live_REPLACE_WITH_PRODUCTION_KEY"
-  src="https://clerk.localpulse.ink/npm/@clerk/clerk-js@5/dist/clerk.browser.js"
-  type="text/javascript"
-></script>
-<script>
-window.addEventListener('load', async function () {
-  if (!window.Clerk) return; // script above failed to load — dashboard setup not done yet
-  try {
-    await window.Clerk.load({
-      isSatellite: true,
-      domain: 'localpulse.ink',
-      signInUrl: 'https://app.localpulse.ink/sign-in',
-    });
-  } catch (e) {
-    console.error('[Clerk satellite] failed to load:', e);
-    return;
-  }
-
-  const signedOutNav = document.getElementById('nav-cta-signed-out');
-  const signedInNav = document.getElementById('nav-cta-signed-in');
-  const userButtonMount = document.getElementById('clerk-user-button');
-
-  function renderAuthState() {
-    const signedIn = !!window.Clerk.user;
-    signedOutNav.style.display = signedIn ? 'none' : 'flex';
-    signedInNav.style.display = signedIn ? 'flex' : 'none';
-    if (signedIn && userButtonMount.childElementCount === 0) {
-      window.Clerk.mountUserButton(userButtonMount, { afterSignOutUrl: '/' });
-    }
-  }
-
-  renderAuthState();
-  window.Clerk.addListener(renderAuthState); // keep nav in sync if the user signs out from the UserButton dropdown
 });
 </script>
 
