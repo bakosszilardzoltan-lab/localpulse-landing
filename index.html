@@ -694,6 +694,12 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
 .social-link:hover { border-color: var(--border-green); color: var(--green); background: var(--green-glow); }
 .social-link svg { width: 14px; height: 14px; }
 
+/* ── LANG SWITCHER ── */
+.lang-switcher { display: flex; align-items: center; gap: 3px; margin-right: 6px; }
+.lang-btn { background: transparent; border: 1px solid rgba(255,255,255,0.14); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; padding: 4px 9px; border-radius: 5px; transition: all 0.2s; letter-spacing: 0.5px; }
+.lang-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.28); }
+.lang-btn.active { color: var(--green); border-color: rgba(0,229,196,0.6); background: var(--green-glow); }
+
 /* ── RESPONSIVE ── */
 @media (max-width:1024px){
   .features-grid{grid-template-columns:1fr 1fr}
@@ -785,14 +791,18 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
       LocalPulse
     </a>
     <ul class="nav-links">
-      <li><a href="#business">For Businesses</a></li>
-      <li><a href="#creator">For Creators</a></li>
-      <li><a href="#how">How it works</a></li>
-      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#business" data-i18n="nav_business">For Businesses</a></li>
+      <li><a href="#creator" data-i18n="nav_creator">For Creators</a></li>
+      <li><a href="#how" data-i18n="nav_how">How it works</a></li>
+      <li><a href="#pricing" data-i18n="nav_pricing">Pricing</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="https://app.localpulse.ink/sign-in" class="btn-ghost">Sign in</a>
-      <a href="https://app.localpulse.ink/sign-up" class="btn-primary">Get started free</a>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ro">RO</button>
+      </div>
+      <a href="https://app.localpulse.ink/sign-in" class="btn-ghost" data-i18n="nav_signin">Sign in</a>
+      <a href="https://app.localpulse.ink/sign-up" class="btn-primary" data-i18n="nav_getstarted">Get started free</a>
     </div>
   </div>
 </nav>
@@ -807,10 +817,10 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
   <div class="hero-content">
     <div class="hero-badge">
       <span class="badge-dot"></span>
-      AI-Powered Growth Platform
+      <span data-i18n="hero_badge">AI-Powered Growth Platform</span>
     </div>
-    <h1 class="hero-headline">One platform.</h1>
-    <p class="hero-subline">Two ways to grow.</p>
+    <h1 class="hero-headline" data-i18n="hero_headline">One platform.</h1>
+    <p class="hero-subline" data-i18n="hero_subline">Two ways to grow.</p>
 
     <div class="hero-boxes">
 
@@ -824,8 +834,8 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
             <circle cx="18" cy="16" r="4.5" fill="#00e5c4"/>
           </svg>
         </span>
-        <div class="box-headline">Dominate Local Search</div>
-        <p class="box-desc">Rank #1 on Google, manage reviews, track competitors. Built for local businesses and agencies that want to be found first.</p>
+        <div class="box-headline" data-i18n="hero_biz_headline">Dominate Local Search</div>
+        <p class="box-desc" data-i18n="hero_biz_desc">Rank #1 on Google, manage reviews, track competitors. Built for local businesses and agencies that want to be found first.</p>
         <div class="box-tools">
           <span class="box-tool">GBP Post Generator</span>
           <span class="box-tool">Review Responder</span>
@@ -834,8 +844,8 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
           <span class="box-tool">Competitor Spy</span>
         </div>
         <div class="box-footer">
-          <div class="box-price">From <strong>$49/mo</strong></div>
-          <a href="https://app.localpulse.ink/dashboard?type=business" class="btn-primary">Start for Business →</a>
+          <div class="box-price"><span data-i18n="hero_from">From</span> <strong>$49/mo</strong></div>
+          <a href="https://app.localpulse.ink/dashboard?type=business" class="btn-primary" data-i18n="hero_biz_cta">Start for Business →</a>
         </div>
       </div>
 
@@ -852,8 +862,8 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
             <circle cx="26.5" cy="7.5" r="2.5" fill="#00e5c4"/>
           </svg>
         </span>
-        <div class="box-headline">Grow on Social Media</div>
-        <p class="box-desc">Analyze Instagram, TikTok and YouTube. Understand what works and grow faster with AI that reads your audience for you.</p>
+        <div class="box-headline" data-i18n="hero_cr_headline">Grow on Social Media</div>
+        <p class="box-desc" data-i18n="hero_cr_desc">Analyze Instagram, TikTok and YouTube. Understand what works and grow faster with AI that reads your audience for you.</p>
         <div class="box-tools">
           <span class="box-tool">Instagram Analyzer</span>
           <span class="box-tool">TikTok Analyzer</span>
@@ -861,8 +871,8 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
           <span class="box-tool">Content Calendar</span>
         </div>
         <div class="box-footer">
-          <div class="box-price">From <strong>$19/mo</strong></div>
-          <a href="https://app.localpulse.ink/dashboard?type=creator" class="btn-outline btn-outline-teal">Start as Creator →</a>
+          <div class="box-price"><span data-i18n="hero_from">From</span> <strong>$19/mo</strong></div>
+          <a href="https://app.localpulse.ink/dashboard?type=creator" class="btn-outline btn-outline-teal" data-i18n="hero_cr_cta">Start as Creator →</a>
         </div>
       </div>
 
@@ -898,9 +908,9 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
 <section class="features-section reveal" id="business">
   <div class="container">
     <div class="features-header">
-      <div class="section-tag">For Businesses</div>
-      <h2 class="section-title">Everything you need to rank #1 locally.</h2>
-      <p class="section-sub">From Google Business Profile to competitor intelligence — every tool your business needs in one place.</p>
+      <div class="section-tag" data-i18n="nav_business">For Businesses</div>
+      <h2 class="section-title" data-i18n="feat_biz_title">Everything you need to rank #1 locally.</h2>
+      <p class="section-sub" data-i18n="feat_biz_sub">From Google Business Profile to competitor intelligence — every tool your business needs in one place.</p>
     </div>
     <div class="features-grid stagger-parent">
 
@@ -911,10 +921,10 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
             <div class="fbar"></div><div class="fbar"></div><div class="fbar"></div><div class="fbar"></div>
           </div>
         </div>
-        <div class="feat-chart-badge">↑ 47% more calls</div>
+        <div class="feat-chart-badge" data-i18n="feat_biz_calls">↑ 47% more calls</div>
         <div class="feat-body">
-          <h3>GBP Optimization</h3>
-          <p>AI audits your Google Business Profile and implements every ranking signal — photos, keywords, posts, and completeness — automatically.</p>
+          <h3 data-i18n="feat_biz_gbp_title">GBP Optimization</h3>
+          <p data-i18n="feat_biz_gbp_desc">AI audits your Google Business Profile and implements every ranking signal — photos, keywords, posts, and completeness — automatically.</p>
         </div>
       </div>
 
@@ -923,21 +933,21 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
           <div class="feat-reviews">
             <div class="frb">
               <div class="frav">JK</div>
-              <div class="frtext">⭐⭐⭐⭐⭐ "Best service in town!"</div>
+              <div class="frtext" data-i18n="feat_review_r1">⭐⭐⭐⭐⭐ "Best service in town!"</div>
             </div>
             <div class="frb ai-row">
               <div class="frav ai-av">AI</div>
-              <div class="frtext">Thank you James! We love hearing that. See you soon!</div>
+              <div class="frtext" data-i18n="feat_review_ai1">Thank you James! We love hearing that. See you soon!</div>
             </div>
             <div class="frb">
               <div class="frav">SM</div>
-              <div class="frtext">⭐⭐⭐⭐⭐ "Absolutely incredible."</div>
+              <div class="frtext" data-i18n="feat_review_r2">⭐⭐⭐⭐⭐ "Absolutely incredible."</div>
             </div>
           </div>
         </div>
         <div class="feat-body">
-          <h3>AI Review Management</h3>
-          <p>Respond to every review automatically with personalized replies that sound human. Build trust, improve ratings, and never miss a customer.</p>
+          <h3 data-i18n="feat_biz_review_title">AI Review Management</h3>
+          <p data-i18n="feat_biz_review_desc">Respond to every review automatically with personalized replies that sound human. Build trust, improve ratings, and never miss a customer.</p>
         </div>
       </div>
 
@@ -945,13 +955,13 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
         <div class="feat-visual">
           <div class="feat-rank-display">
             <div class="feat-rank-num">#1</div>
-            <div class="feat-rank-kw">"plumber near me" · Chicago, IL</div>
-            <div class="feat-rank-badge">↑ 5 positions this week</div>
+            <div class="feat-rank-kw" data-i18n="feat_biz_rank_kw">"plumber near me" · Chicago, IL</div>
+            <div class="feat-rank-badge" data-i18n="feat_biz_rank_badge">↑ 5 positions this week</div>
           </div>
         </div>
         <div class="feat-body">
-          <h3>Real-Time Rank Tracking</h3>
-          <p>Monitor your exact position in Google's local 3-pack across every keyword and location. See every move your competitors make.</p>
+          <h3 data-i18n="feat_biz_rank_title">Real-Time Rank Tracking</h3>
+          <p data-i18n="feat_biz_rank_desc">Monitor your exact position in Google's local 3-pack across every keyword and location. See every move your competitors make.</p>
         </div>
       </div>
 
@@ -965,9 +975,9 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
 <section class="features-section-b reveal" id="creator">
   <div class="container">
     <div class="features-header">
-      <div class="section-tag">For Creators</div>
-      <h2 class="section-title">Understand your audience. Grow faster.</h2>
-      <p class="section-sub">Deep analytics for Instagram, TikTok and YouTube. Know what content works, when to post, and how to grow.</p>
+      <div class="section-tag" data-i18n="nav_creator">For Creators</div>
+      <h2 class="section-title" data-i18n="feat_cr_title">Understand your audience. Grow faster.</h2>
+      <p class="section-sub" data-i18n="feat_cr_sub">Deep analytics for Instagram, TikTok and YouTube. Know what content works, when to post, and how to grow.</p>
     </div>
     <div class="features-grid stagger-parent">
 
@@ -988,9 +998,9 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
                 </div>
               </div>
               <div class="fpc-stats">
-                <div class="fpc-stat"><span class="fpc-val" data-target="42.3" data-suffix="k">42.3k</span><span class="fpc-lbl">Followers</span></div>
-                <div class="fpc-stat"><span class="fpc-val" data-target="6.8" data-suffix="%">6.8%</span><span class="fpc-lbl">Engage</span></div>
-                <div class="fpc-stat"><span class="fpc-val" data-target="12" data-prefix="↑ " data-suffix="%">↑ 12%</span><span class="fpc-lbl">Growth</span></div>
+                <div class="fpc-stat"><span class="fpc-val" data-target="42.3" data-suffix="k">42.3k</span><span class="fpc-lbl" data-i18n="fpc_followers">Followers</span></div>
+                <div class="fpc-stat"><span class="fpc-val" data-target="6.8" data-suffix="%">6.8%</span><span class="fpc-lbl" data-i18n="fpc_engage">Engage</span></div>
+                <div class="fpc-stat"><span class="fpc-val" data-target="12" data-prefix="↑ " data-suffix="%">↑ 12%</span><span class="fpc-lbl" data-i18n="fpc_growth">Growth</span></div>
               </div>
               <div class="fpc-postgrid">
                 <div class="fpc-post" style="opacity:.95"></div>
@@ -1004,8 +1014,8 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
           </div>
         </div>
         <div class="feat-body">
-          <h3>Instagram Analyzer</h3>
-          <p>Deep-dive into your best posts, engagement rates, optimal posting times, and follower growth with AI-powered recommendations.</p>
+          <h3 data-i18n="feat_cr_insta_title">Instagram Analyzer</h3>
+          <p data-i18n="feat_cr_insta_desc">Deep-dive into your best posts, engagement rates, optimal posting times, and follower growth with AI-powered recommendations.</p>
         </div>
       </div>
 
@@ -1013,30 +1023,30 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
         <div class="feat-visual">
           <div class="feat-engage">
             <div class="engage-row">
-              <span class="engage-label">Carousels</span>
+              <span class="engage-label" data-i18n="engage_carousels">Carousels</span>
               <div class="engage-bar"><div class="engage-fill" style="--w:84%"></div></div>
               <span class="engage-val">8.4%</span>
             </div>
             <div class="engage-row">
-              <span class="engage-label">Reels</span>
+              <span class="engage-label" data-i18n="engage_reels">Reels</span>
               <div class="engage-bar"><div class="engage-fill" style="--w:72%"></div></div>
               <span class="engage-val">7.2%</span>
             </div>
             <div class="engage-row">
-              <span class="engage-label">Stories</span>
+              <span class="engage-label" data-i18n="engage_stories">Stories</span>
               <div class="engage-bar"><div class="engage-fill" style="--w:58%"></div></div>
               <span class="engage-val">5.8%</span>
             </div>
             <div class="engage-row">
-              <span class="engage-label">Static</span>
+              <span class="engage-label" data-i18n="engage_static">Static</span>
               <div class="engage-bar"><div class="engage-fill" style="--w:31%"></div></div>
               <span class="engage-val">3.1%</span>
             </div>
           </div>
         </div>
         <div class="feat-body">
-          <h3>TikTok Insights</h3>
-          <p>See which video formats, sounds, and hooks drive the most views and follows. Stop guessing, start growing with data.</p>
+          <h3 data-i18n="feat_cr_tiktok_title">TikTok Insights</h3>
+          <p data-i18n="feat_cr_tiktok_desc">See which video formats, sounds, and hooks drive the most views and follows. Stop guessing, start growing with data.</p>
         </div>
       </div>
 
@@ -1048,12 +1058,12 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
               <path class="growth-path" d="M0,52 C30,50 60,42 90,32 C120,22 150,14 180,8 C195,5 210,4 220,3" stroke="#00e5c4" stroke-width="1.8" stroke-linecap="round" fill="none"/>
               <circle cx="220" cy="3" r="3" fill="#00e5c4"/>
             </svg>
-            <div class="growth-badge">↑ +2,840 followers this month</div>
+            <div class="growth-badge" data-i18n="feat_cr_growth_badge">↑ +2,840 followers this month</div>
           </div>
         </div>
         <div class="feat-body">
-          <h3>Content Performance</h3>
-          <p>Track subscriber growth, view retention, and revenue across YouTube. Understand which content compounds your channel fastest.</p>
+          <h3 data-i18n="feat_cr_yt_title">Content Performance</h3>
+          <p data-i18n="feat_cr_yt_desc">Track subscriber growth, view retention, and revenue across YouTube. Understand which content compounds your channel fastest.</p>
         </div>
       </div>
 
@@ -1065,14 +1075,14 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
 <section class="how-it-works reveal" id="how">
   <div class="container">
     <div class="how-header">
-      <div class="section-tag">How it works</div>
-      <h2 class="section-title">Get started in minutes.</h2>
-      <p class="section-sub">Three simple steps, whether you're a business or a creator.</p>
+      <div class="section-tag" data-i18n="hiw_tag">How it works</div>
+      <h2 class="section-title" data-i18n="hiw_title">Get started in minutes.</h2>
+      <p class="section-sub" data-i18n="hiw_sub">Three simple steps, whether you're a business or a creator.</p>
     </div>
 
     <div class="hiw-tabs">
-      <button class="hiw-tab active" data-tab="business">For Businesses</button>
-      <button class="hiw-tab" data-tab="creator">For Creators</button>
+      <button class="hiw-tab active" data-tab="business" data-i18n="nav_business">For Businesses</button>
+      <button class="hiw-tab" data-tab="creator" data-i18n="nav_creator">For Creators</button>
     </div>
 
     <!-- Business flow -->
@@ -1085,9 +1095,9 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
               <div class="step-vline"></div>
             </div>
             <div class="step-body">
-              <div class="step-num-tag">Step 01</div>
-              <h3>Connect your Google Business Profile</h3>
-              <p>Link your GBP in one click. LocalPulse instantly audits your listing and maps every opportunity to climb the rankings.</p>
+              <div class="step-num-tag" data-i18n="hiw_step1">Step 01</div>
+              <h3 data-i18n="hiw_biz_s1_title">Connect your Google Business Profile</h3>
+              <p data-i18n="hiw_biz_s1_desc">Link your GBP in one click. LocalPulse instantly audits your listing and maps every opportunity to climb the rankings.</p>
             </div>
           </div>
           <div class="hiw-step" data-step="1">
@@ -1096,9 +1106,9 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
               <div class="step-vline"></div>
             </div>
             <div class="step-body">
-              <div class="step-num-tag">Step 02</div>
-              <h3>AI analyzes and optimizes</h3>
-              <p>Our AI scans your competitors, fills keyword gaps, responds to reviews, and schedules GBP posts — all without you lifting a finger.</p>
+              <div class="step-num-tag" data-i18n="hiw_step2">Step 02</div>
+              <h3 data-i18n="hiw_biz_s2_title">AI analyzes and optimizes</h3>
+              <p data-i18n="hiw_biz_s2_desc">Our AI scans your competitors, fills keyword gaps, responds to reviews, and schedules GBP posts — all without you lifting a finger.</p>
             </div>
           </div>
           <div class="hiw-step" data-step="2">
@@ -1107,9 +1117,9 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
               <div class="step-vline"></div>
             </div>
             <div class="step-body">
-              <div class="step-num-tag">Step 03</div>
-              <h3>Watch your rankings climb</h3>
-              <p>Track every keyword, every competitor, and every review in one dashboard. Most businesses see ranking improvements within the first week.</p>
+              <div class="step-num-tag" data-i18n="hiw_step3">Step 03</div>
+              <h3 data-i18n="hiw_biz_s3_title">Watch your rankings climb</h3>
+              <p data-i18n="hiw_biz_s3_desc">Track every keyword, every competitor, and every review in one dashboard. Most businesses see ranking improvements within the first week.</p>
             </div>
           </div>
         </div>
@@ -1122,48 +1132,48 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
                   <div class="hiw-card-logo">📍</div>
                   <div>
                     <div class="hiw-card-name">SmilePro Dental Clinic</div>
-                    <div class="hiw-card-sub">Dental Clinic · Healthcare</div>
+                    <div class="hiw-card-sub" data-i18n="hiw_biz_p0_sub">Dental Clinic · Healthcare</div>
                   </div>
                 </div>
                 <div class="hiw-card-stars">★★★★★ <span>4.9 (284 reviews)</span></div>
                 <div class="hiw-bar-row">
-                  <span class="hiw-bar-lbl">Profile completeness</span>
+                  <span class="hiw-bar-lbl" data-i18n="hiw_biz_p0_completeness">Profile completeness</span>
                   <span class="hiw-bar-pct">94% ↗</span>
                 </div>
                 <div class="hiw-bar"><div class="hiw-bar-fill"></div></div>
                 <div class="hiw-mrow">
-                  <div class="hiw-m"><div class="hiw-mv">2.4k</div><div class="hiw-ml">Views</div></div>
-                  <div class="hiw-m"><div class="hiw-mv">189</div><div class="hiw-ml">Calls</div></div>
-                  <div class="hiw-m"><div class="hiw-mv">#1</div><div class="hiw-ml">Rank</div></div>
+                  <div class="hiw-m"><div class="hiw-mv">2.4k</div><div class="hiw-ml" data-i18n="hiw_biz_p0_views">Views</div></div>
+                  <div class="hiw-m"><div class="hiw-mv">189</div><div class="hiw-ml" data-i18n="hiw_biz_p0_calls">Calls</div></div>
+                  <div class="hiw-m"><div class="hiw-mv">#1</div><div class="hiw-ml" data-i18n="hiw_biz_p0_rank">Rank</div></div>
                 </div>
               </div>
             </div>
             <!-- Panel 1: AI suggestions -->
             <div class="hiw-panel" data-panel="1">
-              <div class="hiw-ai-label">🤖 AI Optimization Queue</div>
+              <div class="hiw-ai-label" data-i18n="hiw_biz_p1_label">🤖 AI Optimization Queue</div>
               <div class="hiw-sug-list">
                 <div class="hiw-sug">
                   <div class="hiw-sug-ico">🔍</div>
                   <div>
-                    <div class="hiw-sug-lbl">Add missing keyword</div>
-                    <div class="hiw-sug-desc">Add "emergency dental care" to description</div>
-                    <span class="hiw-sug-badge">High Impact</span>
+                    <div class="hiw-sug-lbl" data-i18n="hiw_biz_p1_kw_lbl">Add missing keyword</div>
+                    <div class="hiw-sug-desc" data-i18n="hiw_biz_p1_kw_desc">Add "emergency dental care" to description</div>
+                    <span class="hiw-sug-badge" data-i18n="hiw_biz_p1_kw_badge">High Impact</span>
                   </div>
                 </div>
                 <div class="hiw-sug">
                   <div class="hiw-sug-ico">📸</div>
                   <div>
-                    <div class="hiw-sug-lbl">Upload more photos</div>
-                    <div class="hiw-sug-desc">10+ photos = 3× more profile views</div>
-                    <span class="hiw-sug-badge">Quick Win</span>
+                    <div class="hiw-sug-lbl" data-i18n="hiw_biz_p1_photo_lbl">Upload more photos</div>
+                    <div class="hiw-sug-desc" data-i18n="hiw_biz_p1_photo_desc">10+ photos = 3× more profile views</div>
+                    <span class="hiw-sug-badge" data-i18n="hiw_biz_p1_photo_badge">Quick Win</span>
                   </div>
                 </div>
                 <div class="hiw-sug">
                   <div class="hiw-sug-ico">⭐</div>
                   <div>
-                    <div class="hiw-sug-lbl">12 reviews unanswered</div>
-                    <div class="hiw-sug-desc">Responding boosts local ranking signal</div>
-                    <span class="hiw-sug-badge">Urgent</span>
+                    <div class="hiw-sug-lbl" data-i18n="hiw_biz_p1_rev_lbl">12 reviews unanswered</div>
+                    <div class="hiw-sug-desc" data-i18n="hiw_biz_p1_rev_desc">Responding boosts local ranking signal</div>
+                    <span class="hiw-sug-badge" data-i18n="hiw_biz_p1_rev_badge">Urgent</span>
                   </div>
                 </div>
               </div>
@@ -1172,17 +1182,17 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
             <div class="hiw-panel" data-panel="2">
               <div class="hiw-rank-panel">
                 <div class="hiw-rank-big">#1</div>
-                <div class="hiw-rank-kw">"dentist near me" · Cluj-Napoca, RO</div>
-                <div class="hiw-rank-badge">↑ Climbed 6 positions in 8 days</div>
+                <div class="hiw-rank-kw" data-i18n="hiw_biz_p2_kw">"dentist near me" · Cluj-Napoca, RO</div>
+                <div class="hiw-rank-badge" data-i18n="hiw_biz_p2_climbed">↑ Climbed 6 positions in 8 days</div>
                 <div class="hiw-ms">
-                  <div class="hiw-ms-item"><span class="hiw-ms-val">3.2×</span><span class="hiw-ms-lbl">More views</span></div>
-                  <div class="hiw-ms-item"><span class="hiw-ms-val">+47%</span><span class="hiw-ms-lbl">More calls</span></div>
-                  <div class="hiw-ms-item"><span class="hiw-ms-val">4.9★</span><span class="hiw-ms-lbl">Rating</span></div>
+                  <div class="hiw-ms-item"><span class="hiw-ms-val">3.2×</span><span class="hiw-ms-lbl" data-i18n="hiw_biz_p2_views">More views</span></div>
+                  <div class="hiw-ms-item"><span class="hiw-ms-val">+47%</span><span class="hiw-ms-lbl" data-i18n="hiw_biz_p2_calls">More calls</span></div>
+                  <div class="hiw-ms-item"><span class="hiw-ms-val">4.9★</span><span class="hiw-ms-lbl" data-i18n="hiw_rating">Rating</span></div>
                 </div>
               </div>
             </div>
           </div>
-          <p class="hiw-disclaimer">Simulated results for illustration purposes.</p>
+          <p class="hiw-disclaimer" data-i18n="hiw_disclaimer">Simulated results for illustration purposes.</p>
         </div>
       </div>
     </div>
@@ -1197,9 +1207,9 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
               <div class="step-vline"></div>
             </div>
             <div class="step-body">
-              <div class="step-num-tag">Step 01</div>
-              <h3>Connect your social profiles</h3>
-              <p>Link your Instagram, TikTok, or YouTube account in seconds. LocalPulse pulls in your full content history and audience data instantly.</p>
+              <div class="step-num-tag" data-i18n="hiw_step1">Step 01</div>
+              <h3 data-i18n="hiw_cr_s1_title">Connect your social profiles</h3>
+              <p data-i18n="hiw_cr_s1_desc">Link your Instagram, TikTok, or YouTube account in seconds. LocalPulse pulls in your full content history and audience data instantly.</p>
             </div>
           </div>
           <div class="hiw-step" data-step="1">
@@ -1208,9 +1218,9 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
               <div class="step-vline"></div>
             </div>
             <div class="step-body">
-              <div class="step-num-tag">Step 02</div>
-              <h3>AI analyzes your content</h3>
-              <p>Our AI identifies which content formats, topics, and posting times drive the most reach and engagement for your specific audience.</p>
+              <div class="step-num-tag" data-i18n="hiw_step2">Step 02</div>
+              <h3 data-i18n="hiw_cr_s2_title">AI analyzes your content</h3>
+              <p data-i18n="hiw_cr_s2_desc">Our AI identifies which content formats, topics, and posting times drive the most reach and engagement for your specific audience.</p>
             </div>
           </div>
           <div class="hiw-step" data-step="2">
@@ -1219,9 +1229,9 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
               <div class="step-vline"></div>
             </div>
             <div class="step-body">
-              <div class="step-num-tag">Step 03</div>
-              <h3>Grow faster with confidence</h3>
-              <p>Follow AI-backed content recommendations and track your growth in real time. Stop guessing what to post — the data shows exactly what works.</p>
+              <div class="step-num-tag" data-i18n="hiw_step3">Step 03</div>
+              <h3 data-i18n="hiw_cr_s3_title">Grow faster with confidence</h3>
+              <p data-i18n="hiw_cr_s3_desc">Follow AI-backed content recommendations and track your growth in real time. Stop guessing what to post — the data shows exactly what works.</p>
             </div>
           </div>
         </div>
@@ -1234,41 +1244,41 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
                   <div class="hiw-cr-ava">📸</div>
                   <div>
                     <div class="hiw-cr-name">@zoeparkcreates</div>
-                    <div class="hiw-cr-handle">Instagram · Connected ✓</div>
+                    <div class="hiw-cr-handle" data-i18n="hiw_cr_p0_handle">Instagram · Connected ✓</div>
                   </div>
                 </div>
                 <div class="hiw-cr-stats">
-                  <div class="hiw-cr-stat"><span class="hiw-cr-val">42.3k</span><span class="hiw-cr-lbl">Followers</span></div>
-                  <div class="hiw-cr-stat"><span class="hiw-cr-val">6.8%</span><span class="hiw-cr-lbl">Eng. Rate</span></div>
-                  <div class="hiw-cr-stat"><span class="hiw-cr-val">↑ 12%</span><span class="hiw-cr-lbl">This month</span></div>
+                  <div class="hiw-cr-stat"><span class="hiw-cr-val">42.3k</span><span class="hiw-cr-lbl" data-i18n="fpc_followers">Followers</span></div>
+                  <div class="hiw-cr-stat"><span class="hiw-cr-val">6.8%</span><span class="hiw-cr-lbl" data-i18n="hiw_cr_p0_engrate">Eng. Rate</span></div>
+                  <div class="hiw-cr-stat"><span class="hiw-cr-val">↑ 12%</span><span class="hiw-cr-lbl" data-i18n="hiw_cr_p0_thismonth">This month</span></div>
                 </div>
               </div>
             </div>
             <!-- Panel 1: Insights -->
             <div class="hiw-panel" data-panel="1">
-              <div class="hiw-insight-label">📊 Content Insights</div>
+              <div class="hiw-insight-label" data-i18n="hiw_cr_p1_label">📊 Content Insights</div>
               <div class="hiw-insight-list">
                 <div class="hiw-insight-row">
                   <span class="hiw-insight-ico">🎬</span>
                   <div class="hiw-insight-txt">
-                    <div class="hiw-insight-name">Reels perform best</div>
-                    <div class="hiw-insight-val">8.4% avg engagement</div>
+                    <div class="hiw-insight-name" data-i18n="hiw_cr_p1_i1_name">Reels perform best</div>
+                    <div class="hiw-insight-val" data-i18n="hiw_cr_p1_i1_val">8.4% avg engagement</div>
                   </div>
                   <div class="hiw-insight-bar"><div class="hiw-insight-fill" style="width:84%"></div></div>
                 </div>
                 <div class="hiw-insight-row">
                   <span class="hiw-insight-ico">📅</span>
                   <div class="hiw-insight-txt">
-                    <div class="hiw-insight-name">Best time: Tue 7pm</div>
-                    <div class="hiw-insight-val">+34% more reach</div>
+                    <div class="hiw-insight-name" data-i18n="hiw_cr_p1_i2_name">Best time: Tue 7pm</div>
+                    <div class="hiw-insight-val" data-i18n="hiw_cr_p1_i2_val">+34% more reach</div>
                   </div>
                   <div class="hiw-insight-bar"><div class="hiw-insight-fill" style="width:70%;animation-delay:0.1s"></div></div>
                 </div>
                 <div class="hiw-insight-row">
                   <span class="hiw-insight-ico">🏷️</span>
                   <div class="hiw-insight-txt">
-                    <div class="hiw-insight-name">Top hashtag cluster</div>
-                    <div class="hiw-insight-val">2.1× more discovery</div>
+                    <div class="hiw-insight-name" data-i18n="hiw_cr_p1_i3_name">Top hashtag cluster</div>
+                    <div class="hiw-insight-val" data-i18n="hiw_cr_p1_i3_val">2.1× more discovery</div>
                   </div>
                   <div class="hiw-insight-bar"><div class="hiw-insight-fill" style="width:55%;animation-delay:0.2s"></div></div>
                 </div>
@@ -1284,16 +1294,16 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
                     <circle cx="240" cy="4" r="4" fill="#00e5c4"/>
                   </svg>
                 </div>
-                <div class="hiw-growth-badge">↑ +8,400 followers in 30 days</div>
+                <div class="hiw-growth-badge" data-i18n="hiw_cr_p2_badge">↑ +8,400 followers in 30 days</div>
                 <div class="hiw-growth-stats">
-                  <div class="hiw-growth-stat"><span class="hiw-growth-val">6.8%</span><span class="hiw-growth-lbl">Eng. rate</span></div>
-                  <div class="hiw-growth-stat"><span class="hiw-growth-val">2.1×</span><span class="hiw-growth-lbl">Reach</span></div>
-                  <div class="hiw-growth-stat"><span class="hiw-growth-val">4.9★</span><span class="hiw-growth-lbl">Rating</span></div>
+                  <div class="hiw-growth-stat"><span class="hiw-growth-val">6.8%</span><span class="hiw-growth-lbl" data-i18n="hiw_cr_p2_engrate">Eng. rate</span></div>
+                  <div class="hiw-growth-stat"><span class="hiw-growth-val">2.1×</span><span class="hiw-growth-lbl" data-i18n="hiw_cr_p2_reach">Reach</span></div>
+                  <div class="hiw-growth-stat"><span class="hiw-growth-val">4.9★</span><span class="hiw-growth-lbl" data-i18n="hiw_rating">Rating</span></div>
                 </div>
               </div>
             </div>
           </div>
-          <p class="hiw-disclaimer">Simulated results for illustration purposes.</p>
+          <p class="hiw-disclaimer" data-i18n="hiw_disclaimer">Simulated results for illustration purposes.</p>
         </div>
       </div>
     </div>
@@ -1305,9 +1315,9 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
 <section class="pricing reveal" id="pricing">
   <div class="container">
     <div class="pricing-header">
-      <div class="section-tag">Pricing</div>
-      <h2 class="section-title">Simple pricing. Full access.</h2>
-      <p class="section-sub" style="margin:0 auto 32px;">No hidden fees. No contracts. Cancel anytime.</p>
+      <div class="section-tag" data-i18n="nav_pricing">Pricing</div>
+      <h2 class="section-title" data-i18n="pricing_title">Simple pricing. Full access.</h2>
+      <p class="section-sub" style="margin:0 auto 32px;" data-i18n="pricing_sub">No hidden fees. No contracts. Cancel anytime.</p>
     </div>
     <div class="pricing-grid">
 
@@ -1317,15 +1327,15 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
         <div class="plan-price">
           <span class="price-currency">$</span>
           <span class="price-amount">19</span>
-          <span class="price-period">/mo</span>
+          <span class="price-period" data-i18n="pricing_period">/mo</span>
         </div>
-        <div class="plan-desc">For content creators who want to grow on Instagram, TikTok and YouTube.</div>
+        <div class="plan-desc" data-i18n="pricing_cr_desc">For content creators who want to grow on Instagram, TikTok and YouTube.</div>
         <ul class="plan-features">
-          <li><span class="check">✓</span>Instagram Analyzer</li>
-          <li><span class="check">✓</span>Full AI strategy report</li>
-          <li><span class="check">✓</span>Content Calendar</li>
+          <li><span class="check">✓</span><span data-i18n="pricing_cr_f1">Instagram Analyzer</span></li>
+          <li><span class="check">✓</span><span data-i18n="pricing_cr_f2">Full AI strategy report</span></li>
+          <li><span class="check">✓</span><span data-i18n="pricing_cr_f3">Content Calendar</span></li>
         </ul>
-        <a href="https://app.localpulse.ink/dashboard?type=creator" class="plan-btn">Start as Creator</a>
+        <a href="https://app.localpulse.ink/dashboard?type=creator" class="plan-btn" data-i18n="hero_cr_cta_short">Start as Creator</a>
       </div>
 
       <!-- Business -->
@@ -1334,41 +1344,41 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
         <div class="plan-price">
           <span class="price-currency">$</span>
           <span class="price-amount">49</span>
-          <span class="price-period">/mo</span>
+          <span class="price-period" data-i18n="pricing_period">/mo</span>
         </div>
-        <div class="plan-desc">For local businesses and agencies who want to rank #1 on Google.</div>
+        <div class="plan-desc" data-i18n="pricing_biz_desc">For local businesses and agencies who want to rank #1 on Google.</div>
         <ul class="plan-features">
-          <li><span class="check">✓</span>Business Audit</li>
-          <li><span class="check">✓</span>GBP Post Generator</li>
-          <li><span class="check">✓</span>AI Review Responder</li>
-          <li><span class="check">✓</span>SEO Keyword Hunter</li>
-          <li><span class="check">✓</span>Competitor Spy</li>
-          <li><span class="check">✓</span>1 location</li>
+          <li><span class="check">✓</span><span data-i18n="pricing_biz_f1">Business Audit</span></li>
+          <li><span class="check">✓</span><span data-i18n="pricing_biz_f2">GBP Post Generator</span></li>
+          <li><span class="check">✓</span><span data-i18n="pricing_biz_f3">AI Review Responder</span></li>
+          <li><span class="check">✓</span><span data-i18n="pricing_biz_f4">SEO Keyword Hunter</span></li>
+          <li><span class="check">✓</span><span data-i18n="pricing_biz_f5">Competitor Spy</span></li>
+          <li><span class="check">✓</span><span data-i18n="pricing_biz_f6">1 location</span></li>
         </ul>
-        <a href="https://app.localpulse.ink/dashboard?type=business" class="plan-btn">Start for Business</a>
+        <a href="https://app.localpulse.ink/dashboard?type=business" class="plan-btn" data-i18n="hero_biz_cta_short">Start for Business</a>
       </div>
 
       <!-- Pro — Featured -->
       <div class="pricing-card featured">
-        <div class="featured-tag">Best Value</div>
+        <div class="featured-tag" data-i18n="pricing_pro_tag">Best Value</div>
         <div class="plan-name">Pro</div>
         <div class="plan-price">
           <span class="price-currency">$</span>
           <span class="price-amount">99</span>
-          <span class="price-period">/mo</span>
+          <span class="price-period" data-i18n="pricing_period">/mo</span>
         </div>
-        <div class="plan-desc">Everything in Creator and Business. For those who want it all.</div>
+        <div class="plan-desc" data-i18n="pricing_pro_desc">Everything in Creator and Business. For those who want it all.</div>
         <ul class="plan-features">
-          <li><span class="check">✓</span>Everything in Creator</li>
-          <li><span class="check">✓</span>Everything in Business</li>
-          <li><span class="check">✓</span>Up to 3 locations</li>
-          <li><span class="check">✓</span>Priority support</li>
+          <li><span class="check">✓</span><span data-i18n="pricing_pro_f1">Everything in Creator</span></li>
+          <li><span class="check">✓</span><span data-i18n="pricing_pro_f2">Everything in Business</span></li>
+          <li><span class="check">✓</span><span data-i18n="pricing_pro_f3">Up to 3 locations</span></li>
+          <li><span class="check">✓</span><span data-i18n="pricing_pro_f4">Priority support</span></li>
         </ul>
-        <a href="https://app.localpulse.ink/sign-up?plan=pro" class="plan-btn featured-btn">Get Pro</a>
+        <a href="https://app.localpulse.ink/sign-up?plan=pro" class="plan-btn featured-btn" data-i18n="pricing_pro_cta">Get Pro</a>
       </div>
 
     </div>
-    <p class="pricing-footnote">Free 3-day trial on all plans. Instagram Analyzer and Business Audit score available free. Full access unlocks on paid plan.</p>
+    <p class="pricing-footnote" data-i18n="pricing_footnote">Free 3-day trial on all plans. Instagram Analyzer and Business Audit score available free. Full access unlocks on paid plan.</p>
   </div>
 </section>
 
@@ -1376,29 +1386,29 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
 <section class="stats reveal">
   <div class="container">
     <div class="stats-intro">
-      <div class="section-tag">By the numbers</div>
-      <h2 class="section-title">Built to get you results.</h2>
+      <div class="section-tag" data-i18n="stats_tag">By the numbers</div>
+      <h2 class="section-title" data-i18n="stats_title">Built to get you results.</h2>
     </div>
     <div class="stats-grid stagger-parent">
       <div class="stat-card reveal-child">
-        <div class="stat-num" data-target="9" data-suffix=" tools">9 tools</div>
-        <div class="stat-label">AI-powered tools</div>
-        <div class="stat-desc">Built for local SEO and social media growth — nothing generic.</div>
+        <div class="stat-num" data-target="9" data-suffix=" tools" data-i18n-suffix="stats_suf_tools">9 tools</div>
+        <div class="stat-label" data-i18n="stats_tools_lbl">AI-powered tools</div>
+        <div class="stat-desc" data-i18n="stats_tools_desc">Built for local SEO and social media growth — nothing generic.</div>
       </div>
       <div class="stat-card reveal-child">
-        <div class="stat-num" data-target="3" data-suffix=" days">3 days</div>
-        <div class="stat-label">Free trial</div>
-        <div class="stat-desc">Full access to every feature. No credit card needed.</div>
+        <div class="stat-num" data-target="3" data-suffix=" days" data-i18n-suffix="stats_suf_days">3 days</div>
+        <div class="stat-label" data-i18n="stats_days_lbl">Free trial</div>
+        <div class="stat-desc" data-i18n="stats_days_desc">Full access to every feature. No credit card needed.</div>
       </div>
       <div class="stat-card reveal-child">
-        <div class="stat-num" data-target="2" data-suffix=" platforms">2 platforms</div>
-        <div class="stat-label">Local SEO &amp; Social Media</div>
-        <div class="stat-desc">The only tool that covers both — in one place, under one subscription.</div>
+        <div class="stat-num" data-target="2" data-suffix=" platforms" data-i18n-suffix="stats_suf_platforms">2 platforms</div>
+        <div class="stat-label" data-i18n="stats_platforms_lbl">Local SEO &amp; Social Media</div>
+        <div class="stat-desc" data-i18n="stats_platforms_desc">The only tool that covers both — in one place, under one subscription.</div>
       </div>
       <div class="stat-card reveal-child">
-        <div class="stat-num" data-target="3" data-suffix=" min">3 min</div>
-        <div class="stat-label">To get started</div>
-        <div class="stat-desc">Connect your accounts and get your first insights in under three minutes.</div>
+        <div class="stat-num" data-target="3" data-suffix=" min" data-i18n-suffix="stats_suf_min">3 min</div>
+        <div class="stat-label" data-i18n="stats_min_lbl">To get started</div>
+        <div class="stat-desc" data-i18n="stats_min_desc">Connect your accounts and get your first insights in under three minutes.</div>
       </div>
     </div>
   </div>
@@ -1408,68 +1418,68 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
 <section class="faq-section reveal">
   <div class="container">
     <div class="faq-header">
-      <div class="section-tag">FAQ</div>
-      <h2 class="section-title">Common questions.</h2>
+      <div class="section-tag" data-i18n="faq_tag">FAQ</div>
+      <h2 class="section-title" data-i18n="faq_title">Common questions.</h2>
     </div>
     <div class="faq-list">
 
       <div class="faq-item">
         <button class="faq-trigger" aria-expanded="false">
-          <span class="faq-question">What's the difference between the Business and Creator plans?</span>
+          <span class="faq-question" data-i18n="faq_q1">What's the difference between the Business and Creator plans?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-body">
-          <p class="faq-answer">Business is built for local SEO — Google rankings, reviews, and competitor intelligence. Creator is built for social growth — Instagram, TikTok and YouTube analytics. Pro gives you both. Pick based on where your customers find you.</p>
+          <p class="faq-answer" data-i18n="faq_a1">Business is built for local SEO — Google rankings, reviews, and competitor intelligence. Creator is built for social growth — Instagram, TikTok and YouTube analytics. Pro gives you both. Pick based on where your customers find you.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-trigger" aria-expanded="false">
-          <span class="faq-question">How quickly will I see results?</span>
+          <span class="faq-question" data-i18n="faq_q2">How quickly will I see results?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-body">
-          <p class="faq-answer">Most users get their first audit and keyword insights within minutes of signing up. Real ranking improvements depend on your market, but our tools show you exactly what to fix and in what order.</p>
+          <p class="faq-answer" data-i18n="faq_a2">Most users get their first audit and keyword insights within minutes of signing up. Real ranking improvements depend on your market, but our tools show you exactly what to fix and in what order.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-trigger" aria-expanded="false">
-          <span class="faq-question">Can I manage multiple locations?</span>
+          <span class="faq-question" data-i18n="faq_q3">Can I manage multiple locations?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-body">
-          <p class="faq-answer">Single location on Business plan. Up to 3 locations on Pro. Running more than that? Contact us — we work with agencies directly.</p>
+          <p class="faq-answer" data-i18n="faq_a3">Single location on Business plan. Up to 3 locations on Pro. Running more than that? Contact us — we work with agencies directly.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-trigger" aria-expanded="false">
-          <span class="faq-question">Is there a free trial?</span>
+          <span class="faq-question" data-i18n="faq_q4">Is there a free trial?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-body">
-          <p class="faq-answer">Yes — 3 days, full access, no credit card. That's enough time to run your first audit, see your competitors' gaps, and decide if LocalPulse is worth it. We think it will be obvious.</p>
+          <p class="faq-answer" data-i18n="faq_a4">Yes — 3 days, full access, no credit card. That's enough time to run your first audit, see your competitors' gaps, and decide if LocalPulse is worth it. We think it will be obvious.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-trigger" aria-expanded="false">
-          <span class="faq-question">What happens after the trial?</span>
+          <span class="faq-question" data-i18n="faq_q5">What happens after the trial?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-body">
-          <p class="faq-answer">Your account pauses. No charges, no surprises. If you want to keep access to your reports and history, you pick a plan. If not, no hard feelings.</p>
+          <p class="faq-answer" data-i18n="faq_a5">Your account pauses. No charges, no surprises. If you want to keep access to your reports and history, you pick a plan. If not, no hard feelings.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-trigger" aria-expanded="false">
-          <span class="faq-question">Which social platforms are supported?</span>
+          <span class="faq-question" data-i18n="faq_q6">Which social platforms are supported?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-body">
-          <p class="faq-answer">Instagram, TikTok and YouTube are live now. More platforms are on the roadmap — <a href="mailto:hello@localpulse.ink" style="color:#00e5c4">join the waitlist</a> to get early access.</p>
+          <p class="faq-answer" data-i18n-html="faq_a6">Instagram, TikTok and YouTube are live now. More platforms are on the roadmap — <a href="mailto:hello@localpulse.ink" style="color:#00e5c4">join the waitlist</a> to get early access.</p>
         </div>
       </div>
 
@@ -1483,11 +1493,11 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
     <div class="cta-card">
       <div class="cta-blob"></div>
       <div class="cta-inner">
-        <h2>Ready to grow?</h2>
-        <p>Start growing today. Start your 3-day free trial — no credit card required.</p>
+        <h2 data-i18n="cta_title">Ready to grow?</h2>
+        <p data-i18n="cta_desc">Start growing today. Start your 3-day free trial — no credit card required.</p>
         <div class="cta-buttons">
-          <a href="https://app.localpulse.ink/dashboard?type=business" class="btn-primary btn-lg">Start for Business →</a>
-          <a href="https://app.localpulse.ink/dashboard?type=creator" class="btn-outline btn-lg">Start as Creator →</a>
+          <a href="https://app.localpulse.ink/dashboard?type=business" class="btn-primary btn-lg" data-i18n="hero_biz_cta">Start for Business →</a>
+          <a href="https://app.localpulse.ink/dashboard?type=creator" class="btn-outline btn-lg" data-i18n="hero_cr_cta">Start as Creator →</a>
         </div>
       </div>
     </div>
@@ -1508,35 +1518,35 @@ footer { border-top: 1px solid var(--border); padding: 60px 0 36px; }
           </svg>
           LocalPulse
         </a>
-        <p>AI tools to grow your business and your social media.</p>
+        <p data-i18n="footer_brand_desc">AI tools to grow your business and your social media.</p>
       </div>
       <div class="footer-links-wrap">
         <div class="footer-col">
-          <h4>Product</h4>
+          <h4 data-i18n="footer_col_product">Product</h4>
           <ul>
-            <li><a href="#business">For Businesses</a></li>
-            <li><a href="#creator">For Creators</a></li>
-            <li><a href="#how">How it works</a></li>
-            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#business" data-i18n="nav_business">For Businesses</a></li>
+            <li><a href="#creator" data-i18n="nav_creator">For Creators</a></li>
+            <li><a href="#how" data-i18n="nav_how">How it works</a></li>
+            <li><a href="#pricing" data-i18n="nav_pricing">Pricing</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Company</h4>
+          <h4 data-i18n="footer_col_company">Company</h4>
           <ul>
-            <li><a href="mailto:hello@localpulse.ink">Contact</a></li>
+            <li><a href="mailto:hello@localpulse.ink" data-i18n="footer_contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Legal</h4>
+          <h4 data-i18n="footer_col_legal">Legal</h4>
           <ul>
-            <li><a href="https://app.localpulse.ink/privacy">Privacy Policy</a></li>
-            <li><a href="https://app.localpulse.ink/terms">Terms of Service</a></li>
+            <li><a href="https://app.localpulse.ink/privacy" data-i18n="footer_privacy">Privacy Policy</a></li>
+            <li><a href="https://app.localpulse.ink/terms" data-i18n="footer_terms">Terms of Service</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 LocalPulse. All rights reserved.</span>
+      <span class="footer-copy" data-i18n="footer_copy">© 2026 LocalPulse. All rights reserved.</span>
       <div class="footer-socials">
         <a href="#" class="social-link" aria-label="X" style="display:none">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -1677,6 +1687,380 @@ document.querySelectorAll('.hiw-tab').forEach(tab => {
 });
 
 setupHiwSteps();
+
+/* ── LANGUAGE / i18n ── */
+const translations = {
+  en: {
+    nav_business: 'For Businesses',
+    nav_creator: 'For Creators',
+    nav_how: 'How it works',
+    nav_pricing: 'Pricing',
+    nav_signin: 'Sign in',
+    nav_getstarted: 'Get started free',
+    hero_badge: 'AI-Powered Growth Platform',
+    hero_headline: 'One platform.',
+    hero_subline: 'Two ways to grow.',
+    hero_from: 'From',
+    hero_biz_headline: 'Dominate Local Search',
+    hero_biz_desc: 'Rank #1 on Google, manage reviews, track competitors. Built for local businesses and agencies that want to be found first.',
+    hero_biz_cta: 'Start for Business →',
+    hero_biz_cta_short: 'Start for Business',
+    hero_cr_headline: 'Grow on Social Media',
+    hero_cr_desc: 'Analyze Instagram, TikTok and YouTube. Understand what works and grow faster with AI that reads your audience for you.',
+    hero_cr_cta: 'Start as Creator →',
+    hero_cr_cta_short: 'Start as Creator',
+    feat_biz_title: 'Everything you need to rank #1 locally.',
+    feat_biz_sub: 'From Google Business Profile to competitor intelligence — every tool your business needs in one place.',
+    feat_biz_calls: '↑ 47% more calls',
+    feat_biz_gbp_title: 'GBP Optimization',
+    feat_biz_gbp_desc: 'AI audits your Google Business Profile and implements every ranking signal — photos, keywords, posts, and completeness — automatically.',
+    feat_review_r1: '⭐⭐⭐⭐⭐ "Best service in town!"',
+    feat_review_ai1: 'Thank you James! We love hearing that. See you soon!',
+    feat_review_r2: '⭐⭐⭐⭐⭐ "Absolutely incredible."',
+    feat_biz_review_title: 'AI Review Management',
+    feat_biz_review_desc: 'Respond to every review automatically with personalized replies that sound human. Build trust, improve ratings, and never miss a customer.',
+    feat_biz_rank_kw: '"plumber near me" · Chicago, IL',
+    feat_biz_rank_badge: '↑ 5 positions this week',
+    feat_biz_rank_title: 'Real-Time Rank Tracking',
+    feat_biz_rank_desc: "Monitor your exact position in Google's local 3-pack across every keyword and location. See every move your competitors make.",
+    feat_cr_title: 'Understand your audience. Grow faster.',
+    feat_cr_sub: 'Deep analytics for Instagram, TikTok and YouTube. Know what content works, when to post, and how to grow.',
+    fpc_followers: 'Followers',
+    fpc_engage: 'Engage',
+    fpc_growth: 'Growth',
+    feat_cr_insta_title: 'Instagram Analyzer',
+    feat_cr_insta_desc: 'Deep-dive into your best posts, engagement rates, optimal posting times, and follower growth with AI-powered recommendations.',
+    engage_carousels: 'Carousels',
+    engage_reels: 'Reels',
+    engage_stories: 'Stories',
+    engage_static: 'Static',
+    feat_cr_tiktok_title: 'TikTok Insights',
+    feat_cr_tiktok_desc: 'See which video formats, sounds, and hooks drive the most views and follows. Stop guessing, start growing with data.',
+    feat_cr_growth_badge: '↑ +2,840 followers this month',
+    feat_cr_yt_title: 'Content Performance',
+    feat_cr_yt_desc: 'Track subscriber growth, view retention, and revenue across YouTube. Understand which content compounds your channel fastest.',
+    hiw_tag: 'How it works',
+    hiw_title: 'Get started in minutes.',
+    hiw_sub: "Three simple steps, whether you're a business or a creator.",
+    hiw_step1: 'Step 01',
+    hiw_step2: 'Step 02',
+    hiw_step3: 'Step 03',
+    hiw_biz_s1_title: 'Connect your Google Business Profile',
+    hiw_biz_s1_desc: 'Link your GBP in one click. LocalPulse instantly audits your listing and maps every opportunity to climb the rankings.',
+    hiw_biz_s2_title: 'AI analyzes and optimizes',
+    hiw_biz_s2_desc: 'Our AI scans your competitors, fills keyword gaps, responds to reviews, and schedules GBP posts — all without you lifting a finger.',
+    hiw_biz_s3_title: 'Watch your rankings climb',
+    hiw_biz_s3_desc: 'Track every keyword, every competitor, and every review in one dashboard. Most businesses see ranking improvements within the first week.',
+    hiw_biz_p0_sub: 'Dental Clinic · Healthcare',
+    hiw_biz_p0_completeness: 'Profile completeness',
+    hiw_biz_p0_views: 'Views',
+    hiw_biz_p0_calls: 'Calls',
+    hiw_biz_p0_rank: 'Rank',
+    hiw_biz_p1_label: '🤖 AI Optimization Queue',
+    hiw_biz_p1_kw_lbl: 'Add missing keyword',
+    hiw_biz_p1_kw_desc: 'Add "emergency dental care" to description',
+    hiw_biz_p1_kw_badge: 'High Impact',
+    hiw_biz_p1_photo_lbl: 'Upload more photos',
+    hiw_biz_p1_photo_desc: '10+ photos = 3× more profile views',
+    hiw_biz_p1_photo_badge: 'Quick Win',
+    hiw_biz_p1_rev_lbl: '12 reviews unanswered',
+    hiw_biz_p1_rev_desc: 'Responding boosts local ranking signal',
+    hiw_biz_p1_rev_badge: 'Urgent',
+    hiw_biz_p2_kw: '"dentist near me" · Cluj-Napoca, RO',
+    hiw_biz_p2_climbed: '↑ Climbed 6 positions in 8 days',
+    hiw_biz_p2_views: 'More views',
+    hiw_biz_p2_calls: 'More calls',
+    hiw_rating: 'Rating',
+    hiw_disclaimer: 'Simulated results for illustration purposes.',
+    hiw_cr_s1_title: 'Connect your social profiles',
+    hiw_cr_s1_desc: 'Link your Instagram, TikTok, or YouTube account in seconds. LocalPulse pulls in your full content history and audience data instantly.',
+    hiw_cr_s2_title: 'AI analyzes your content',
+    hiw_cr_s2_desc: 'Our AI identifies which content formats, topics, and posting times drive the most reach and engagement for your specific audience.',
+    hiw_cr_s3_title: 'Grow faster with confidence',
+    hiw_cr_s3_desc: 'Follow AI-backed content recommendations and track your growth in real time. Stop guessing what to post — the data shows exactly what works.',
+    hiw_cr_p0_handle: 'Instagram · Connected ✓',
+    hiw_cr_p0_engrate: 'Eng. Rate',
+    hiw_cr_p0_thismonth: 'This month',
+    hiw_cr_p1_label: '📊 Content Insights',
+    hiw_cr_p1_i1_name: 'Reels perform best',
+    hiw_cr_p1_i1_val: '8.4% avg engagement',
+    hiw_cr_p1_i2_name: 'Best time: Tue 7pm',
+    hiw_cr_p1_i2_val: '+34% more reach',
+    hiw_cr_p1_i3_name: 'Top hashtag cluster',
+    hiw_cr_p1_i3_val: '2.1× more discovery',
+    hiw_cr_p2_badge: '↑ +8,400 followers in 30 days',
+    hiw_cr_p2_engrate: 'Eng. rate',
+    hiw_cr_p2_reach: 'Reach',
+    pricing_title: 'Simple pricing. Full access.',
+    pricing_sub: 'No hidden fees. No contracts. Cancel anytime.',
+    pricing_period: '/mo',
+    pricing_cr_desc: 'For content creators who want to grow on Instagram, TikTok and YouTube.',
+    pricing_cr_f1: 'Instagram Analyzer',
+    pricing_cr_f2: 'Full AI strategy report',
+    pricing_cr_f3: 'Content Calendar',
+    pricing_biz_desc: 'For local businesses and agencies who want to rank #1 on Google.',
+    pricing_biz_f1: 'Business Audit',
+    pricing_biz_f2: 'GBP Post Generator',
+    pricing_biz_f3: 'AI Review Responder',
+    pricing_biz_f4: 'SEO Keyword Hunter',
+    pricing_biz_f5: 'Competitor Spy',
+    pricing_biz_f6: '1 location',
+    pricing_pro_tag: 'Best Value',
+    pricing_pro_desc: 'Everything in Creator and Business. For those who want it all.',
+    pricing_pro_f1: 'Everything in Creator',
+    pricing_pro_f2: 'Everything in Business',
+    pricing_pro_f3: 'Up to 3 locations',
+    pricing_pro_f4: 'Priority support',
+    pricing_pro_cta: 'Get Pro',
+    pricing_footnote: 'Free 3-day trial on all plans. Instagram Analyzer and Business Audit score available free. Full access unlocks on paid plan.',
+    stats_tag: 'By the numbers',
+    stats_title: 'Built to get you results.',
+    stats_suf_tools: ' tools',
+    stats_tools_lbl: 'AI-powered tools',
+    stats_tools_desc: 'Built for local SEO and social media growth — nothing generic.',
+    stats_suf_days: ' days',
+    stats_days_lbl: 'Free trial',
+    stats_days_desc: 'Full access to every feature. No credit card needed.',
+    stats_suf_platforms: ' platforms',
+    stats_platforms_lbl: 'Local SEO & Social Media',
+    stats_platforms_desc: 'The only tool that covers both — in one place, under one subscription.',
+    stats_suf_min: ' min',
+    stats_min_lbl: 'To get started',
+    stats_min_desc: 'Connect your accounts and get your first insights in under three minutes.',
+    faq_tag: 'FAQ',
+    faq_title: 'Common questions.',
+    faq_q1: "What's the difference between the Business and Creator plans?",
+    faq_a1: 'Business is built for local SEO — Google rankings, reviews, and competitor intelligence. Creator is built for social growth — Instagram, TikTok and YouTube analytics. Pro gives you both. Pick based on where your customers find you.',
+    faq_q2: 'How quickly will I see results?',
+    faq_a2: 'Most users get their first audit and keyword insights within minutes of signing up. Real ranking improvements depend on your market, but our tools show you exactly what to fix and in what order.',
+    faq_q3: 'Can I manage multiple locations?',
+    faq_a3: 'Single location on Business plan. Up to 3 locations on Pro. Running more than that? Contact us — we work with agencies directly.',
+    faq_q4: 'Is there a free trial?',
+    faq_a4: "Yes — 3 days, full access, no credit card. That's enough time to run your first audit, see your competitors' gaps, and decide if LocalPulse is worth it. We think it will be obvious.",
+    faq_q5: 'What happens after the trial?',
+    faq_a5: 'Your account pauses. No charges, no surprises. If you want to keep access to your reports and history, you pick a plan. If not, no hard feelings.',
+    faq_q6: 'Which social platforms are supported?',
+    faq_a6: 'Instagram, TikTok and YouTube are live now. More platforms are on the roadmap — <a href="mailto:hello@localpulse.ink" style="color:#00e5c4">join the waitlist</a> to get early access.',
+    cta_title: 'Ready to grow?',
+    cta_desc: 'Start growing today. Start your 3-day free trial — no credit card required.',
+    footer_brand_desc: 'AI tools to grow your business and your social media.',
+    footer_col_product: 'Product',
+    footer_col_company: 'Company',
+    footer_col_legal: 'Legal',
+    footer_contact: 'Contact',
+    footer_privacy: 'Privacy Policy',
+    footer_terms: 'Terms of Service',
+    footer_copy: '© 2026 LocalPulse. All rights reserved.',
+  },
+  ro: {
+    nav_business: 'Pentru Afaceri',
+    nav_creator: 'Pentru Creatori',
+    nav_how: 'Cum funcționează',
+    nav_pricing: 'Prețuri',
+    nav_signin: 'Conectează-te',
+    nav_getstarted: 'Începe gratuit',
+    hero_badge: 'Platformă de creștere alimentată de AI',
+    hero_headline: 'O singură platformă.',
+    hero_subline: 'Două moduri de a crește.',
+    hero_from: 'De la',
+    hero_biz_headline: 'Domină Căutarea Locală',
+    hero_biz_desc: 'Ocupă locul #1 pe Google, gestionează recenzii, urmărește concurența. Construit pentru afaceri locale și agenții care vor să fie găsite primele.',
+    hero_biz_cta: 'Începe pentru Afaceri →',
+    hero_biz_cta_short: 'Începe pentru Afaceri',
+    hero_cr_headline: 'Crește pe Social Media',
+    hero_cr_desc: 'Analizează Instagram, TikTok și YouTube. Înțelege ce funcționează și crește mai rapid cu AI care îți citește publicul.',
+    hero_cr_cta: 'Începe ca Creator →',
+    hero_cr_cta_short: 'Începe ca Creator',
+    feat_biz_title: 'Tot ce ai nevoie pentru a ocupa locul #1 local.',
+    feat_biz_sub: 'De la Google Business Profile la informații despre concurență — toate instrumentele de care afacerea ta are nevoie, într-un singur loc.',
+    feat_biz_calls: '↑ 47% mai multe apeluri',
+    feat_biz_gbp_title: 'Optimizare GBP',
+    feat_biz_gbp_desc: 'AI-ul auditează profilul tău Google Business și implementează automat fiecare semnal de clasament — fotografii, cuvinte cheie, postări și completitudine.',
+    feat_review_r1: '⭐⭐⭐⭐⭐ „Cel mai bun serviciu din oraș!"',
+    feat_review_ai1: 'Mulțumim, James! Ne bucurăm să auzim asta. Pe curând!',
+    feat_review_r2: '⭐⭐⭐⭐⭐ „Absolut incredibil."',
+    feat_biz_review_title: 'Gestionare Recenzii cu AI',
+    feat_biz_review_desc: 'Răspunde automat la fiecare recenzie cu mesaje personalizate care sună natural. Construiește încredere, îmbunătățește ratingul și nu rata niciun client.',
+    feat_biz_rank_kw: '"instalator lângă mine" · Cluj-Napoca',
+    feat_biz_rank_badge: '↑ 5 poziții urcat săptămâna aceasta',
+    feat_biz_rank_title: 'Monitorizare Clasamente în Timp Real',
+    feat_biz_rank_desc: 'Monitorizează poziția exactă în pachetul local Google pentru fiecare cuvânt cheie și locație. Vezi fiecare mișcare a concurenților tăi.',
+    feat_cr_title: 'Înțelege-ți publicul. Crește mai rapid.',
+    feat_cr_sub: 'Analize profunde pentru Instagram, TikTok și YouTube. Știi ce conținut funcționează, când să postezi și cum să crești.',
+    fpc_followers: 'Urmăritori',
+    fpc_engage: 'Engagement',
+    fpc_growth: 'Creștere',
+    feat_cr_insta_title: 'Analizor Instagram',
+    feat_cr_insta_desc: 'Analizează în profunzime cele mai bune postări, ratele de engagement, orele optime de postare și creșterea numărului de urmăritori cu recomandări AI.',
+    engage_carousels: 'Carusele',
+    engage_reels: 'Reels',
+    engage_stories: 'Stories',
+    engage_static: 'Statice',
+    feat_cr_tiktok_title: 'Informații TikTok',
+    feat_cr_tiktok_desc: 'Descoperă ce formate video, sunete și cârlige generează cele mai multe vizualizări și urmăritori. Oprește ghicitul, începe să crești cu date.',
+    feat_cr_growth_badge: '↑ +2.840 urmăritori luna aceasta',
+    feat_cr_yt_title: 'Performanța Conținutului',
+    feat_cr_yt_desc: 'Urmărește creșterea abonaților, retenția vizualizărilor și veniturile pe YouTube. Înțelege ce conținut îți crește canalul cel mai rapid.',
+    hiw_tag: 'Cum funcționează',
+    hiw_title: 'Începe în câteva minute.',
+    hiw_sub: 'Trei pași simpli, fie că ești o afacere sau un creator.',
+    hiw_step1: 'Pasul 01',
+    hiw_step2: 'Pasul 02',
+    hiw_step3: 'Pasul 03',
+    hiw_biz_s1_title: 'Conectează-ți profilul Google Business',
+    hiw_biz_s1_desc: 'Conectează-ți profilul GBP cu un singur clic. LocalPulse auditează instantaneu listarea ta și identifică fiecare oportunitate de a urca în clasamente.',
+    hiw_biz_s2_title: 'AI analizează și optimizează',
+    hiw_biz_s2_desc: 'AI-ul nostru scanează concurența, completează lacunele de cuvinte cheie, răspunde la recenzii și programează postări GBP — totul fără niciun efort din partea ta.',
+    hiw_biz_s3_title: 'Urmărește cum urcă clasamentele',
+    hiw_biz_s3_desc: 'Monitorizează fiecare cuvânt cheie, fiecare competitor și fiecare recenzie într-un singur panou. Majoritatea afacerilor văd îmbunătățiri de clasament în prima săptămână.',
+    hiw_biz_p0_sub: 'Clinică Dentară · Sănătate',
+    hiw_biz_p0_completeness: 'Completitudine profil',
+    hiw_biz_p0_views: 'Vizualizări',
+    hiw_biz_p0_calls: 'Apeluri',
+    hiw_biz_p0_rank: 'Poziție',
+    hiw_biz_p1_label: '🤖 Coadă de optimizare AI',
+    hiw_biz_p1_kw_lbl: 'Adaugă cuvânt cheie lipsă',
+    hiw_biz_p1_kw_desc: 'Adaugă „urgență stomatologică" în descriere',
+    hiw_biz_p1_kw_badge: 'Impact ridicat',
+    hiw_biz_p1_photo_lbl: 'Încarcă mai multe fotografii',
+    hiw_biz_p1_photo_desc: '10+ fotografii = de 3× mai multe vizualizări',
+    hiw_biz_p1_photo_badge: 'Câștig rapid',
+    hiw_biz_p1_rev_lbl: '12 recenzii fără răspuns',
+    hiw_biz_p1_rev_desc: 'Răspunsul îmbunătățește semnalul de clasament local',
+    hiw_biz_p1_rev_badge: 'Urgent',
+    hiw_biz_p2_kw: '"dentist lângă mine" · Cluj-Napoca, RO',
+    hiw_biz_p2_climbed: '↑ A urcat 6 poziții în 8 zile',
+    hiw_biz_p2_views: 'Mai multe vizualizări',
+    hiw_biz_p2_calls: 'Mai multe apeluri',
+    hiw_rating: 'Rating',
+    hiw_disclaimer: 'Rezultate simulate în scop ilustrativ.',
+    hiw_cr_s1_title: 'Conectează-ți profilurile sociale',
+    hiw_cr_s1_desc: 'Conectează-ți contul de Instagram, TikTok sau YouTube în câteva secunde. LocalPulse preia instantaneu istoricul complet al conținutului și datele despre audiență.',
+    hiw_cr_s2_title: 'AI îți analizează conținutul',
+    hiw_cr_s2_desc: 'AI-ul nostru identifică ce formate de conținut, subiecte și ore de postare generează cel mai mult reach și engagement pentru publicul tău specific.',
+    hiw_cr_s3_title: 'Crește mai rapid cu încredere',
+    hiw_cr_s3_desc: 'Urmează recomandările de conținut bazate pe AI și monitorizează-ți creșterea în timp real. Nu mai ghici ce să postezi — datele îți arată exact ce funcționează.',
+    hiw_cr_p0_handle: 'Instagram · Conectat ✓',
+    hiw_cr_p0_engrate: 'Rată Eng.',
+    hiw_cr_p0_thismonth: 'Luna aceasta',
+    hiw_cr_p1_label: '📊 Informații despre Conținut',
+    hiw_cr_p1_i1_name: 'Reels-urile performează cel mai bine',
+    hiw_cr_p1_i1_val: 'Engagement mediu 8,4%',
+    hiw_cr_p1_i2_name: 'Cea mai bună oră: Mar 19:00',
+    hiw_cr_p1_i2_val: '+34% mai mult reach',
+    hiw_cr_p1_i3_name: 'Cluster top hashtag-uri',
+    hiw_cr_p1_i3_val: 'De 2,1× mai multă descoperire',
+    hiw_cr_p2_badge: '↑ +8.400 urmăritori în 30 de zile',
+    hiw_cr_p2_engrate: 'Rată eng.',
+    hiw_cr_p2_reach: 'Reach',
+    pricing_title: 'Prețuri simple. Acces complet.',
+    pricing_sub: 'Fără costuri ascunse. Fără contracte. Anulează oricând.',
+    pricing_period: '/lună',
+    pricing_cr_desc: 'Pentru creatorii de conținut care vor să crească pe Instagram, TikTok și YouTube.',
+    pricing_cr_f1: 'Analizor Instagram',
+    pricing_cr_f2: 'Raport complet de strategie AI',
+    pricing_cr_f3: 'Calendar de Conținut',
+    pricing_biz_desc: 'Pentru afaceri locale și agenții care vor să ocupe locul #1 pe Google.',
+    pricing_biz_f1: 'Audit Afacere',
+    pricing_biz_f2: 'Generator de postări GBP',
+    pricing_biz_f3: 'Răspuns AI la recenzii',
+    pricing_biz_f4: 'Căutător de cuvinte cheie SEO',
+    pricing_biz_f5: 'Spion Concurență',
+    pricing_biz_f6: '1 locație',
+    pricing_pro_tag: 'Cel mai bun raport calitate-preț',
+    pricing_pro_desc: 'Tot ce include Creator și Business. Pentru cei care vor totul.',
+    pricing_pro_f1: 'Tot ce include Creator',
+    pricing_pro_f2: 'Tot ce include Business',
+    pricing_pro_f3: 'Până la 3 locații',
+    pricing_pro_f4: 'Suport prioritar',
+    pricing_pro_cta: 'Obține Pro',
+    pricing_footnote: 'Perioadă de probă gratuită de 3 zile pentru toate planurile. Analizorul Instagram și scorul Business Audit sunt disponibile gratuit. Accesul complet se deblochează cu un plan plătit.',
+    stats_tag: 'În cifre',
+    stats_title: 'Construit pentru a-ți aduce rezultate.',
+    stats_suf_tools: ' instrumente',
+    stats_tools_lbl: 'Instrumente alimentate de AI',
+    stats_tools_desc: 'Construit pentru SEO local și creștere pe rețele sociale — nimic generic.',
+    stats_suf_days: ' zile',
+    stats_days_lbl: 'Perioadă de probă gratuită',
+    stats_days_desc: 'Acces complet la toate funcționalitățile. Nu este necesar un card de credit.',
+    stats_suf_platforms: ' platforme',
+    stats_platforms_lbl: 'SEO Local & Social Media',
+    stats_platforms_desc: 'Singurul instrument care acoperă ambele — într-un singur loc, sub un singur abonament.',
+    stats_suf_min: ' min',
+    stats_min_lbl: 'Pentru a începe',
+    stats_min_desc: 'Conectează-ți conturile și obține primele informații în mai puțin de trei minute.',
+    faq_tag: 'Întrebări frecvente',
+    faq_title: 'Întrebări comune.',
+    faq_q1: 'Care este diferența dintre planurile Business și Creator?',
+    faq_a1: 'Business este conceput pentru SEO local — clasamente Google, recenzii și informații despre concurență. Creator este conceput pentru creștere socială — analize Instagram, TikTok și YouTube. Pro le oferă pe ambele. Alege în funcție de locul în care te găsesc clienții.',
+    faq_q2: 'Cât de repede voi vedea rezultate?',
+    faq_a2: 'Majoritatea utilizatorilor primesc primul audit și informații despre cuvinte cheie în câteva minute după înregistrare. Îmbunătățirile reale ale clasamentului depind de piața ta, dar instrumentele noastre îți arată exact ce să corectezi și în ce ordine.',
+    faq_q3: 'Pot gestiona mai multe locații?',
+    faq_a3: 'O singură locație pe planul Business. Până la 3 locații pe Pro. Ai mai mult? Contactează-ne — lucrăm direct cu agențiile.',
+    faq_q4: 'Există o perioadă de probă gratuită?',
+    faq_a4: 'Da — 3 zile, acces complet, fără card de credit. Este suficient timp pentru a rula primul audit, a vedea lacunele concurenților și a decide dacă LocalPulse merită. Credem că va fi evident.',
+    faq_q5: 'Ce se întâmplă după perioada de probă?',
+    faq_a5: 'Contul tău va fi suspendat. Nicio taxă, nicio surpriză. Dacă vrei să păstrezi accesul la rapoartele și istoricul tău, alegi un plan. Dacă nu, nu-i nicio problemă.',
+    faq_q6: 'Ce platforme sociale sunt acceptate?',
+    faq_a6: 'Instagram, TikTok și YouTube sunt disponibile acum. Mai multe platforme sunt pe roadmap — <a href="mailto:hello@localpulse.ink" style="color:#00e5c4">înscrie-te pe lista de așteptare</a> pentru acces anticipat.',
+    cta_title: 'Gata să crești?',
+    cta_desc: 'Începe să crești azi. Pornește perioada de probă gratuită de 3 zile — fără card de credit.',
+    footer_brand_desc: 'Instrumente AI pentru a-ți crește afacerea și prezența pe social media.',
+    footer_col_product: 'Produs',
+    footer_col_company: 'Companie',
+    footer_col_legal: 'Legal',
+    footer_contact: 'Contact',
+    footer_privacy: 'Politică de confidențialitate',
+    footer_terms: 'Termeni și condiții',
+    footer_copy: '© 2026 LocalPulse. Toate drepturile rezervate.',
+  }
+};
+
+function setLang(lang) {
+  const dict = translations[lang];
+  if (!dict) return;
+  // Swap textContent
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+  // Swap innerHTML (for elements with embedded HTML like links)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.dataset.i18nHtml;
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  // Swap stat-num suffixes (update data-suffix and re-render displayed value)
+  document.querySelectorAll('[data-i18n-suffix]').forEach(el => {
+    const key = el.dataset.i18nSuffix;
+    if (dict[key] !== undefined) {
+      el.dataset.suffix = dict[key];
+      const target = el.dataset.target;
+      if (target) {
+        const prefix = el.dataset.prefix || '';
+        const isFloat = target.includes('.');
+        const num = parseFloat(target);
+        el.textContent = prefix + (isFloat ? num.toFixed(1) : num) + dict[key];
+      }
+    }
+  });
+  // Update lang buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  // Persist
+  localStorage.setItem('lp_lang', lang);
+  document.documentElement.lang = lang;
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
+});
+
+// Init on load
+(function() {
+  const saved = localStorage.getItem('lp_lang');
+  if (saved && saved !== 'en') setLang(saved);
+})();
 
 /* ── FAQ ACCORDION ── */
 document.querySelectorAll('.faq-trigger').forEach(trigger => {
